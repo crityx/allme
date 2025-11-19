@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllMe Lagree Studio - Mind. Body. All (of) Me</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-red: #7e383f;
+            --color-beige: #dccdbc;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --font-title: 'Playfair Display', serif;
+            --font-body: 'Crimson Pro', serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-black);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header - Fixed Navigation */
+        #site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: transparent;
+            padding: 1.5rem 0;
+        }
+
+        #site-header.scrolled {
+            background-color: var(--color-beige);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .site-branding {
+            display: flex;
+            align-items: center;
+        }
+
+        .site-logo {
+            height: 75px;
+            width: auto;
+            transition: all 0.4s ease;
+        }
+
+        .logo-white {
+            display: block;
+        }
+
+        .logo-red {
+            display: none;
+        }
+
+        #site-header.scrolled .logo-white {
+            display: none;
+        }
+
+        #site-header.scrolled .logo-red {
+            display: block;
+        }
+
+        /* Navigation Desktop */
+        .site-navigation {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .site-navigation a {
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--color-beige);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        #site-header.scrolled .site-navigation a {
+            color: var(--color-red);
+        }
+
+        .site-navigation a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-beige);
+            transition: width 0.3s ease;
+        }
+
+        #site-header.scrolled .site-navigation a::after {
+            background-color: var(--color-red);
+        }
+
+        .site-navigation a:hover::after {
+            width: 100%;
+        }
+
+        .site-navigation a:hover {
+            opacity: 0.8;
+        }
+
+        /* Header CTA Button */
+        .header-cta {
+            padding: 0.6rem 1.8rem;
+            background-color: transparent;
+            color: var(--color-beige);
+            border: 2px solid var(--color-beige);
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .header-cta:hover {
+            background-color: var(--color-beige);
+            color: var(--color-black);
+            transform: translateY(-2px);
+        }
+
+        #site-header.scrolled .header-cta {
+            color: var(--color-red);
+            border-color: var(--color-red);
+        }
+
+        #site-header.scrolled .header-cta:hover {
+            background-color: var(--color-red);
+            color: var(--color-white);
+        }
+
+        /* Burger Menu Button */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .burger-menu span {
+            width: 28px;
+            height: 3px;
+            background-color: var(--color-beige);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        #site-header.scrolled .burger-menu span {
+            background-color: var(--color-red);
+        }
+
+        .burger-menu.is-open span {
+            background-color: var(--color-red);
+        }
+
+        .burger-menu.is-open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .burger-menu.is-open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.is-open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Section Hero */
+        .hero-section {
+            min-height: 100vh;
+            background-color: var(--color-black);
+            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section1-1-scaled.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-logo-text {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-beige);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-title {
+            font-family: var(--font-title);
+            font-size: 5rem;
+            font-weight: 400;
+            color: var(--color-beige);
+            line-height: 1.1;
+            margin-bottom: 3rem;
+        }
+
+        .hero-title .highlight {
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-red);
+            color: var(--color-beige);
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-red);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--color-white);
+            border-color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(126, 56, 63, 0.3);
+        }
+
+        /* Section Méthode Lagree */
+        .lagree-section {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: var(--color-black);
+        }
+
+        .lagree-image {
+            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section2-1.png');
+            background-size: 130%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: relative;
+            transition: background-position 0.1s linear;
+            will-change: background-position;
+        }
+
+        @media (max-width: 768px) {
+            .lagree-image {
+                background-size: 140%;
+            }
+        }
+
+        .lagree-content {
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--color-black);
+            color: var(--color-beige);
+        }
+
+        .lagree-content h2 {
+            font-family: var(--font-title);
+            font-size: 4rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: var(--color-beige);
+        }
+
+        .lagree-content p {
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            text-align: justify;
+            color: var(--color-white);
+        }
+
+        .cta-button-secondary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-red);
+            color: var(--color-beige);
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-red);
+            align-self: flex-start;
+        }
+
+        .cta-button-secondary:hover {
+            background-color: transparent;
+            color: var(--color-beige);
+            border-color: var(--color-beige);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(126, 56, 63, 0.3);
+        }
+
+        /* Section Bienvenue */
+        .welcome-section {
+            background-color: var(--color-red);
+            padding: 6rem 2rem;
+            color: var(--color-white);
+        }
+
+        .welcome-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .welcome-title {
+            font-family: var(--font-title);
+            font-size: 4rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--color-beige);
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .welcome-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .welcome-image-wrapper {
+            width: 350px;
+            height: 350px;
+            border-radius: 50% 50% 0 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .welcome-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+
+        /* Effet Parallax sur tous les écrans */
+        .welcome-card:nth-child(1) .welcome-image-wrapper img {
+            transform: translateY(var(--parallax-offset-1, 0)) scale(1.1);
+        }
+
+        .welcome-card:nth-child(2) .welcome-image-wrapper img {
+            transform: translateY(var(--parallax-offset-2, 0)) scale(1.1);
+        }
+
+        .welcome-card:nth-child(3) .welcome-image-wrapper img {
+            transform: translateY(var(--parallax-offset-3, 0)) scale(1.1);
+        }
+
+        .welcome-card h3 {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--color-beige);
+        }
+
+        .welcome-card p {
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: var(--color-white);
+            max-width: 350px;
+        }
+
+        .cta-button-tertiary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-beige);
+            color: var(--color-red);
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-beige);
+            margin: 0 auto;
+            display: block;
+            width: fit-content;
+        }
+
+        .cta-button-tertiary:hover {
+            background-color: transparent;
+            color: var(--color-beige);
+            border-color: var(--color-beige);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 205, 188, 0.3);
+        }
+
+        /* Section Tarifs */
+        .pricing-section {
+            background-color: var(--color-beige);
+            padding: 6rem 2rem;
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-title {
+            font-family: var(--font-title);
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--color-red);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            color: var(--color-red);
+        }
+
+        .discovery-pack {
+            background-color: var(--color-red);
+            border-radius: 20px;
+            padding: 3rem;
+            color: var(--color-white);
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pack-label {
+            background-color: var(--color-beige);
+            color: var(--color-red);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .discovery-pack h3 {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .discovery-pack .sessions-info {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .discovery-pack .price {
+            font-family: var(--font-title);
+            font-size: 4rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .discovery-pack .price-per-session {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .discovery-pack .description {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .discovery-pack .cta-button-pack {
+            background-color: var(--color-beige);
+            color: var(--color-red);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-beige);
+        }
+
+        .discovery-pack .cta-button-pack:hover {
+            background-color: transparent;
+            color: var(--color-beige);
+            transform: translateY(-2px);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background-color: var(--color-white);
+            border: 2px solid #d0c4b8;
+            border-radius: 15px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(126, 56, 63, 0.15);
+        }
+
+        .pricing-card.popular {
+            border: 3px solid var(--color-red);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--color-red);
+            color: var(--color-beige);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pricing-card .sessions {
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            color: var(--color-red);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .sessions-label {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-red);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card .price-large {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            color: var(--color-red);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price-detail {
+            background-color: var(--color-beige);
+            color: var(--color-red);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .pricing-card .validity {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-red);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card .reserve-button {
+            background-color: var(--color-red);
+            color: var(--color-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-red);
+        }
+
+        .pricing-card .reserve-button:hover {
+            background-color: transparent;
+            color: var(--color-red);
+            transform: translateY(-2px);
+        }
+
+        .special-offers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .offer-box {
+            background-color: transparent;
+            border: 2px solid var(--color-red);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .offer-box h4 {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--color-red);
+            margin-bottom: 1rem;
+        }
+
+        .offer-box .discount {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--color-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .offer-box .offer-description {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-red);
+            line-height: 1.6;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: start;
+        }
+
+        .good-to-know {
+            background-color: var(--color-white);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: left;
+            height: 100%;
+        }
+
+        .good-to-know h4 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--color-red);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .good-to-know ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .good-to-know li {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-red);
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+
+        .good-to-know li::before {
+            content: '✓';
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+            color: var(--color-red);
+            flex-shrink: 0;
+        }
+
+        .special-offers-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .offer-card {
+            background-color: var(--color-white);
+            border: 2px solid var(--color-red);
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(126, 56, 63, 0.15);
+        }
+
+        .offer-card h4 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-red);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .offer-card .discount {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            color: var(--color-red);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            line-height: 1;
+        }
+
+        .offer-card .offer-subtitle {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-red);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .offer-card .offer-description {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--color-red);
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        /* Section Philosophie */
+        .philosophy-section {
+            min-height: 100vh;
+            background-color: var(--color-black);
+            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section5.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
+        }
+
+        .philosophy-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .philosophy-logo {
+            font-family: var(--font-title);
+            font-size: 5rem;
+            font-weight: 400;
+            color: var(--color-beige);
+            line-height: 1.1;
+        }
+
+        .philosophy-content {
+            color: var(--color-white);
+        }
+
+        .philosophy-content p {
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--color-white);
+        }
+
+        /* Section FAQ */
+        .faq-section {
+            background-color: var(--color-beige);
+            padding: 6rem 2rem;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            font-family: var(--font-title);
+            font-size: 4rem;
+            font-weight: 400;
+            text-align: center;
+            color: var(--color-red);
+            margin-bottom: 4rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: var(--color-white);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background-color: var(--color-white);
+            border: none;
+            text-align: left;
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-red);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 2rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: var(--color-white);
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem 2rem;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-red);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--color-red);
+            padding: 4rem 2rem 2rem;
+            color: var(--color-beige);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--color-beige);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo-subtitle {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-beige);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-section h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--color-beige);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-contact-info p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-beige);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .footer-contact-info a {
+            color: var(--color-beige);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact-info a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            color: var(--color-beige);
+            font-size: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-nav a {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-beige);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Scrolling Banner */
+        .scrolling-banner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-beige);
+            overflow: hidden;
+            padding: 1rem 0;
+            z-index: 2;
+        }
+
+        .scrolling-banner-content {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+
+        .scrolling-banner-content span {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-red);
+            padding-right: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu Logo */
+        .mobile-menu-logo {
+            display: none;
+        }
+
+        /* Mobile Menu CTA - Caché sur desktop */
+        .mobile-menu-cta {
+            display: none;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 992px) {
+            .site-navigation {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--color-beige);
+                flex-direction: column;
+                justify-content: center;
+                gap: 1.2rem;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 2rem;
+            }
+
+            .site-navigation.is-open {
+                right: 0;
+            }
+
+            .mobile-menu-logo {
+                display: block;
+                position: absolute;
+                top: 2rem;
+                left: 2rem;
+                height: 70px;
+                width: auto;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: all 0.4s ease;
+            }
+
+            .site-navigation.is-open .mobile-menu-logo {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.05s;
+            }
+
+            .site-navigation a {
+                font-size: 2rem;
+                color: var(--color-red);
+                opacity: 0;
+                transform: translateX(20px);
+                transition: all 0.3s ease;
+            }
+
+            .site-navigation.is-open a {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .site-navigation.is-open a:nth-child(2) { transition-delay: 0.1s; }
+            .site-navigation.is-open a:nth-child(3) { transition-delay: 0.15s; }
+            .site-navigation.is-open a:nth-child(4) { transition-delay: 0.2s; }
+            .site-navigation.is-open a:nth-child(5) { transition-delay: 0.25s; }
+            .site-navigation.is-open a:nth-child(6) { transition-delay: 0.3s; }
+
+            .mobile-menu-cta {
+                display: inline-block;
+                background-color: transparent;
+                color: var(--color-red) !important;
+                padding: 1rem 2.5rem !important;
+                border-radius: 50px;
+                margin-top: 2rem;
+                border: 2px solid var(--color-red);
+            }
+
+            .mobile-menu-cta:hover {
+                background-color: var(--color-red);
+                color: var(--color-beige) !important;
+            }
+
+            .mobile-menu-cta::after {
+                display: none;
+            }
+
+            .site-navigation a::after {
+                background-color: var(--color-red);
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            .header-cta {
+                display: block;
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .hero-content {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .lagree-section {
+                grid-template-columns: 1fr;
+            }
+
+            .lagree-image {
+                min-height: 50vh;
+                order: 2;
+            }
+
+            .lagree-content {
+                order: 1;
+                padding: 4rem 2rem;
+            }
+
+            .lagree-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .lagree-content p {
+                font-size: 1.1rem;
+            }
+
+            .welcome-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .welcome-title {
+                font-size: 2.5rem;
+            }
+
+            .welcome-image-wrapper {
+                width: 280px;
+                height: 280px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-section {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-title {
+                font-size: 2.5rem;
+            }
+
+            .philosophy-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .philosophy-logo {
+                font-size: 3.5rem;
+                text-align: center;
+            }
+
+            .philosophy-logo .desktop-br {
+                display: none;
+            }
+
+            .philosophy-content p {
+                font-size: 1.1rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .faq-title {
+                font-size: 2.5rem;
+            }
+
+            .faq-question {
+                font-size: 1.1rem;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .faq-answer-content {
+                font-size: 1rem;
+                padding: 0 1.5rem 1.2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-logo-text {
+                font-size: 2rem;
+            }
+
+            .lagree-content h2 {
+                font-size: 2rem;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .hero-container {
+                padding: 0 1rem;
+            }
+
+            .welcome-title {
+                font-size: 2rem;
+            }
+
+            .welcome-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-title {
+                font-size: 2rem;
+            }
+
+            .discovery-pack {
+                max-width: 100%;
+            }
+
+            .philosophy-logo {
+                font-size: 2.5rem;
+            }
+
+            .philosophy-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .cta-button,
+            .cta-button-secondary,
+            .cta-button-tertiary {
+                font-size: 1rem;
+                padding: 0.8rem 2rem;
+            }
+
+            .welcome-image-wrapper {
+                width: 240px;
+                height: 240px;
+            }
+
+            .site-logo {
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header id="site-header">
+        <div class="header-container">
+            <div class="site-branding">
+                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-beige.png" alt="AllMe Lagree Studio" class="site-logo logo-white">
+                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-rouge.png" alt="AllMe Lagree Studio" class="site-logo logo-red">
+            </div>
+            <nav class="site-navigation">
+                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-rouge.png" alt="AllMe Lagree Studio" class="mobile-menu-logo">
+                <a href="#methode-lagree">La méthode Lagree</a>
+                <a href="#allme-studio">Allme Studio</a>
+                <a href="#tarifs">Nos tarifs</a>
+                <a href="#faq">FAQ</a>
+                <a href="tel:+33465849247" class="mobile-menu-cta">Réserver</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+33465849247" class="header-cta">Réserver</a>
+                <button class="burger-menu" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Hero -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Mind. Body.<br>
+                    All <span class="highlight">(of)</span> Me
+                </h1>
+                <a href="tel:+33465849247" class="cta-button">Réserver ma séance</a>
+            </div>
+        </div>
+        <div class="scrolling-banner">
+            <div class="scrolling-banner-content">
+                <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
+                <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
+                <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
+                <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Méthode Lagree -->
+    <section id="methode-lagree" class="lagree-section">
+        <div class="lagree-image"></div>
+        <div class="lagree-content">
+            <h2>La méthode<br>Lagree</h2>
+            <p>
+                Le Lagree est une méthode d'entraînement complète et intense, venant de Los Angeles.
+                Mélant renforcement musculaire, cardio, souplesse et équilibre, le Lagree sculpte,
+                renforce et transforme durablement ton corps, sans impacts.
+            </p>
+            <a href="#methode" class="cta-button-secondary">En savoir plus</a>
+        </div>
+    </section>
+
+    <!-- Section Bienvenue -->
+    <section id="allme-studio" class="welcome-section">
+        <div class="welcome-container">
+            <h2 class="welcome-title">Bienvenue chez Allme</h2>
+            <div class="welcome-grid">
+                <div class="welcome-card">
+                    <div class="welcome-image-wrapper">
+                        <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-1-1.png" alt="Un espace intimiste">
+                    </div>
+                    <h3>Un espace intimiste</h3>
+                    <p>avec 6 machines pour des cours en petit comité permettant de se concentrer sur les mouvements de chaque participante.</p>
+                </div>
+                <div class="welcome-card">
+                    <div class="welcome-image-wrapper">
+                        <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-2.jpg" alt="Des cours pour toutes">
+                    </div>
+                    <h3>Des cours pour toutes</h3>
+                    <p>Que vous soyez grande sportive ou simplement curieuse d'essayer, le Lagree Allme s'adapte à votre niveau et l'intensité que vous souhaitez y mettre.</p>
+                </div>
+                <div class="welcome-card">
+                    <div class="welcome-image-wrapper">
+                        <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-3.webp" alt="Une équipe attentive">
+                    </div>
+                    <h3>Une équipe attentive</h3>
+                    <p>Nos coachs vous accompagnent avec bienveillante dans la réalisation de vos mouvement et l'atteinte de vos objectifs.</p>
+                </div>
+            </div>
+            <a href="#studio" class="cta-button-tertiary">Je découvre le studio</a>
+        </div>
+    </section>
+
+    <!-- Section Tarifs -->
+    <section id="tarifs" class="pricing-section">
+        <div class="pricing-container">
+            <div class="pricing-header">
+                <h2 class="pricing-title">Nos offres et tarifs</h2>
+                <p class="pricing-subtitle">Choisissez la formule qui correspond à vos objectifs et envies.</p>
+            </div>
+
+            <div class="discovery-pack">
+                <span class="pack-label">Pack Découverte</span>
+                <h3>3 Séances</h3>
+                <p class="sessions-info">2 lagree + 1 électrostimulation</p>
+                <div class="price">85€</div>
+                <div class="price-per-session">28€/séance</div>
+                <p class="description">Idéal pour commencer à découvrir tous les bénéfices du Lagree et booster les résultats avec l'électrostimulation</p>
+                <p class="description">Valable 2 mois</p>
+                <a href="tel:+33465849247" class="cta-button-pack">Réserver le pack</a>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="sessions">1</div>
+                    <div class="sessions-label">Cours</div>
+                    <div class="price-large">39€</div>
+                    <div class="validity">Sans engagement</div>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="sessions">5</div>
+                    <div class="sessions-label">Cours</div>
+                    <div class="price-large">185€</div>
+                    <div class="price-detail">37€ / séance</div>
+                    <div class="validity">Valable 2 mois</div>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <span class="popular-badge">★ Plus populaire</span>
+                    <div class="sessions">10</div>
+                    <div class="sessions-label">Cours</div>
+                    <div class="price-large">340€</div>
+                    <div class="price-detail">34€ / séance</div>
+                    <div class="validity">Valable 3 mois</div>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="sessions">20</div>
+                    <div class="sessions-label">Cours</div>
+                    <div class="price-large">650€</div>
+                    <div class="price-detail">32,5€ / séance</div>
+                    <div class="validity">Valable 6 mois</div>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="good-to-know">
+                    <h4>Bon à savoir</h4>
+                    <ul>
+                        <li>Paiement sécurisé en ligne ou sur place</li>
+                        <li>Annulation gratuite jusqu'à 12h avant le cours</li>
+                        <li>Tous les cours sont réalisés sur la machine Megaformer</li>
+                        <li>Accessoires fournis hors chaussettes antidérapantes</li>
+                        <li>Vestiaires et douches à disposition</li>
+                    </ul>
+                </div>
+
+                <div class="special-offers-column">
+                    <div class="offer-card">
+                        <h4>🎓 Offre Étudiante</h4>
+                        <div class="discount">-20%</div>
+                        <div class="offer-subtitle">sur toutes nos séances et packs</div>
+                        <p class="offer-description">Sur présentation de votre carte étudiante</p>
+                    </div>
+
+                    <div class="offer-card">
+                        <h4>🤝 Parrainage</h4>
+                        <div class="discount">-10%</div>
+                        <div class="offer-subtitle">sur nos packs pour vous</div>
+                        <p class="offer-description">Pour toute souscription d'un de vos proches à un pack 5, 10 ou 20 cours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Philosophie -->
+    <section id="connaitre" class="philosophy-section">
+        <div class="philosophy-container">
+            <div class="philosophy-logo">
+                <span class="line1">Mind.</span><br class="desktop-br">
+                <span class="line2">Body.</span><br>
+                <span class="line3">All (of)</span><br class="desktop-br">
+                <span class="line4">Me</span>
+            </div>
+            <div class="philosophy-content">
+                <p>Chez Allmé Studio, nous croyons qu'un entraînement doit être plus qu'un effort : c'est une expérience.</p>
+                <p>Ici, la Méthode Lagree prend vie dans un studio au design épuré, rythmé par la lumière, la musique et la précision du mouvement. Chaque séance est pensée pour sculpter ton corps, élever ton esprit et réveiller ta meilleure version.</p>
+                <p>Allmé, c'est la contraction de All of Me : tout de moi. Parce qu'un vrai entraînement ne se résume pas à des muscles : il engage ton mental, ton souffle, ton énergie.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <h2 class="faq-title">FAQ</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">Qu'est-ce que la méthode Lagree ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        La méthode Lagree est une technique d'entraînement complète et intense qui combine renforcement musculaire, cardio, souplesse et équilibre. Développée à Los Angeles, elle utilise la machine Megaformer pour créer des mouvements lents et contrôlés qui sculptent et renforcent le corps sans impacts.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Faut-il avoir un niveau sportif pour commencer ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Non, la méthode Lagree s'adapte à tous les niveaux ! Que vous soyez débutant ou sportif confirmé, nos coachs ajustent l'intensité et les exercices selon vos capacités. C'est vous qui contrôlez la difficulté grâce à la machine.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Combien de personnes par cours ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Nos cours sont limités à 6 personnes maximum pour garantir un accompagnement personnalisé. Cette configuration en petit comité permet à nos coachs de corriger votre posture et de vous guider tout au long de la séance.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Que dois-je apporter pour mon premier cours ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Nous fournissons tous les accessoires nécessaires (tapis, serviettes). Il vous suffit d'apporter une tenue de sport confortable et une paire de chaussettes antidérapantes. Des vestiaires et douches sont à votre disposition.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Puis-je annuler ou modifier ma réservation ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Oui, l'annulation est gratuite jusqu'à 12h avant le début du cours. Passé ce délai, la séance sera décomptée de votre forfait. Vous pouvez modifier votre réservation facilement via votre espace client.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Quelle est la durée d'une séance ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Une séance dure 50 minutes. C'est le temps optimal pour travailler efficacement tout le corps tout en maintenant une intensité élevée. Prévoyez quelques minutes supplémentaires pour vous changer avant et après.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-logo-section">
+                <div class="footer-logo">Allme</div>
+                <div class="footer-logo-subtitle">Lagree Studio</div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <div class="footer-contact-info">
+                    <p>31 rue Edouard Aynard, 69100 Villeurbanne</p>
+                    <p><a href="mailto:contact@allme.fr">contact@allme.fr</a></p>
+                    <p><a href="tel:+33465849247">04 65 84 92 47</a></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://instagram.com/allme.lagree" target="_blank" aria-label="Instagram">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com/@allme.lagree" target="_blank" aria-label="TikTok">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <nav class="footer-nav">
+                    <a href="#methode-lagree">La méthode Lagree</a>
+                    <a href="#allme-studio">Allme Studio</a>
+                    <a href="#tarifs">Nos offres et tarifs</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        'use strict';
+
+        (function() {
+            // Sélection des éléments
+            const header = document.getElementById('site-header');
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navigation = document.querySelector('.site-navigation');
+            const navLinks = document.querySelectorAll('.site-navigation a');
+
+            // Gestion du scroll pour le header
+            let lastScroll = 0;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                lastScroll = currentScroll;
+            });
+
+            // Toggle menu burger
+            burgerMenu.addEventListener('click', function() {
+                const isOpen = navigation.classList.contains('is-open');
+
+                if (isOpen) {
+                    navigation.classList.remove('is-open');
+                    burgerMenu.classList.remove('is-open');
+                    burgerMenu.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                } else {
+                    navigation.classList.add('is-open');
+                    burgerMenu.classList.add('is-open');
+                    burgerMenu.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            // Fermer le menu au clic sur un lien
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navigation.classList.remove('is-open');
+                    burgerMenu.classList.remove('is-open');
+                    burgerMenu.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Fermer le menu au clic en dehors
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navigation.contains(event.target);
+                const isClickOnBurger = burgerMenu.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnBurger && navigation.classList.contains('is-open')) {
+                    navigation.classList.remove('is-open');
+                    burgerMenu.classList.remove('is-open');
+                    burgerMenu.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Fermer le menu mobile lors du redimensionnement vers desktop
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    if (window.innerWidth > 992 && navigation.classList.contains('is-open')) {
+                        navigation.classList.remove('is-open');
+                        burgerMenu.classList.remove('is-open');
+                        burgerMenu.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    }
+                }, 250);
+            });
+
+            // Smooth scroll pour les ancres
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetSection = document.getElementById(targetId);
+
+                        if (targetSection) {
+                            const headerHeight = header.offsetHeight;
+                            const targetPosition = targetSection.offsetTop - headerHeight;
+
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Gestion de l'accordéon FAQ
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(function(question) {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+
+                    // Fermer tous les autres items
+                    document.querySelectorAll('.faq-item').forEach(function(item) {
+                        item.classList.remove('active');
+                    });
+
+                    // Ouvrir l'item cliqué si il était fermé
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
+
+            // Effet Parallax sur les images de la section Welcome
+            function handleParallax() {
+                const welcomeSection = document.querySelector('.welcome-section');
+                if (!welcomeSection) return;
+
+                const welcomeCards = document.querySelectorAll('.welcome-card');
+                const sectionTop = welcomeSection.offsetTop;
+                const sectionHeight = welcomeSection.offsetHeight;
+                const scrollPosition = window.pageYOffset;
+                const windowHeight = window.innerHeight;
+
+                // Vérifier si la section est visible
+                if (scrollPosition + windowHeight > sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    const scrollInSection = scrollPosition + windowHeight - sectionTop;
+                    const scrollPercent = scrollInSection / (sectionHeight + windowHeight);
+
+                    // Appliquer le même effet parallax pour les 3 images
+                    const offset = (scrollPercent - 0.5) * -50;
+                    document.documentElement.style.setProperty('--parallax-offset-1', offset + 'px');
+                    document.documentElement.style.setProperty('--parallax-offset-2', offset + 'px');
+                    document.documentElement.style.setProperty('--parallax-offset-3', offset + 'px');
+                }
+            }
+
+            // Effet Parallax sur l'image de la section Lagree
+            function handleLagreeParallax() {
+                const lagreeImage = document.querySelector('.lagree-image');
+                if (!lagreeImage) return;
+
+                const lagreeSection = document.querySelector('.lagree-section');
+                if (!lagreeSection) return;
+
+                const sectionTop = lagreeSection.offsetTop;
+                const sectionHeight = lagreeSection.offsetHeight;
+                const scrollPosition = window.pageYOffset;
+                const windowHeight = window.innerHeight;
+
+                // Vérifier si la section est visible
+                if (scrollPosition + windowHeight > sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    const scrollInSection = scrollPosition + windowHeight - sectionTop;
+                    const scrollPercent = scrollInSection / (sectionHeight + windowHeight);
+
+                    // Amplitude et offset de base selon l'écran
+                    const isMobile = window.innerWidth <= 768;
+                    const amplitude = isMobile ? 150 : 300;
+                    const baseOffset = isMobile ? 90 : 60; // L'image commence plus bas
+
+                    // Calculer l'offset du parallax inversé
+                    const offset = (0.5 - scrollPercent) * amplitude + baseOffset;
+                    lagreeImage.style.backgroundPositionY = `calc(50% + ${offset}px)`;
+                }
+            }
+
+            // Appliquer les parallax au scroll avec throttle pour les performances
+            let parallaxTicking = false;
+            window.addEventListener('scroll', function() {
+                if (!parallaxTicking) {
+                    window.requestAnimationFrame(function() {
+                        handleParallax();
+                        handleLagreeParallax();
+                        parallaxTicking = false;
+                    });
+                    parallaxTicking = true;
+                }
+            });
+
+            // Initialiser au chargement
+            handleParallax();
+            handleLagreeParallax();
+        })();
+    </script>
+</body>
+</html>

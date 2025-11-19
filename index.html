@@ -62,11 +62,14 @@
         .site-branding {
             display: flex;
             align-items: center;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: 0.1s;
         }
 
         .site-logo {
-            height: 75px;
-            width: auto;
+            height: 75px !important;
+            width: auto !important;
             transition: all 0.4s ease;
         }
 
@@ -102,7 +105,14 @@
             transition: all 0.3s ease;
             position: relative;
             padding: 0.5rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
+
+        .site-navigation a:nth-child(1) { animation-delay: 0.2s; }
+        .site-navigation a:nth-child(2) { animation-delay: 0.3s; }
+        .site-navigation a:nth-child(3) { animation-delay: 0.4s; }
+        .site-navigation a:nth-child(4) { animation-delay: 0.5s; }
 
         #site-header.scrolled .site-navigation a {
             color: var(--color-red);
@@ -144,6 +154,9 @@
             font-weight: 600;
             transition: all 0.3s ease;
             white-space: nowrap;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: 0.6s;
         }
 
         .header-cta:hover {
@@ -178,6 +191,9 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: 0.7s;
         }
 
         .burger-menu span {
@@ -243,7 +259,19 @@
 
         .hero-content {
             max-width: 600px;
-            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content > * {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .hero-content .hero-title {
+            animation-delay: 0.3s;
+        }
+
+        .hero-content .cta-button {
+            animation-delay: 0.6s;
         }
 
         .hero-logo-text {
@@ -1087,6 +1115,9 @@
             overflow: hidden;
             padding: 1rem 0;
             z-index: 2;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: 0.9s;
         }
 
         .scrolling-banner-content {
@@ -1114,7 +1145,76 @@
             }
         }
 
-        /* Animations */
+        /* Animations d'affichage */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .animate-fade-in.animate-visible {
+            opacity: 1;
+        }
+
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-slide-left.animate-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-slide-right.animate-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-scale.animate-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .animate-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .animate-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .animate-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .animate-delay-4 {
+            transition-delay: 0.4s;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1161,8 +1261,8 @@
                 position: absolute;
                 top: 2rem;
                 left: 2rem;
-                height: 70px;
-                width: auto;
+                height: 70px !important;
+                width: auto !important;
                 opacity: 0;
                 transform: translateY(-10px);
                 transition: all 0.4s ease;
@@ -1396,7 +1496,7 @@
             }
 
             .site-logo {
-                height: 70px;
+                height: 70px !important;
             }
         }
     </style>
@@ -1451,38 +1551,38 @@
 
     <!-- Section Méthode Lagree -->
     <section id="methode-lagree" class="lagree-section">
-        <div class="lagree-image"></div>
+        <div class="lagree-image animate-fade-in"></div>
         <div class="lagree-content">
-            <h2>La méthode<br>Lagree</h2>
-            <p>
+            <h2 class="animate-slide-right">La méthode<br>Lagree</h2>
+            <p class="animate-slide-right animate-delay-1">
                 Le Lagree est une méthode d'entraînement complète et intense, venant de Los Angeles.
                 Mélant renforcement musculaire, cardio, souplesse et équilibre, le Lagree sculpte,
                 renforce et transforme durablement ton corps, sans impacts.
             </p>
-            <a href="#methode" class="cta-button-secondary">En savoir plus</a>
+            <a href="#methode" class="cta-button-secondary animate-slide-right animate-delay-2">En savoir plus</a>
         </div>
     </section>
 
     <!-- Section Bienvenue -->
     <section id="allme-studio" class="welcome-section">
         <div class="welcome-container">
-            <h2 class="welcome-title">Bienvenue chez Allme</h2>
+            <h2 class="welcome-title animate-on-scroll">Bienvenue chez Allme</h2>
             <div class="welcome-grid">
-                <div class="welcome-card">
+                <div class="welcome-card animate-scale animate-delay-1">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-1-1.png" alt="Un espace intimiste">
                     </div>
                     <h3>Un espace intimiste</h3>
                     <p>avec 6 machines pour des cours en petit comité permettant de se concentrer sur les mouvements de chaque participante.</p>
                 </div>
-                <div class="welcome-card">
+                <div class="welcome-card animate-scale animate-delay-2">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-2.jpg" alt="Des cours pour toutes">
                     </div>
                     <h3>Des cours pour toutes</h3>
                     <p>Que vous soyez grande sportive ou simplement curieuse d'essayer, le Lagree Allme s'adapte à votre niveau et l'intensité que vous souhaitez y mettre.</p>
                 </div>
-                <div class="welcome-card">
+                <div class="welcome-card animate-scale animate-delay-3">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-3.webp" alt="Une équipe attentive">
                     </div>
@@ -1490,7 +1590,7 @@
                     <p>Nos coachs vous accompagnent avec bienveillante dans la réalisation de vos mouvement et l'atteinte de vos objectifs.</p>
                 </div>
             </div>
-            <a href="#studio" class="cta-button-tertiary">Je découvre le studio</a>
+            <a href="#studio" class="cta-button-tertiary animate-on-scroll animate-delay-1">Je découvre le studio</a>
         </div>
     </section>
 
@@ -1498,11 +1598,11 @@
     <section id="tarifs" class="pricing-section">
         <div class="pricing-container">
             <div class="pricing-header">
-                <h2 class="pricing-title">Nos offres et tarifs</h2>
-                <p class="pricing-subtitle">Choisissez la formule qui correspond à vos objectifs et envies.</p>
+                <h2 class="pricing-title animate-on-scroll">Nos offres et tarifs</h2>
+                <p class="pricing-subtitle animate-on-scroll animate-delay-1">Choisissez la formule qui correspond à vos objectifs et envies.</p>
             </div>
 
-            <div class="discovery-pack">
+            <div class="discovery-pack animate-scale">
                 <span class="pack-label">Pack Découverte</span>
                 <h3>3 Séances</h3>
                 <p class="sessions-info">2 lagree + 1 électrostimulation</p>
@@ -1514,7 +1614,7 @@
             </div>
 
             <div class="pricing-grid">
-                <div class="pricing-card">
+                <div class="pricing-card animate-on-scroll animate-delay-1">
                     <div class="sessions">1</div>
                     <div class="sessions-label">Cours</div>
                     <div class="price-large">39€</div>
@@ -1522,7 +1622,7 @@
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
 
-                <div class="pricing-card">
+                <div class="pricing-card animate-on-scroll animate-delay-2">
                     <div class="sessions">5</div>
                     <div class="sessions-label">Cours</div>
                     <div class="price-large">185€</div>
@@ -1531,7 +1631,7 @@
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
 
-                <div class="pricing-card popular">
+                <div class="pricing-card popular animate-on-scroll animate-delay-3">
                     <span class="popular-badge">★ Plus populaire</span>
                     <div class="sessions">10</div>
                     <div class="sessions-label">Cours</div>
@@ -1541,7 +1641,7 @@
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
 
-                <div class="pricing-card">
+                <div class="pricing-card animate-on-scroll animate-delay-4">
                     <div class="sessions">20</div>
                     <div class="sessions-label">Cours</div>
                     <div class="price-large">650€</div>
@@ -1552,7 +1652,7 @@
             </div>
 
             <div class="info-section">
-                <div class="good-to-know">
+                <div class="good-to-know animate-slide-left">
                     <h4>Bon à savoir</h4>
                     <ul>
                         <li>Paiement sécurisé en ligne ou sur place</li>
@@ -1564,14 +1664,14 @@
                 </div>
 
                 <div class="special-offers-column">
-                    <div class="offer-card">
+                    <div class="offer-card animate-slide-right animate-delay-1">
                         <h4>🎓 Offre Étudiante</h4>
                         <div class="discount">-20%</div>
                         <div class="offer-subtitle">sur toutes nos séances et packs</div>
                         <p class="offer-description">Sur présentation de votre carte étudiante</p>
                     </div>
 
-                    <div class="offer-card">
+                    <div class="offer-card animate-slide-right animate-delay-2">
                         <h4>🤝 Parrainage</h4>
                         <div class="discount">-10%</div>
                         <div class="offer-subtitle">sur nos packs pour vous</div>
@@ -1585,16 +1685,16 @@
     <!-- Section Philosophie -->
     <section id="connaitre" class="philosophy-section">
         <div class="philosophy-container">
-            <div class="philosophy-logo">
+            <div class="philosophy-logo animate-slide-left">
                 <span class="line1">Mind.</span><br class="desktop-br">
                 <span class="line2">Body.</span><br>
                 <span class="line3">All (of)</span><br class="desktop-br">
                 <span class="line4">Me</span>
             </div>
             <div class="philosophy-content">
-                <p>Chez Allmé Studio, nous croyons qu'un entraînement doit être plus qu'un effort : c'est une expérience.</p>
-                <p>Ici, la Méthode Lagree prend vie dans un studio au design épuré, rythmé par la lumière, la musique et la précision du mouvement. Chaque séance est pensée pour sculpter ton corps, élever ton esprit et réveiller ta meilleure version.</p>
-                <p>Allmé, c'est la contraction de All of Me : tout de moi. Parce qu'un vrai entraînement ne se résume pas à des muscles : il engage ton mental, ton souffle, ton énergie.</p>
+                <p class="animate-slide-right">Chez Allmé Studio, nous croyons qu'un entraînement doit être plus qu'un effort : c'est une expérience.</p>
+                <p class="animate-slide-right animate-delay-1">Ici, la Méthode Lagree prend vie dans un studio au design épuré, rythmé par la lumière, la musique et la précision du mouvement. Chaque séance est pensée pour sculpter ton corps, élever ton esprit et réveiller ta meilleure version.</p>
+                <p class="animate-slide-right animate-delay-2">Allmé, c'est la contraction de All of Me : tout de moi. Parce qu'un vrai entraînement ne se résume pas à des muscles : il engage ton mental, ton souffle, ton énergie.</p>
             </div>
         </div>
     </section>
@@ -1602,9 +1702,9 @@
     <!-- Section FAQ -->
     <section id="faq" class="faq-section">
         <div class="faq-container">
-            <h2 class="faq-title">FAQ</h2>
+            <h2 class="faq-title animate-on-scroll">FAQ</h2>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll animate-delay-1">
                 <button class="faq-question">Qu'est-ce que la méthode Lagree ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
@@ -1613,7 +1713,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll animate-delay-2">
                 <button class="faq-question">Faut-il avoir un niveau sportif pour commencer ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
@@ -1622,7 +1722,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll animate-delay-3">
                 <button class="faq-question">Combien de personnes par cours ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
@@ -1631,7 +1731,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll animate-delay-4">
                 <button class="faq-question">Que dois-je apporter pour mon premier cours ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
@@ -1640,7 +1740,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll">
                 <button class="faq-question">Puis-je annuler ou modifier ma réservation ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
@@ -1649,7 +1749,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll animate-delay-1">
                 <button class="faq-question">Quelle est la durée d'une séance ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
@@ -1889,6 +1989,31 @@
             // Initialiser au chargement
             handleParallax();
             handleLagreeParallax();
+
+            // Système d'animations au scroll avec Intersection Observer
+            const animateElements = document.querySelectorAll(
+                '.animate-on-scroll, .animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-scale'
+            );
+
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-visible');
+                        // Optionnel: arrêter d'observer après l'animation
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observer tous les éléments à animer
+            animateElements.forEach(function(element) {
+                observer.observe(element);
+            });
         })();
     </script>
 </body>

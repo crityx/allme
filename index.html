@@ -31,6 +31,60 @@
             line-height: 1.6 !important;
         }
 
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0 !important;
+            transform: translateY(30px) !important;
+            transition: all 0.8s ease-out !important;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .animate-fade {
+            opacity: 0 !important;
+            transition: opacity 1s ease-out !important;
+        }
+
+        .animate-fade.animated {
+            opacity: 1 !important;
+        }
+
+        .animate-scale {
+            opacity: 0 !important;
+            transform: scale(0.9) !important;
+            transition: all 0.6s ease-out !important;
+        }
+
+        .animate-scale.animated {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+
+        .animate-slide-left {
+            opacity: 0 !important;
+            transform: translateX(-50px) !important;
+            transition: all 0.8s ease-out !important;
+        }
+
+        .animate-slide-left.animated {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+
+        .animate-slide-right {
+            opacity: 0 !important;
+            transform: translateX(50px) !important;
+            transition: all 0.8s ease-out !important;
+        }
+
+        .animate-slide-right.animated {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+
         /* Header */
         #site-header {
             position: fixed !important;
@@ -1083,8 +1137,8 @@
         <div class="hero-background"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Mind. Body.<br>All <span class="highlight">(of)</span> Me</h1>
-                <a href="tel:+33465849247" class="cta-button">Réserver ma séance</a>
+                <h1 class="hero-title animate-on-scroll">Mind. Body.<br>All <span class="highlight">(of)</span> Me</h1>
+                <a href="tel:+33465849247" class="cta-button animate-on-scroll">Réserver ma séance</a>
             </div>
         </div>
         <div class="scrolling-banner">
@@ -1095,33 +1149,33 @@
     </section>
 
     <section id="methode-lagree" class="lagree-section">
-        <div class="lagree-image"></div>
+        <div class="lagree-image animate-fade"></div>
         <div class="lagree-content">
-            <h2>La méthode<br>Lagree</h2>
-            <p>Le Lagree est une méthode d'entraînement complète et intense, venant de Los Angeles. Mélant renforcement musculaire, cardio, souplesse et équilibre, le Lagree sculpte, renforce et transforme durablement ton corps, sans impacts.</p>
-            <a href="tel:+33465849247" class="cta-button">Réserver</a>
+            <h2 class="animate-slide-right">La méthode<br>Lagree</h2>
+            <p class="animate-slide-right">Le Lagree est une méthode d'entraînement complète et intense, venant de Los Angeles. Mélant renforcement musculaire, cardio, souplesse et équilibre, le Lagree sculpte, renforce et transforme durablement ton corps, sans impacts.</p>
+            <a href="tel:+33465849247" class="cta-button animate-slide-right">Réserver</a>
         </div>
     </section>
 
     <section id="allme-studio" class="welcome-section">
         <div class="welcome-container">
-            <h2 class="welcome-title">Bienvenue chez Allme</h2>
+            <h2 class="welcome-title animate-on-scroll">Bienvenue chez Allme</h2>
             <div class="welcome-grid">
-                <div class="welcome-card">
+                <div class="welcome-card animate-scale">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-1-1.png" alt="Un espace intimiste">
                     </div>
                     <h3>Un espace intimiste</h3>
                     <p>avec 6 machines pour des cours en petit comité permettant de se concentrer sur les mouvements de chaque participante.</p>
                 </div>
-                <div class="welcome-card">
+                <div class="welcome-card animate-scale">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-2.jpg" alt="Des cours pour toutes">
                     </div>
                     <h3>Des cours pour toutes</h3>
                     <p>Que vous soyez grande sportive ou simplement curieuse d'essayer, le Lagree Allme s'adapte à votre niveau et l'intensité que vous souhaitez y mettre.</p>
                 </div>
-                <div class="welcome-card">
+                <div class="welcome-card animate-scale">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-3.webp" alt="Une équipe attentive">
                     </div>
@@ -1135,11 +1189,11 @@
     <section id="tarifs" class="pricing-section">
         <div class="pricing-container">
             <div class="pricing-header">
-                <h2 class="pricing-title">Nos offres et tarifs</h2>
-                <p class="pricing-subtitle">Choisissez la formule qui correspond à vos objectifs et envies.</p>
+                <h2 class="pricing-title animate-on-scroll">Nos offres et tarifs</h2>
+                <p class="pricing-subtitle animate-on-scroll">Choisissez la formule qui correspond à vos objectifs et envies.</p>
             </div>
 
-            <div class="discovery-pack">
+            <div class="discovery-pack animate-scale">
                 <span class="pack-label">Pack Découverte</span>
                 <h3>3 Séances</h3>
                 <p>2 lagree + 1 électrostimulation</p>
@@ -1151,14 +1205,14 @@
             </div>
 
             <div class="pricing-grid">
-                <div class="pricing-card">
+                <div class="pricing-card animate-scale">
                     <div class="sessions">1</div>
                     <p>Cours</p>
                     <div class="price">39€</div>
                     <p>Sans engagement</p>
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
-                <div class="pricing-card">
+                <div class="pricing-card animate-scale">
                     <div class="sessions">5</div>
                     <p>Cours</p>
                     <div class="price">185€</div>
@@ -1166,7 +1220,7 @@
                     <p>Valable 2 mois</p>
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
-                <div class="pricing-card popular" style="position: relative !important;">
+                <div class="pricing-card popular animate-scale" style="position: relative !important;">
                     <span class="popular-badge">★ Plus populaire</span>
                     <div class="sessions">10</div>
                     <p>Cours</p>
@@ -1175,7 +1229,7 @@
                     <p>Valable 3 mois</p>
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
-                <div class="pricing-card">
+                <div class="pricing-card animate-scale">
                     <div class="sessions">20</div>
                     <p>Cours</p>
                     <div class="price">650€</div>
@@ -1215,25 +1269,25 @@
     </section>
 
     <section id="connaitre" class="philosophy-section">
-        <div class="philosophy-background"></div>
+        <div class="philosophy-background animate-fade"></div>
         <div class="philosophy-container">
-            <div class="philosophy-logo">
+            <div class="philosophy-logo animate-slide-left">
                 <span class="line-1">Mind.</span><br class="desktop-br">
                 <span class="line-2">Body.</span><br>
                 <span class="line-3">All (of)</span><br class="desktop-br">
                 <span class="line-4">Me</span>
             </div>
             <div class="philosophy-content">
-                <p>Chez Allmé Studio, nous croyons qu'un entraînement doit être plus qu'un effort : c'est une expérience.</p>
-                <p>Ici, la Méthode Lagree prend vie dans un studio au design épuré, rythmé par la lumière, la musique et la précision du mouvement. Chaque séance est pensée pour sculpter ton corps, élever ton esprit et réveiller ta meilleure version.</p>
-                <p>Allmé, c'est la contraction de All of Me : tout de moi. Parce qu'un vrai entraînement ne se résume pas à des muscles : il engage ton mental, ton souffle, ton énergie.</p>
+                <p class="animate-slide-right">Chez Allmé Studio, nous croyons qu'un entraînement doit être plus qu'un effort : c'est une expérience.</p>
+                <p class="animate-slide-right">Ici, la Méthode Lagree prend vie dans un studio au design épuré, rythmé par la lumière, la musique et la précision du mouvement. Chaque séance est pensée pour sculpter ton corps, élever ton esprit et réveiller ta meilleure version.</p>
+                <p class="animate-slide-right">Allmé, c'est la contraction de All of Me : tout de moi. Parce qu'un vrai entraînement ne se résume pas à des muscles : il engage ton mental, ton souffle, ton énergie.</p>
             </div>
         </div>
     </section>
 
     <section id="faq" class="faq-section">
         <div class="faq-container">
-            <h2 class="faq-title">FAQ</h2>
+            <h2 class="faq-title animate-on-scroll">FAQ</h2>
             <div class="faq-item">
                 <button class="faq-question">Qu'est-ce que la méthode Lagree ?</button>
                 <div class="faq-answer">
@@ -1486,6 +1540,38 @@
 
                 scroll();
             }
+
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-fade, .animate-scale, .animate-slide-left, .animate-slide-right');
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Animate hero elements on page load
+            setTimeout(() => {
+                const heroElements = document.querySelectorAll('.hero-section .animate-on-scroll');
+                heroElements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('animated');
+                    }, 300 + (index * 200));
+                });
+            }, 100);
         })();
     </script>
 </body>

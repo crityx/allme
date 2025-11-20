@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllMe Lagree Studio - Mind. Body. All (of) Me</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+        * {
+            margin: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        :root {
+            --red: #7e383f !important;
+            --beige: #dccdbc !important;
+            --white: #ffffff !important;
+            --black: #000000 !important;
+        }
+
+        html, body {
+            overflow-x: hidden !important;
+            width: 100% !important;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif !important;
+            color: var(--black) !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Loader */
+        .page-loader {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100vh !important;
+            background-color: var(--beige) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 9999 !important;
+            transition: opacity 0.6s ease-out !important;
+        }
+
+        .page-loader.fade-out {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: opacity 0.3s ease-out !important;
+        }
+
+        .loader-logo {
+            width: 150px;
+            height: auto;
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0 !important;
+            transform: translateY(30px) !important;
+            transition: all 1.2s ease-out !important;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Hero elements - hidden by default */
+        .hero-hidden {
+            opacity: 0 !important;
+            transform: translateY(30px) !important;
+            transition: all 1.2s ease-out !important;
+        }
+
+        .hero-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .animate-fade {
+            opacity: 0 !important;
+            transition: opacity 1.4s ease-out !important;
+        }
+
+        .animate-fade.animated {
+            opacity: 1 !important;
+        }
+
+        .animate-scale {
+            opacity: 0 !important;
+            transform: scale(0.9) !important;
+            transition: all 0.6s ease-out !important;
+        }
+
+        .animate-scale.animated {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+
+        .animate-slide-left {
+            opacity: 0 !important;
+            transform: translateX(-50px) !important;
+            transition: all 0.8s ease-out !important;
+        }
+
+        .animate-slide-left.animated {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+
+        .animate-slide-right {
+            opacity: 0 !important;
+            transform: translateX(50px) !important;
+            transition: all 0.8s ease-out !important;
+        }
+
+        .animate-slide-right.animated {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+
+        /* Fade in up animation for pricing cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile menu animations */
+        .mobile-nav-item {
+            opacity: 0 !important;
+            transform: translateX(30px) !important;
+            transition: all 0.4s ease-out !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(1) {
+            transition-delay: 0.1s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(2) {
+            transition-delay: 0.2s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(3) {
+            transition-delay: 0.3s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(4) {
+            transition-delay: 0.4s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(5) {
+            transition-delay: 0.5s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(6) {
+            transition-delay: 0.6s !important;
+        }
+
+        /* Desktop nav links animation */
+        @media (min-width: 993px) {
+            .nav-link {
+                opacity: 0 !important;
+                transform: translateY(-10px) !important;
+                transition: all 0.8s ease-out !important;
+            }
+
+            .nav-link.visible {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        }
+
+        /* Header */
+        #site-header {
+            position: fixed !important;
+            top: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+            transition: all 0.4s ease !important;
+            padding: 1.5rem 0 !important;
+            transform: translateY(0) !important;
+        }
+
+        #site-header.scrolled {
+            background-color: var(--beige) !important;
+            padding: 1rem 0 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        #site-header.hidden {
+            transform: translateY(-100%) !important;
+        }
+
+        .header-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
+
+        .site-logo {
+            height: 75px !important;
+            width: auto !important;
+            transition: all 0.4s ease !important;
+        }
+
+        .logo-white {
+            display: block !important;
+        }
+
+        .logo-red {
+            display: none !important;
+        }
+
+        #site-header.scrolled .logo-white {
+            display: none !important;
+        }
+
+        #site-header.scrolled .logo-red {
+            display: block !important;
+        }
+
+        /* Navigation */
+        .site-navigation {
+            display: flex !important;
+            gap: 2.5rem !important;
+            align-items: center !important;
+        }
+
+        .site-navigation a {
+            font-size: 1.3rem !important;
+            font-weight: 500 !important;
+            color: var(--beige) !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+        }
+
+        #site-header.scrolled .site-navigation a {
+            color: var(--red) !important;
+        }
+
+        .site-navigation a::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 0 !important;
+            height: 2px !important;
+            background-color: var(--beige) !important;
+            transition: width 0.3s ease !important;
+        }
+
+        #site-header.scrolled .site-navigation a::after {
+            background-color: var(--red) !important;
+        }
+
+        .site-navigation a:hover::after {
+            width: 100% !important;
+        }
+
+        /* Burger Menu */
+        .header-actions {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+        }
+
+        .burger-menu {
+            display: none !important;
+            flex-direction: column !important;
+            gap: 5px !important;
+            background: transparent !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 0.5rem !important;
+            z-index: 1001 !important;
+        }
+
+        .burger-menu span {
+            width: 28px !important;
+            height: 3px !important;
+            background-color: var(--beige) !important;
+            transition: all 0.3s ease !important;
+            border-radius: 2px !important;
+        }
+
+        #site-header.scrolled .burger-menu span {
+            background-color: var(--red) !important;
+        }
+
+        .burger-menu.is-open span {
+            background-color: var(--red) !important;
+        }
+
+        .burger-menu.is-open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg) !important;
+        }
+
+        .burger-menu.is-open span:nth-child(2) {
+            opacity: 0 !important;
+        }
+
+        .burger-menu.is-open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg) !important;
+        }
+
+        /* CTA Button */
+        .header-cta {
+            padding: 0.6rem 1.8rem !important;
+            background-color: transparent !important;
+            color: var(--beige) !important;
+            border: 2px solid var(--beige) !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            font-size: 1.3rem !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .header-cta:hover {
+            background-color: var(--beige) !important;
+            color: var(--black) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        #site-header.scrolled .header-cta {
+            color: var(--red) !important;
+            border-color: var(--red) !important;
+        }
+
+        #site-header.scrolled .header-cta:hover {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh !important;
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .hero-background {
+            position: absolute !important;
+            top: -20% !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 140% !important;
+            background-color: var(--black) !important;
+            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section1-2.png') !important;
+            background-position: center center !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            z-index: 0 !important;
+        }
+
+        .hero-background::after {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)) !important;
+        }
+
+        .hero-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            position: relative !important;
+            z-index: 1 !important;
+            width: 100% !important;
+        }
+
+        .hero-content {
+            max-width: 600px !important;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 5rem !important;
+            font-weight: 400 !important;
+            color: var(--beige) !important;
+            line-height: 1.1 !important;
+            margin-bottom: 3rem !important;
+        }
+
+        .hero-title .highlight {
+            font-style: italic !important;
+        }
+
+        .cta-button {
+            display: inline-block !important;
+            padding: 1rem 2.5rem !important;
+            background-color: var(--red) !important;
+            color: var(--beige) !important;
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.2rem !important;
+            text-decoration: none !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid var(--red) !important;
+        }
+
+        .cta-button:hover {
+            background-color: transparent !important;
+            border-color: var(--white) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 25px rgba(126, 56, 63, 0.3) !important;
+        }
+
+        /* Scrolling Banner */
+        .scrolling-banner {
+            position: absolute !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            background-color: var(--beige) !important;
+            overflow: hidden !important;
+            padding: 1rem 0 !important;
+            z-index: 2 !important;
+        }
+
+        .scrolling-banner-content {
+            display: flex !important;
+            width: max-content !important;
+        }
+
+        .scrolling-banner-content span {
+            font-size: 1.1rem !important;
+            font-weight: 500 !important;
+            color: var(--red) !important;
+            padding: 0 3rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            white-space: nowrap !important;
+        }
+
+        /* Lagree Section */
+        .lagree-section {
+            min-height: 100vh !important;
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            background-color: var(--black) !important;
+        }
+
+        .lagree-image {
+            background: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section2.png') center/130% no-repeat !important;
+            transition: background-position 0.1s linear !important;
+        }
+
+        .lagree-content {
+            padding: 6rem 4rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: flex-start !important;
+            color: var(--beige) !important;
+        }
+
+        .lagree-content h2 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            font-weight: 400 !important;
+            line-height: 1.2 !important;
+            margin-bottom: 2rem !important;
+        }
+
+        .lagree-content p {
+            font-size: 1.3rem !important;
+            line-height: 1.8 !important;
+            margin-bottom: 3rem !important;
+            text-align: justify !important;
+            color: var(--white) !important;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            background-color: var(--red) !important;
+            padding: 6rem 2rem !important;
+            color: var(--white) !important;
+        }
+
+        .welcome-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+        }
+
+        .welcome-title {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            font-weight: 400 !important;
+            text-align: center !important;
+            margin-bottom: 4rem !important;
+            color: var(--beige) !important;
+        }
+
+        .welcome-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 3rem !important;
+            margin-bottom: 4rem !important;
+        }
+
+        .welcome-card {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+
+        .welcome-image-wrapper {
+            width: 350px !important;
+            height: 350px !important;
+            border-radius: 50% 50% 0 0 !important;
+            overflow: hidden !important;
+            margin-bottom: 2rem !important;
+        }
+
+        .welcome-image-wrapper img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            transition: transform 0.1s linear !important;
+            transform: translateY(var(--parallax-offset, 0)) scale(1.1) !important;
+        }
+
+        .welcome-card h3 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 2rem !important;
+            margin-bottom: 1.5rem !important;
+            color: var(--beige) !important;
+        }
+
+        .welcome-card p {
+            font-size: 1.3rem !important;
+            line-height: 1.7 !important;
+            max-width: 350px !important;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background-color: var(--beige) !important;
+            padding: 6rem 2rem !important;
+        }
+
+        .pricing-container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+        }
+
+        .pricing-header {
+            text-align: center !important;
+            margin-bottom: 4rem !important;
+        }
+
+        .pricing-title {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            color: var(--red) !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .pricing-subtitle {
+            font-size: 1.3rem !important;
+            color: var(--red) !important;
+        }
+
+        /* Pricing Switcher - Hidden on desktop */
+        .pricing-switcher {
+            display: none !important;
+            margin-bottom: 1.5rem !important;
+            text-align: center !important;
+        }
+
+        .switcher-label {
+            font-size: 0.9rem !important;
+            color: var(--red) !important;
+            font-weight: 600 !important;
+            margin-bottom: 1rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .switcher-buttons {
+            display: flex !important;
+            gap: 0.4rem !important;
+            justify-content: center !important;
+            flex-wrap: nowrap !important;
+            padding: 0.5rem 0.5rem !important;
+        }
+
+        .switcher-btn {
+            padding: 0.6rem 0.7rem !important;
+            background-color: var(--white) !important;
+            color: var(--red) !important;
+            border: 2px solid var(--red) !important;
+            border-radius: 10px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            flex-shrink: 0 !important;
+            min-width: 52px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 0.2rem !important;
+        }
+
+        .btn-number {
+            font-size: 1.1rem !important;
+            font-weight: 700 !important;
+            line-height: 1 !important;
+        }
+
+        .btn-label {
+            font-size: 0.6rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.2px !important;
+            line-height: 1 !important;
+        }
+
+        .switcher-btn.active {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+            transform: scale(1.05) !important;
+        }
+
+        .switcher-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(126, 56, 63, 0.2) !important;
+        }
+
+        .switcher-btn.active:hover {
+            transform: translateY(-2px) scale(1.05) !important;
+        }
+
+        .pricing-card.discovery-pack {
+            background-color: var(--red) !important;
+            border: none !important;
+            color: var(--white) !important;
+            box-shadow: 0 6px 25px rgba(126, 56, 63, 0.25) !important;
+            position: relative !important;
+        }
+
+        .pricing-card.discovery-pack:hover {
+            box-shadow: 0 12px 40px rgba(126, 56, 63, 0.35) !important;
+        }
+
+        .pricing-card.discovery-pack p {
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery-pack h3 {
+            color: var(--white) !important;
+        }
+
+        .pack-label {
+            position: absolute !important;
+            top: -25px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            background-color: var(--beige) !important;
+            color: var(--red) !important;
+            padding: 0.4rem 1.2rem !important;
+            border-radius: 25px !important;
+            border: 2px solid var(--red) !important;
+            font-size: 0.7rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+        }
+
+        .pricing-card.discovery-pack .sessions {
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery-pack h3 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.5rem !important;
+            margin-bottom: 0.5rem !important;
+            margin-top: 0.5rem !important;
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery-pack p {
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery-pack .price {
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery-pack .cta-button-pack,
+        .pricing-card .reserve-button {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+            padding: 1rem 2.5rem !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            display: inline-block !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid var(--red) !important;
+            margin-top: auto !important;
+        }
+
+        .pricing-card.discovery-pack .cta-button-pack {
+            background-color: var(--beige) !important;
+            color: var(--red) !important;
+            border-color: var(--beige) !important;
+        }
+
+        .pricing-card.discovery-pack .cta-button-pack:hover {
+            background-color: transparent !important;
+            color: var(--beige) !important;
+        }
+
+        .pricing-card .reserve-button:hover {
+            background-color: transparent !important;
+            color: var(--red) !important;
+        }
+
+        .pricing-grid {
+            display: grid !important;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 1.5rem !important;
+            margin-bottom: 4rem !important;
+        }
+
+        .pricing-card {
+            background-color: var(--white) !important;
+            border: none !important;
+            border-radius: 15px !important;
+            padding: 2.5rem 1.5rem !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        .pricing-card p {
+            padding: 0.4rem 0 !important;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 12px 35px rgba(126, 56, 63, 0.2) !important;
+        }
+
+        .pricing-card.popular {
+            border: 3px solid var(--red) !important;
+            box-shadow: 0 6px 25px rgba(126, 56, 63, 0.15) !important;
+            transform: scale(1.02) !important;
+        }
+
+        .pricing-card.popular:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+        }
+
+        .popular-badge {
+            position: absolute !important;
+            top: -25px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            background-color: var(--red) !important;
+            color: var(--beige) !important;
+            padding: 0.4rem 1.2rem !important;
+            border-radius: 25px !important;
+            font-size: 0.7rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+        }
+
+        .pricing-card .sessions {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 3.5rem !important;
+            color: var(--red) !important;
+        }
+
+        .pricing-card .reserve-button {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+            padding: 1rem 2.5rem !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            display: inline-block !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid var(--red) !important;
+        }
+
+        .pricing-card .reserve-button:hover {
+            background-color: transparent !important;
+            color: var(--red) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .info-section {
+            display: grid !important;
+            grid-template-columns: 1.2fr 1fr !important;
+            gap: 2.5rem !important;
+        }
+
+        .good-to-know {
+            background-color: var(--white) !important;
+            border-radius: 15px !important;
+            padding: 2.5rem 2rem !important;
+        }
+
+        .good-to-know h4 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.8rem !important;
+            color: var(--red) !important;
+            margin-bottom: 1.5rem !important;
+            text-align: center !important;
+        }
+
+        .good-to-know ul {
+            list-style: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.8rem !important;
+        }
+
+        .good-to-know li {
+            font-size: 1rem !important;
+            color: var(--red) !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .good-to-know li::before {
+            content: '✓' !important;
+            font-weight: bold !important;
+            font-size: 1.2rem !important;
+            margin-right: 0.8rem !important;
+            color: var(--red) !important;
+        }
+
+        .special-offers-column {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+        }
+
+        .offer-card {
+            background-color: var(--white) !important;
+            border: 2px solid var(--red) !important;
+            border-radius: 15px !important;
+            padding: 2rem 1.5rem !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 20px rgba(126, 56, 63, 0.15) !important;
+        }
+
+        .offer-card h4 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.3rem !important;
+            color: var(--red) !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .offer-card .discount {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 2.2rem !important;
+            color: var(--red) !important;
+            font-weight: 600 !important;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            min-height: 100vh !important;
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .philosophy-background {
+            position: absolute !important;
+            top: -20% !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 140% !important;
+            background-color: var(--black) !important;
+            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section5.webp') !important;
+            background-position: center center !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            z-index: 0 !important;
+        }
+
+        .philosophy-background::after {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)) !important;
+        }
+
+        .philosophy-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            position: relative !important;
+            z-index: 1 !important;
+            width: 100% !important;
+            display: grid !important;
+            grid-template-columns: 1fr 1.5fr !important;
+            gap: 4rem !important;
+            align-items: center !important;
+        }
+
+        .philosophy-logo {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 5rem !important;
+            color: var(--beige) !important;
+            line-height: 1.1 !important;
+        }
+
+        .philosophy-content p {
+            font-size: 1.3rem !important;
+            line-height: 1.8 !important;
+            margin-bottom: 2rem !important;
+            color: var(--white) !important;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--beige) !important;
+            padding: 6rem 2rem !important;
+        }
+
+        .faq-container {
+            max-width: 900px !important;
+            margin: 0 auto !important;
+        }
+
+        .faq-title {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            text-align: center !important;
+            color: var(--red) !important;
+            margin-bottom: 4rem !important;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            background-color: var(--white) !important;
+        }
+
+        .faq-question {
+            width: 100% !important;
+            padding: 1.5rem 2rem !important;
+            background-color: var(--white) !important;
+            border: none !important;
+            text-align: left !important;
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.3rem !important;
+            color: var(--red) !important;
+            cursor: pointer !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            transition: all 0.3s ease !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: var(--red) !important;
+            color: var(--beige) !important;
+        }
+
+        .faq-question::after {
+            content: '+' !important;
+            font-size: 2rem !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg) !important;
+        }
+
+        .faq-answer {
+            max-height: 0 !important;
+            overflow: hidden !important;
+            transition: max-height 0.3s ease !important;
+            background-color: var(--white) !important;
+        }
+
+        .faq-answer-content {
+            padding: 1.5rem 2rem !important;
+            font-size: 1.1rem !important;
+            line-height: 1.8 !important;
+            color: var(--red) !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px !important;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--red) !important;
+            padding: 4rem 2rem 2rem !important;
+            color: var(--beige) !important;
+        }
+
+        .footer-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            display: grid !important;
+            grid-template-columns: 1fr 1fr 1fr !important;
+            gap: 4rem !important;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 3.5rem !important;
+            color: var(--beige) !important;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.3rem !important;
+            margin-bottom: 1.5rem !important;
+            text-transform: uppercase !important;
+        }
+
+        .footer-contact-info {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+        }
+
+        .footer-contact-info a {
+            color: var(--beige) !important;
+            text-decoration: none !important;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .footer-contact-info a:hover {
+            opacity: 0.7 !important;
+        }
+
+        .footer-social {
+            display: flex !important;
+            gap: 1.5rem !important;
+            margin-top: 1.5rem !important;
+        }
+
+        .footer-social a {
+            color: var(--beige) !important;
+            font-size: 2rem !important;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .footer-social a:hover {
+            opacity: 0.7 !important;
+        }
+
+        .footer-nav {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+        }
+
+        .footer-nav a {
+            color: var(--beige) !important;
+            text-decoration: none !important;
+            transition: opacity 0.3s ease !important;
+            text-transform: uppercase !important;
+        }
+
+        .footer-nav a:hover {
+            opacity: 0.7 !important;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-logo {
+            display: none !important;
+        }
+
+        .mobile-menu-cta {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .site-navigation {
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                width: 100% !important;
+                height: 100vh !important;
+                background-color: var(--beige) !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                gap: 1.2rem !important;
+                transition: right 0.4s ease !important;
+                padding: 2rem !important;
+            }
+
+            .site-navigation.is-open {
+                right: 0 !important;
+            }
+
+            .mobile-menu-logo {
+                display: block !important;
+                position: absolute !important;
+                top: 2rem !important;
+                left: 2rem !important;
+                height: 70px !important;
+            }
+
+            .site-navigation a {
+                font-size: 2rem !important;
+                color: var(--red) !important;
+            }
+
+            .mobile-menu-cta {
+                display: inline-block !important;
+                background-color: transparent !important;
+                color: var(--red) !important;
+                padding: 1.2rem 3rem !important;
+                border-radius: 50px !important;
+                margin-top: 2rem !important;
+                border: 2px solid var(--red) !important;
+            }
+
+            .mobile-menu-cta:hover {
+                background-color: var(--red) !important;
+                color: var(--beige) !important;
+            }
+
+            .mobile-menu-cta::after {
+                display: none !important;
+            }
+
+            .burger-menu {
+                display: flex !important;
+            }
+
+            .header-cta {
+                padding: 0.5rem 1.2rem !important;
+                font-size: 0.85rem !important;
+            }
+
+            .hero-content {
+                text-align: center !important;
+                margin: 0 auto !important;
+            }
+
+            .hero-title {
+                font-size: 3rem !important;
+            }
+
+            .lagree-section {
+                grid-template-columns: 1fr !important;
+            }
+
+            .lagree-image {
+                min-height: 50vh !important;
+                order: 2 !important;
+            }
+
+            .lagree-content {
+                order: 1 !important;
+                padding: 4rem 2rem !important;
+            }
+
+            .lagree-content h2 {
+                font-size: 2.5rem !important;
+            }
+
+            .welcome-grid {
+                grid-template-columns: 1fr !important;
+                gap: 4rem !important;
+            }
+
+            .welcome-title {
+                font-size: 2.5rem !important;
+            }
+
+            .welcome-image-wrapper {
+                width: 280px !important;
+                height: 280px !important;
+            }
+
+            /* Show pricing switcher on mobile */
+            .pricing-switcher {
+                display: block !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* Hide all pricing cards and discovery pack by default on mobile */
+            .discovery-pack,
+            .pricing-card {
+                display: none !important;
+            }
+
+            /* Show only active pack on mobile */
+            .discovery-pack.active,
+            .pricing-card.active {
+                display: block !important;
+                animation: fadeInUp 0.5s ease-out !important;
+            }
+
+            /* Smaller discovery pack on mobile */
+            .discovery-pack {
+                padding: 2rem 1.5rem !important;
+                margin-bottom: 2rem !important;
+                max-width: 400px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .pack-label {
+                font-size: 0.9rem !important;
+                padding: 0.4rem 1.2rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .discovery-pack h3 {
+                font-size: 1.6rem !important;
+                margin-bottom: 0.4rem !important;
+            }
+
+            .discovery-pack p {
+                font-size: 1rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+
+            .discovery-pack .price {
+                font-size: 3rem !important;
+                margin-bottom: 0.4rem !important;
+            }
+
+            .discovery-pack .cta-button-pack {
+                padding: 0.8rem 1.6rem !important;
+                font-size: 0.9rem !important;
+            }
+
+            /* Mobile pricing grid - single column for active card */
+            .pricing-grid {
+                grid-template-columns: 1fr !important;
+                max-width: 400px !important;
+                margin: 0 auto 2rem !important;
+            }
+
+            /* Smaller pricing cards on mobile */
+            .pricing-card {
+                padding: 2rem 1.5rem !important;
+            }
+
+            .pricing-card .sessions {
+                font-size: 2.8rem !important;
+            }
+
+            .pricing-card p {
+                font-size: 1rem !important;
+            }
+
+            .pricing-card .reserve-button {
+                padding: 0.8rem 2rem !important;
+                font-size: 0.9rem !important;
+            }
+
+            .info-section {
+                grid-template-columns: 1fr !important;
+            }
+
+            .pricing-title {
+                font-size: 2.5rem !important;
+            }
+
+            .philosophy-container {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+                padding: 4rem 2rem !important;
+            }
+
+            .philosophy-logo {
+                font-size: 4rem !important;
+                text-align: center !important;
+            }
+
+            .philosophy-logo .desktop-br {
+                display: none !important;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+                text-align: center !important;
+            }
+
+            .footer-social {
+                justify-content: center !important;
+            }
+
+            .faq-title {
+                font-size: 2.5rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-background, .philosophy-background {
+                background-attachment: scroll !important;
+            }
+
+            .hero-background {
+                height: 100% !important;
+                top: 0 !important;
+                background-size: auto 90% !important;
+                background-position: center center !important;
+            }
+
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+
+            .lagree-content h2 {
+                font-size: 2rem !important;
+            }
+
+            .header-container, .hero-container {
+                padding: 0 1rem !important;
+            }
+
+            .welcome-title {
+                font-size: 2rem !important;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr !important;
+                max-width: 350px !important;
+            }
+
+            .pricing-title {
+                font-size: 2rem !important;
+            }
+
+            .philosophy-logo {
+                font-size: 2.5rem !important;
+            }
+
+            /* Even smaller pricing cards on small screens */
+            .discovery-pack {
+                padding: 1.5rem 1.2rem !important;
+                max-width: 350px !important;
+            }
+
+            .discovery-pack h3 {
+                font-size: 1.4rem !important;
+            }
+
+            .discovery-pack p {
+                font-size: 0.95rem !important;
+            }
+
+            .discovery-pack .price {
+                font-size: 2.5rem !important;
+            }
+
+            .pricing-card {
+                padding: 1.5rem 1.2rem !important;
+            }
+
+            .pricing-card .sessions {
+                font-size: 2.5rem !important;
+            }
+
+            /* Smaller switcher on small screens */
+            .switcher-label {
+                font-size: 0.85rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+
+            .switcher-buttons {
+                gap: 0.3rem !important;
+                padding: 0.5rem 0.3rem !important;
+            }
+
+            .switcher-btn {
+                min-width: 48px !important;
+                padding: 0.5rem 0.5rem !important;
+                gap: 0.15rem !important;
+            }
+
+            .btn-number {
+                font-size: 1rem !important;
+            }
+
+            .btn-label {
+                font-size: 0.55rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem !important;
+            }
+
+            .cta-button {
+                font-size: 1rem !important;
+                padding: 0.8rem 2rem !important;
+            }
+
+            .welcome-image-wrapper {
+                width: 240px !important;
+                height: 240px !important;
+            }
+
+            .site-logo {
+                height: 45px !important;
+            }
+
+            /* Even smaller switcher on very small screens */
+            .switcher-label {
+                font-size: 0.8rem !important;
+                margin-bottom: 0.7rem !important;
+            }
+
+            .switcher-buttons {
+                gap: 0.25rem !important;
+                padding: 0.5rem 0.2rem !important;
+            }
+
+            .switcher-btn {
+                min-width: 45px !important;
+                padding: 0.45rem 0.4rem !important;
+            }
+
+            .btn-number {
+                font-size: 0.95rem !important;
+            }
+
+            .btn-label {
+                font-size: 0.5rem !important;
+            }
+
+            /* Ultra compact pricing cards on very small screens */
+            .discovery-pack {
+                padding: 1.2rem 1rem !important;
+                max-width: 320px !important;
+            }
+
+            .pack-label {
+                font-size: 0.8rem !important;
+                padding: 0.3rem 1rem !important;
+            }
+
+            .discovery-pack h3 {
+                font-size: 1.2rem !important;
+            }
+
+            .discovery-pack p {
+                font-size: 0.9rem !important;
+                margin-bottom: 0.6rem !important;
+            }
+
+            .discovery-pack .price {
+                font-size: 2.2rem !important;
+            }
+
+            .discovery-pack .cta-button-pack {
+                padding: 0.7rem 1.4rem !important;
+                font-size: 0.85rem !important;
+            }
+
+            .pricing-grid {
+                max-width: 320px !important;
+            }
+
+            .pricing-card {
+                padding: 1.2rem 1rem !important;
+            }
+
+            .pricing-card .sessions {
+                font-size: 2.2rem !important;
+            }
+
+            .pricing-card p {
+                font-size: 0.9rem !important;
+            }
+
+            .pricing-card .reserve-button {
+                padding: 0.7rem 1.6rem !important;
+                font-size: 0.85rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-rouge.png" alt="AllMe" class="loader-logo">
+    </div>
+
+    <header id="site-header">
+        <div class="header-container">
+            <div class="site-branding hero-hidden" id="header-logo">
+                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-beige.png" alt="AllMe Lagree Studio" class="site-logo logo-white">
+                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-rouge.png" alt="AllMe Lagree Studio" class="site-logo logo-red">
+            </div>
+            <nav class="site-navigation">
+                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-rouge.png" alt="AllMe Lagree Studio" class="mobile-menu-logo mobile-nav-item">
+                <a href="#methode-lagree" class="nav-link mobile-nav-item">La méthode Lagree</a>
+                <a href="#allme-studio" class="nav-link mobile-nav-item">Allme Studio</a>
+                <a href="#tarifs" class="nav-link mobile-nav-item">Nos tarifs</a>
+                <a href="#faq" class="nav-link mobile-nav-item">FAQ</a>
+                <a href="tel:+33465849247" class="mobile-menu-cta mobile-nav-item">Réserver</a>
+            </nav>
+            <div class="header-actions hero-hidden" id="header-actions">
+                <a href="tel:+33465849247" class="header-cta">Réserver</a>
+                <button class="burger-menu" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title hero-hidden" id="hero-title">Mind. Body.<br>All <span class="highlight">(of)</span> Me</h1>
+                <a href="tel:+33465849247" class="cta-button hero-hidden" id="hero-button">Réserver ma séance</a>
+            </div>
+        </div>
+        <div class="scrolling-banner">
+            <div class="scrolling-banner-content" id="scrolling-text">
+                <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="methode-lagree" class="lagree-section">
+        <div class="lagree-image"></div>
+        <div class="lagree-content">
+            <h2 class="animate-slide-right">La méthode<br>Lagree</h2>
+            <p class="animate-slide-right">Le Lagree est une méthode d'entraînement complète et intense, venant de Los Angeles. Mélant renforcement musculaire, cardio, souplesse et équilibre, le Lagree sculpte, renforce et transforme durablement ton corps, sans impacts.</p>
+            <a href="tel:+33465849247" class="cta-button animate-slide-right">Réserver</a>
+        </div>
+    </section>
+
+    <section id="allme-studio" class="welcome-section">
+        <div class="welcome-container">
+            <h2 class="welcome-title animate-on-scroll">Bienvenue chez Allme</h2>
+            <div class="welcome-grid">
+                <div class="welcome-card animate-scale">
+                    <div class="welcome-image-wrapper">
+                        <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-1-1.png" alt="Un espace intimiste">
+                    </div>
+                    <h3>Un espace intimiste</h3>
+                    <p>avec 6 machines pour des cours en petit comité permettant de se concentrer sur les mouvements de chaque participante.</p>
+                </div>
+                <div class="welcome-card animate-scale">
+                    <div class="welcome-image-wrapper">
+                        <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-2.jpg" alt="Des cours pour toutes">
+                    </div>
+                    <h3>Des cours pour toutes</h3>
+                    <p>Que vous soyez grande sportive ou simplement curieuse d'essayer, le Lagree Allme s'adapte à votre niveau et l'intensité que vous souhaitez y mettre.</p>
+                </div>
+                <div class="welcome-card animate-scale">
+                    <div class="welcome-image-wrapper">
+                        <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-3.webp" alt="Une équipe attentive">
+                    </div>
+                    <h3>Une équipe attentive</h3>
+                    <p>Nos coachs vous accompagnent avec bienveillante dans la réalisation de vos mouvement et l'atteinte de vos objectifs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tarifs" class="pricing-section">
+        <div class="pricing-container">
+            <div class="pricing-header">
+                <h2 class="pricing-title animate-on-scroll">Nos offres et tarifs</h2>
+                <p class="pricing-subtitle animate-on-scroll">Choisissez la formule qui correspond à vos objectifs et envies.</p>
+            </div>
+
+            <!-- Mobile Pricing Switcher -->
+            <div class="pricing-switcher">
+                <p class="switcher-label">Choisissez votre formule</p>
+                <div class="switcher-buttons">
+                    <button class="switcher-btn" data-pack="one">
+                        <span class="btn-number">1</span>
+                        <span class="btn-label">Cours</span>
+                    </button>
+                    <button class="switcher-btn active" data-pack="discovery">
+                        <span class="btn-number">3x</span>
+                        <span class="btn-label">Découverte</span>
+                    </button>
+                    <button class="switcher-btn" data-pack="five">
+                        <span class="btn-number">5</span>
+                        <span class="btn-label">Cours</span>
+                    </button>
+                    <button class="switcher-btn" data-pack="ten">
+                        <span class="btn-number">10</span>
+                        <span class="btn-label">Cours</span>
+                    </button>
+                    <button class="switcher-btn" data-pack="twenty">
+                        <span class="btn-number">20</span>
+                        <span class="btn-label">Cours</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card animate-scale" data-pack="one">
+                    <div class="sessions">1</div>
+                    <p>Cours</p>
+                    <div class="price">39€</div>
+                    <p>Sans engagement</p>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                </div>
+                <div class="pricing-card discovery-pack animate-scale" data-pack="discovery">
+                    <span class="pack-label">Pack Découverte</span>
+                    <div class="sessions">3</div>
+                    <p>Cours</p>
+                    <div class="price">85€</div>
+                    <p>28€/cours</p>
+                    <p>2 lagree + 1 électrostimulation</p>
+                    <p>Valable 2 mois</p>
+                    <a href="tel:+33465849247" class="cta-button-pack">Réserver</a>
+                </div>
+                <div class="pricing-card animate-scale" data-pack="five">
+                    <div class="sessions">5</div>
+                    <p>Cours</p>
+                    <div class="price">185€</div>
+                    <p>37€/cours</p>
+                    <p>Valable 2 mois</p>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                </div>
+                <div class="pricing-card popular animate-scale" data-pack="ten" style="position: relative !important;">
+                    <span class="popular-badge">★ Plus populaire</span>
+                    <div class="sessions">10</div>
+                    <p>Cours</p>
+                    <div class="price">340€</div>
+                    <p>34€/cours</p>
+                    <p>Valable 3 mois</p>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                </div>
+                <div class="pricing-card animate-scale" data-pack="twenty">
+                    <div class="sessions">20</div>
+                    <p>Cours</p>
+                    <div class="price">650€</div>
+                    <p>32,5€/cours</p>
+                    <p>Valable 6 mois</p>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="good-to-know">
+                    <h4>Bon à savoir</h4>
+                    <ul>
+                        <li><strong>Paiement sécurisé</strong> en ligne ou sur place</li>
+                        <li><strong>Annulation gratuite</strong> jusqu'à 12h avant le cours</li>
+                        <li>Tous les cours sont réalisés sur la <strong>machine Megaformer</strong></li>
+                        <li><strong>Accessoires fournis</strong> hors chaussettes antidérapantes</li>
+                        <li><strong>Vestiaires et douches</strong> à disposition</li>
+                        <li><strong>-20%</strong> sur toutes nos séances et packs (sur présentation de votre carte étudiante)</li>
+                        <li><strong>-10%</strong> sur nos packs pour toute souscription d'un proche à un pack 5, 10 ou 20 cours</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="connaitre" class="philosophy-section">
+        <div class="philosophy-background animate-fade"></div>
+        <div class="philosophy-container">
+            <div class="philosophy-logo animate-slide-left">
+                <span class="line-1">Mind.</span><br class="desktop-br">
+                <span class="line-2">Body.</span><br>
+                <span class="line-3">All (of)</span><br class="desktop-br">
+                <span class="line-4">Me</span>
+            </div>
+            <div class="philosophy-content">
+                <p class="animate-slide-right">Chez Allmé Studio, nous croyons qu'un entraînement doit être plus qu'un effort : c'est une expérience.</p>
+                <p class="animate-slide-right">Ici, la Méthode Lagree prend vie dans un studio au design épuré, rythmé par la lumière, la musique et la précision du mouvement. Chaque séance est pensée pour sculpter ton corps, élever ton esprit et réveiller ta meilleure version.</p>
+                <p class="animate-slide-right">Allmé, c'est la contraction de All of Me : tout de moi. Parce qu'un vrai entraînement ne se résume pas à des muscles : il engage ton mental, ton souffle, ton énergie.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <h2 class="faq-title animate-on-scroll">FAQ</h2>
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question">Qu'est-ce que la méthode Lagree ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">La méthode Lagree est une technique d'entraînement complète et intense qui combine renforcement musculaire, cardio, souplesse et équilibre. Développée à Los Angeles, elle utilise la machine Megaformer pour créer des mouvements lents et contrôlés qui sculptent et renforcent le corps sans impacts.</div>
+                </div>
+            </div>
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question">Faut-il avoir un niveau sportif pour commencer ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Non, la méthode Lagree s'adapte à tous les niveaux ! Que vous soyez débutant ou sportif confirmé, nos coachs ajustent l'intensité et les exercices selon vos capacités. C'est vous qui contrôlez la difficulté grâce à la machine.</div>
+                </div>
+            </div>
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question">Combien de personnes par cours ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Nos cours sont limités à 6 personnes maximum pour garantir un accompagnement personnalisé. Cette configuration en petit comité permet à nos coachs de corriger votre posture et de vous guider tout au long de la séance.</div>
+                </div>
+            </div>
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question">Que dois-je apporter pour mon premier cours ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Nous fournissons tous les accessoires nécessaires (tapis, serviettes). Il vous suffit d'apporter une tenue de sport confortable et une paire de chaussettes antidérapantes. Des vestiaires et douches sont à votre disposition.</div>
+                </div>
+            </div>
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question">Puis-je annuler ou modifier ma réservation ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Oui, l'annulation est gratuite jusqu'à 12h avant le début du cours. Passé ce délai, la séance sera décomptée de votre forfait. Vous pouvez modifier votre réservation facilement via votre espace client.</div>
+                </div>
+            </div>
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question">Quelle est la durée d'une séance ?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Une séance dure 50 minutes. C'est le temps optimal pour travailler efficacement tout le corps tout en maintenant une intensité élevée. Prévoyez quelques minutes supplémentaires pour vous changer avant et après.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-logo-section">
+                <div class="footer-logo">Allme</div>
+                <p>Lagree Studio</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <div class="footer-contact-info">
+                    <p>31 rue Edouard Aynard, 69100 Villeurbanne</p>
+                    <p><a href="mailto:contact@allme.fr">contact@allme.fr</a></p>
+                    <p><a href="tel:+33465849247">04 65 84 92 47</a></p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://instagram.com/allme.lagree" target="_blank" aria-label="Instagram">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com/@allme.lagree" target="_blank" aria-label="TikTok">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <nav class="footer-nav">
+                    <a href="#methode-lagree">La méthode Lagree</a>
+                    <a href="#allme-studio">Allme Studio</a>
+                    <a href="#tarifs">Nos offres et tarifs</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // Loader animation
+            const loader = document.getElementById('page-loader');
+            const loaderLogo = document.querySelector('.loader-logo');
+
+            if (loaderLogo) {
+                console.log('Logo trouvé, démarrage du zoom');
+
+                let startTime = Date.now();
+                const duration = 1200; // 1.2 secondes
+
+                function animateZoom() {
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    // Calcul du scale progressif
+                    let scale = 1;
+                    let opacity = 1;
+
+                    if (progress < 0.3) {
+                        scale = 1 + (progress / 0.3) * 0.5;
+                    } else if (progress < 0.7) {
+                        scale = 1.5 + ((progress - 0.3) / 0.4) * 2.5;
+                    } else {
+                        scale = 4 + ((progress - 0.7) / 0.3) * 21;
+                        opacity = 1 - ((progress - 0.7) / 0.3);
+                    }
+
+                    // Force avec important
+                    loaderLogo.style.setProperty('transform', `scale(${scale})`, 'important');
+                    loaderLogo.style.setProperty('opacity', opacity, 'important');
+
+                    console.log(`Progress: ${(progress*100).toFixed(0)}%, Scale: ${scale.toFixed(2)}`);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animateZoom);
+                    } else {
+                        console.log('Animation terminée');
+                        loader.classList.add('fade-out');
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                        }, 300);
+                    }
+                }
+
+                animateZoom();
+            } else {
+                console.error('Logo non trouvé!');
+            }
+
+            const header = document.getElementById('site-header');
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navigation = document.querySelector('.site-navigation');
+            const navLinks = document.querySelectorAll('.site-navigation a');
+
+            // Header scroll with hide/show
+            let lastScrollTop = 0;
+            let scrollThreshold = 100; // Commence à cacher après 100px de scroll
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+
+                // Ajoute la classe scrolled après 100px
+                header.classList.toggle('scrolled', currentScroll > 100);
+
+                // Cache/montre le header selon la direction du scroll
+                if (currentScroll > scrollThreshold) {
+                    if (currentScroll > lastScrollTop) {
+                        // Scroll vers le bas - cache le header
+                        header.classList.add('hidden');
+                    } else {
+                        // Scroll vers le haut - montre le header
+                        header.classList.remove('hidden');
+                    }
+                } else {
+                    // En haut de la page, toujours montrer le header
+                    header.classList.remove('hidden');
+                }
+
+                lastScrollTop = currentScroll;
+            });
+
+            // Menu toggle
+            function toggleMenu(isOpen) {
+                navigation.classList.toggle('is-open', isOpen);
+                burgerMenu.classList.toggle('is-open', isOpen);
+                burgerMenu.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            }
+
+            burgerMenu.addEventListener('click', () => {
+                toggleMenu(!navigation.classList.contains('is-open'));
+            });
+
+            // Close menu on link click
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    toggleMenu(false);
+
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.getElementById(href.substring(1));
+                        if (target) {
+                            window.scrollTo({
+                                top: target.offsetTop - header.offsetHeight,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Close menu on outside click
+            document.addEventListener('click', (e) => {
+                if (!navigation.contains(e.target) && !burgerMenu.contains(e.target) && navigation.classList.contains('is-open')) {
+                    toggleMenu(false);
+                }
+            });
+
+            // Close menu on resize to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 992 && navigation.classList.contains('is-open')) {
+                    toggleMenu(false);
+                }
+            });
+
+            // FAQ accordion
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+
+                    document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
+
+            // Parallax effects
+            function handleParallax() {
+                const scrollPos = window.pageYOffset;
+                const windowHeight = window.innerHeight;
+
+                // Hero section parallax (mobile only)
+                const heroBackground = document.querySelector('.hero-background');
+                if (heroBackground && window.innerWidth <= 768) {
+                    const offset = scrollPos * 0.5;
+                    heroBackground.style.setProperty('background-position-y', `${offset}px`, 'important');
+                }
+
+                // Philosophy section parallax (mobile only)
+                const philosophyBackground = document.querySelector('.philosophy-background');
+                if (philosophyBackground && window.innerWidth <= 768) {
+                    const philosophySection = document.querySelector('.philosophy-section');
+                    if (philosophySection) {
+                        const sectionTop = philosophySection.offsetTop;
+                        if (scrollPos + windowHeight > sectionTop) {
+                            const offset = (scrollPos - sectionTop + windowHeight) * 0.3;
+                            philosophyBackground.style.setProperty('background-position-y', `${offset}px`, 'important');
+                        }
+                    }
+                }
+
+                // Welcome section parallax
+                const welcomeSection = document.querySelector('.welcome-section');
+                if (welcomeSection) {
+                    const sectionTop = welcomeSection.offsetTop;
+                    const sectionHeight = welcomeSection.offsetHeight;
+
+                    if (scrollPos + windowHeight > sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        const scrollInSection = scrollPos + windowHeight - sectionTop;
+                        const scrollPercent = scrollInSection / (sectionHeight + windowHeight);
+                        const offset = (scrollPercent - 0.5) * -50;
+                        document.documentElement.style.setProperty('--parallax-offset', offset + 'px');
+                    }
+                }
+
+                // Lagree section parallax
+                const lagreeSection = document.querySelector('.lagree-section');
+                const lagreeImage = document.querySelector('.lagree-image');
+                if (lagreeSection && lagreeImage) {
+                    const sectionTop = lagreeSection.offsetTop;
+                    const sectionHeight = lagreeSection.offsetHeight;
+
+                    if (scrollPos + windowHeight > sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        const scrollInSection = scrollPos + windowHeight - sectionTop;
+                        const scrollPercent = scrollInSection / (sectionHeight + windowHeight);
+                        const isMobile = window.innerWidth <= 768;
+                        const amplitude = isMobile ? 150 : 300;
+                        const baseOffset = isMobile ? 90 : 60;
+                        const offset = (0.5 - scrollPercent) * amplitude + baseOffset;
+                        lagreeImage.style.setProperty('background-position-y', `calc(50% + ${offset}px)`, 'important');
+                    }
+                }
+            }
+
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Initial call
+            handleParallax();
+
+            // Also call on load to ensure it works on WordPress
+            window.addEventListener('load', () => {
+                handleParallax();
+            });
+
+            // Scrolling banner
+            const scrollingText = document.getElementById('scrolling-text');
+            if (scrollingText) {
+                const text = scrollingText.innerHTML;
+                // Duplicate text multiple times
+                for (let i = 0; i < 10; i++) {
+                    scrollingText.innerHTML += text;
+                }
+
+                let position = 0;
+                const speed = 1; // pixels per frame
+
+                function scroll() {
+                    position -= speed;
+                    const width = scrollingText.scrollWidth / 11; // Divide by number of copies + 1
+
+                    if (Math.abs(position) >= width) {
+                        position = 0;
+                    }
+
+                    scrollingText.style.transform = `translateX(${position}px)`;
+                    requestAnimationFrame(scroll);
+                }
+
+                scroll();
+            }
+
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-fade, .animate-scale, .animate-slide-left, .animate-slide-right');
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Header animations - start after loader
+            setTimeout(() => {
+                document.getElementById('header-logo').classList.add('hero-visible');
+            }, 1700); // 1500ms (loader) + 200ms
+
+            setTimeout(() => {
+                document.getElementById('header-actions').classList.add('hero-visible');
+            }, 1900); // 1500ms (loader) + 400ms
+
+            // Hero animations - start after loader
+            setTimeout(() => {
+                document.getElementById('hero-title').classList.add('hero-visible');
+            }, 2000); // 1500ms (loader) + 500ms
+
+            setTimeout(() => {
+                document.getElementById('hero-button').classList.add('hero-visible');
+            }, 2500); // 1500ms (loader) + 1000ms
+
+            // Animate desktop nav links
+            setTimeout(() => {
+                const navLinks = document.querySelectorAll('.site-navigation .nav-link');
+                if (window.innerWidth > 992) {
+                    navLinks.forEach((link, index) => {
+                        setTimeout(() => {
+                            link.classList.add('visible');
+                        }, index * 150);
+                    });
+                }
+            }, 1900);
+
+            // Pricing Switcher for Mobile
+            const switcherButtons = document.querySelectorAll('.switcher-btn');
+            const discoveryPack = document.querySelector('.discovery-pack');
+            const pricingCards = document.querySelectorAll('.pricing-card');
+
+            // Function to show selected pack
+            function showPack(packType) {
+                // Remove active class from all buttons
+                switcherButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                const activeButton = document.querySelector(`[data-pack="${packType}"]`);
+                if (activeButton && activeButton.classList.contains('switcher-btn')) {
+                    activeButton.classList.add('active');
+                }
+
+                // Hide all packs
+                if (discoveryPack) discoveryPack.classList.remove('active');
+                pricingCards.forEach(card => card.classList.remove('active'));
+
+                // Show selected pack
+                if (packType === 'discovery' && discoveryPack) {
+                    discoveryPack.classList.add('active');
+                } else {
+                    const selectedCard = document.querySelector(`.pricing-card[data-pack="${packType}"]`);
+                    if (selectedCard) {
+                        selectedCard.classList.add('active');
+                    }
+                }
+            }
+
+            // Initialize - show discovery pack by default on mobile
+            if (window.innerWidth <= 992) {
+                showPack('discovery');
+            }
+
+            // Add click event to all switcher buttons
+            switcherButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const packType = button.getAttribute('data-pack');
+                    showPack(packType);
+                });
+            });
+
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    if (window.innerWidth <= 992) {
+                        // On mobile, ensure at least one pack is shown
+                        const hasActive = document.querySelector('.discovery-pack.active, .pricing-card.active');
+                        if (!hasActive) {
+                            showPack('discovery');
+                        }
+                    } else {
+                        // On desktop, show all packs
+                        if (discoveryPack) discoveryPack.classList.remove('active');
+                        pricingCards.forEach(card => card.classList.remove('active'));
+                    }
+                }, 250);
+            });
+        })();
+    </script>
+</body>
+</html>

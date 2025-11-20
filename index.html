@@ -35,7 +35,7 @@
         .animate-on-scroll {
             opacity: 0 !important;
             transform: translateY(30px) !important;
-            transition: all 0.8s ease-out !important;
+            transition: all 1.2s ease-out !important;
         }
 
         .animate-on-scroll.animated {
@@ -45,7 +45,7 @@
 
         .animate-fade {
             opacity: 0 !important;
-            transition: opacity 1s ease-out !important;
+            transition: opacity 1.4s ease-out !important;
         }
 
         .animate-fade.animated {
@@ -83,6 +83,56 @@
         .animate-slide-right.animated {
             opacity: 1 !important;
             transform: translateX(0) !important;
+        }
+
+        /* Mobile menu animations */
+        .mobile-nav-item {
+            opacity: 0 !important;
+            transform: translateX(30px) !important;
+            transition: all 0.4s ease-out !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(1) {
+            transition-delay: 0.1s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(2) {
+            transition-delay: 0.2s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(3) {
+            transition-delay: 0.3s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(4) {
+            transition-delay: 0.4s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(5) {
+            transition-delay: 0.5s !important;
+        }
+
+        .site-navigation.is-open .mobile-nav-item:nth-child(6) {
+            transition-delay: 0.6s !important;
+        }
+
+        /* Desktop nav links animation */
+        @media (min-width: 993px) {
+            .nav-link {
+                opacity: 0 !important;
+                transform: translateY(-10px) !important;
+                transition: all 0.8s ease-out !important;
+            }
+
+            .nav-link.visible {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
         }
 
         /* Header */
@@ -1110,19 +1160,19 @@
 <body>
     <header id="site-header">
         <div class="header-container">
-            <div class="site-branding">
+            <div class="site-branding animate-fade">
                 <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-beige.png" alt="AllMe Lagree Studio" class="site-logo logo-white">
                 <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-rouge.png" alt="AllMe Lagree Studio" class="site-logo logo-red">
             </div>
             <nav class="site-navigation">
-                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-rouge.png" alt="AllMe Lagree Studio" class="mobile-menu-logo">
-                <a href="#methode-lagree">La méthode Lagree</a>
-                <a href="#allme-studio">Allme Studio</a>
-                <a href="#tarifs">Nos tarifs</a>
-                <a href="#faq">FAQ</a>
-                <a href="tel:+33465849247" class="mobile-menu-cta">Réserver</a>
+                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-rouge.png" alt="AllMe Lagree Studio" class="mobile-menu-logo mobile-nav-item">
+                <a href="#methode-lagree" class="nav-link mobile-nav-item">La méthode Lagree</a>
+                <a href="#allme-studio" class="nav-link mobile-nav-item">Allme Studio</a>
+                <a href="#tarifs" class="nav-link mobile-nav-item">Nos tarifs</a>
+                <a href="#faq" class="nav-link mobile-nav-item">FAQ</a>
+                <a href="tel:+33465849247" class="mobile-menu-cta mobile-nav-item">Réserver</a>
             </nav>
-            <div class="header-actions">
+            <div class="header-actions animate-fade">
                 <a href="tel:+33465849247" class="header-cta">Réserver</a>
                 <button class="burger-menu" aria-label="Menu" aria-expanded="false">
                     <span></span>
@@ -1149,7 +1199,7 @@
     </section>
 
     <section id="methode-lagree" class="lagree-section">
-        <div class="lagree-image animate-fade"></div>
+        <div class="lagree-image"></div>
         <div class="lagree-content">
             <h2 class="animate-slide-right">La méthode<br>Lagree</h2>
             <p class="animate-slide-right">Le Lagree est une méthode d'entraînement complète et intense, venant de Los Angeles. Mélant renforcement musculaire, cardio, souplesse et équilibre, le Lagree sculpte, renforce et transforme durablement ton corps, sans impacts.</p>
@@ -1288,37 +1338,37 @@
     <section id="faq" class="faq-section">
         <div class="faq-container">
             <h2 class="faq-title animate-on-scroll">FAQ</h2>
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll">
                 <button class="faq-question">Qu'est-ce que la méthode Lagree ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">La méthode Lagree est une technique d'entraînement complète et intense qui combine renforcement musculaire, cardio, souplesse et équilibre. Développée à Los Angeles, elle utilise la machine Megaformer pour créer des mouvements lents et contrôlés qui sculptent et renforcent le corps sans impacts.</div>
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll">
                 <button class="faq-question">Faut-il avoir un niveau sportif pour commencer ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">Non, la méthode Lagree s'adapte à tous les niveaux ! Que vous soyez débutant ou sportif confirmé, nos coachs ajustent l'intensité et les exercices selon vos capacités. C'est vous qui contrôlez la difficulté grâce à la machine.</div>
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll">
                 <button class="faq-question">Combien de personnes par cours ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">Nos cours sont limités à 6 personnes maximum pour garantir un accompagnement personnalisé. Cette configuration en petit comité permet à nos coachs de corriger votre posture et de vous guider tout au long de la séance.</div>
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll">
                 <button class="faq-question">Que dois-je apporter pour mon premier cours ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">Nous fournissons tous les accessoires nécessaires (tapis, serviettes). Il vous suffit d'apporter une tenue de sport confortable et une paire de chaussettes antidérapantes. Des vestiaires et douches sont à votre disposition.</div>
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll">
                 <button class="faq-question">Puis-je annuler ou modifier ma réservation ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">Oui, l'annulation est gratuite jusqu'à 12h avant le début du cours. Passé ce délai, la séance sera décomptée de votre forfait. Vous pouvez modifier votre réservation facilement via votre espace client.</div>
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll">
                 <button class="faq-question">Quelle est la durée d'une séance ?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">Une séance dure 50 minutes. C'est le temps optimal pour travailler efficacement tout le corps tout en maintenant une intensité élevée. Prévoyez quelques minutes supplémentaires pour vous changer avant et après.</div>
@@ -1563,15 +1613,36 @@
                 observer.observe(element);
             });
 
-            // Animate hero elements on page load
+            // Animate hero elements on page load (after header)
             setTimeout(() => {
                 const heroElements = document.querySelectorAll('.hero-section .animate-on-scroll');
                 heroElements.forEach((el, index) => {
                     setTimeout(() => {
                         el.classList.add('animated');
-                    }, 300 + (index * 200));
+                    }, index * 500);
                 });
-            }, 100);
+            }, 1400);
+
+            // Animate header elements on page load
+            setTimeout(() => {
+                // Animate header logo and actions
+                const headerAnimated = document.querySelectorAll('#site-header .animate-fade');
+                headerAnimated.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('animated');
+                    }, index * 150);
+                });
+
+                // Animate desktop nav links
+                const navLinks = document.querySelectorAll('.site-navigation .nav-link');
+                if (window.innerWidth > 992) {
+                    navLinks.forEach((link, index) => {
+                        setTimeout(() => {
+                            link.classList.add('visible');
+                        }, 400 + (index * 150));
+                    });
+                }
+            }, 400);
         })();
     </script>
 </body>

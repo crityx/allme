@@ -43,6 +43,18 @@
             transform: translateY(0) !important;
         }
 
+        /* Hero elements - hidden by default */
+        .hero-hidden {
+            opacity: 0 !important;
+            transform: translateY(30px) !important;
+            transition: all 1.2s ease-out !important;
+        }
+
+        .hero-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
         .animate-fade {
             opacity: 0 !important;
             transition: opacity 1.4s ease-out !important;
@@ -1187,8 +1199,8 @@
         <div class="hero-background"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title animate-on-scroll">Mind. Body.<br>All <span class="highlight">(of)</span> Me</h1>
-                <a href="tel:+33465849247" class="cta-button animate-on-scroll">Réserver ma séance</a>
+                <h1 class="hero-title hero-hidden" id="hero-title">Mind. Body.<br>All <span class="highlight">(of)</span> Me</h1>
+                <a href="tel:+33465849247" class="cta-button hero-hidden" id="hero-button">Réserver ma séance</a>
             </div>
         </div>
         <div class="scrolling-banner">
@@ -1613,15 +1625,14 @@
                 observer.observe(element);
             });
 
-            // Animate hero elements on page load (after header)
+            // Hero animations with simple delays
             setTimeout(() => {
-                const heroElements = document.querySelectorAll('.hero-section .animate-on-scroll');
-                heroElements.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.classList.add('animated');
-                    }, index * 500);
-                });
-            }, 1400);
+                document.getElementById('hero-title').classList.add('hero-visible');
+            }, 1500);
+
+            setTimeout(() => {
+                document.getElementById('hero-button').classList.add('hero-visible');
+            }, 2000);
 
             // Animate header elements on page load
             setTimeout(() => {

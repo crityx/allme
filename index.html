@@ -5,1504 +5,1055 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AllMe Lagree Studio - Mind. Body. All (of) Me</title>
     <style>
-        /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
 
-        /* Reset et styles de base */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            margin: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
         }
 
         :root {
-            --color-red: #7e383f;
-            --color-beige: #dccdbc;
-            --color-white: #ffffff;
-            --color-black: #000000;
-            --font-title: 'Playfair Display', serif;
-            --font-body: 'Crimson Pro', serif;
+            --red: #7e383f !important;
+            --beige: #dccdbc !important;
+            --white: #ffffff !important;
+            --black: #000000 !important;
+        }
+
+        html, body {
+            overflow-x: hidden !important;
+            width: 100% !important;
         }
 
         body {
-            font-family: var(--font-body);
-            color: var(--color-black);
-            overflow-x: hidden;
-            line-height: 1.6;
+            font-family: 'Crimson Pro', serif !important;
+            color: var(--black) !important;
+            line-height: 1.6 !important;
         }
 
-        /* Header - Fixed Navigation */
+        /* Header */
         #site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background-color: transparent;
-            padding: 1.5rem 0;
+            position: fixed !important;
+            top: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+            transition: all 0.4s ease !important;
+            padding: 1.5rem 0 !important;
         }
 
         #site-header.scrolled {
-            background-color: var(--color-beige);
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--beige) !important;
+            padding: 1rem 0 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
         }
 
         .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Logo */
-        .site-branding {
-            display: flex;
-            align-items: center;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-            animation-delay: 0.1s;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
         }
 
         .site-logo {
             height: 75px !important;
             width: auto !important;
-            transition: all 0.4s ease;
+            transition: all 0.4s ease !important;
         }
 
         .logo-white {
-            display: block;
+            display: block !important;
         }
 
         .logo-red {
-            display: none;
+            display: none !important;
         }
 
         #site-header.scrolled .logo-white {
-            display: none;
+            display: none !important;
         }
 
         #site-header.scrolled .logo-red {
-            display: block;
+            display: block !important;
         }
 
-        /* Navigation Desktop */
+        /* Navigation */
         .site-navigation {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
+            display: flex !important;
+            gap: 2.5rem !important;
+            align-items: center !important;
         }
 
         .site-navigation a {
-            font-family: var(--font-body);
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--color-beige);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
+            font-size: 1.3rem !important;
+            font-weight: 500 !important;
+            color: var(--beige) !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
         }
 
-        .site-navigation a:nth-child(1) { animation-delay: 0.2s; }
-        .site-navigation a:nth-child(2) { animation-delay: 0.3s; }
-        .site-navigation a:nth-child(3) { animation-delay: 0.4s; }
-        .site-navigation a:nth-child(4) { animation-delay: 0.5s; }
-
         #site-header.scrolled .site-navigation a {
-            color: var(--color-red);
+            color: var(--red) !important;
         }
 
         .site-navigation a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-beige);
-            transition: width 0.3s ease;
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 0 !important;
+            height: 2px !important;
+            background-color: var(--beige) !important;
+            transition: width 0.3s ease !important;
         }
 
         #site-header.scrolled .site-navigation a::after {
-            background-color: var(--color-red);
+            background-color: var(--red) !important;
         }
 
         .site-navigation a:hover::after {
-            width: 100%;
+            width: 100% !important;
         }
 
-        .site-navigation a:hover {
-            opacity: 0.8;
-        }
-
-        /* Header CTA Button */
-        .header-cta {
-            padding: 0.6rem 1.8rem;
-            background-color: transparent;
-            color: var(--color-beige);
-            border: 2px solid var(--color-beige);
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: var(--font-body);
-            font-size: 1.3rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-            animation-delay: 0.6s;
-        }
-
-        .header-cta:hover {
-            background-color: var(--color-beige);
-            color: var(--color-black);
-            transform: translateY(-2px);
-        }
-
-        #site-header.scrolled .header-cta {
-            color: var(--color-red);
-            border-color: var(--color-red);
-        }
-
-        #site-header.scrolled .header-cta:hover {
-            background-color: var(--color-red);
-            color: var(--color-white);
-        }
-
-        /* Burger Menu Button */
+        /* Burger Menu */
         .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
         }
 
         .burger-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-            animation-delay: 0.7s;
+            display: none !important;
+            flex-direction: column !important;
+            gap: 5px !important;
+            background: transparent !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 0.5rem !important;
+            z-index: 1001 !important;
         }
 
         .burger-menu span {
-            width: 28px;
-            height: 3px;
-            background-color: var(--color-beige);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 2px;
+            width: 28px !important;
+            height: 3px !important;
+            background-color: var(--beige) !important;
+            transition: all 0.3s ease !important;
+            border-radius: 2px !important;
         }
 
         #site-header.scrolled .burger-menu span {
-            background-color: var(--color-red);
+            background-color: var(--red) !important;
         }
 
         .burger-menu.is-open span {
-            background-color: var(--color-red);
+            background-color: var(--red) !important;
         }
 
         .burger-menu.is-open span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
+            transform: translateY(8px) rotate(45deg) !important;
         }
 
         .burger-menu.is-open span:nth-child(2) {
-            opacity: 0;
+            opacity: 0 !important;
         }
 
         .burger-menu.is-open span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
+            transform: translateY(-8px) rotate(-45deg) !important;
         }
 
-        /* Section Hero */
+        /* CTA Button */
+        .header-cta {
+            padding: 0.6rem 1.8rem !important;
+            background-color: transparent !important;
+            color: var(--beige) !important;
+            border: 2px solid var(--beige) !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            font-size: 1.3rem !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .header-cta:hover {
+            background-color: var(--beige) !important;
+            color: var(--black) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        #site-header.scrolled .header-cta {
+            color: var(--red) !important;
+            border-color: var(--red) !important;
+        }
+
+        #site-header.scrolled .header-cta:hover {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+        }
+
+        /* Hero Section */
         .hero-section {
-            min-height: 100vh;
-            background-color: var(--color-black);
-            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section1-1-scaled.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
+            min-height: 100vh !important;
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+            overflow: hidden !important;
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
+        .hero-background {
+            position: absolute !important;
+            top: -20% !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 140% !important;
+            background-color: var(--black) !important;
+            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section1-2.png') !important;
+            background-position: center center !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            z-index: 0 !important;
+        }
+
+        .hero-background::after {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)) !important;
         }
 
         .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-            width: 100%;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            position: relative !important;
+            z-index: 1 !important;
+            width: 100% !important;
         }
 
         .hero-content {
-            max-width: 600px;
-        }
-
-        .hero-content > * {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .hero-content .hero-title {
-            animation-delay: 0.3s;
-        }
-
-        .hero-content .cta-button {
-            animation-delay: 0.6s;
-        }
-
-        .hero-logo-text {
-            font-family: var(--font-title);
-            font-size: 3rem;
-            font-weight: 400;
-            color: var(--color-white);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--color-beige);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            font-weight: 300;
+            max-width: 600px !important;
         }
 
         .hero-title {
-            font-family: var(--font-title);
-            font-size: 5rem;
-            font-weight: 400;
-            color: var(--color-beige);
-            line-height: 1.1;
-            margin-bottom: 3rem;
+            font-family: 'Playfair Display', serif !important;
+            font-size: 5rem !important;
+            font-weight: 400 !important;
+            color: var(--beige) !important;
+            line-height: 1.1 !important;
+            margin-bottom: 3rem !important;
         }
 
         .hero-title .highlight {
-            font-style: italic;
+            font-style: italic !important;
         }
 
         .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background-color: var(--color-red);
-            color: var(--color-beige);
-            font-family: var(--font-title);
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--color-red);
+            display: inline-block !important;
+            padding: 1rem 2.5rem !important;
+            background-color: var(--red) !important;
+            color: var(--beige) !important;
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.2rem !important;
+            text-decoration: none !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid var(--red) !important;
         }
 
         .cta-button:hover {
-            background-color: transparent;
-            color: var(--color-white);
-            border-color: var(--color-white);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(126, 56, 63, 0.3);
-        }
-
-        /* Section Méthode Lagree */
-        .lagree-section {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background-color: var(--color-black);
-        }
-
-        .lagree-image {
-            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section2-1.png');
-            background-size: 130%;
-            background-position: center center;
-            background-repeat: no-repeat;
-            position: relative;
-            transition: background-position 0.1s linear;
-            will-change: background-position;
-        }
-
-        @media (max-width: 768px) {
-            .lagree-image {
-                background-size: 140%;
-            }
-        }
-
-        .lagree-content {
-            padding: 6rem 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: var(--color-black);
-            color: var(--color-beige);
-        }
-
-        .lagree-content h2 {
-            font-family: var(--font-title);
-            font-size: 4rem;
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            color: var(--color-beige);
-        }
-
-        .lagree-content p {
-            font-family: var(--font-body);
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            text-align: justify;
-            color: var(--color-white);
-        }
-
-        .cta-button-secondary {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background-color: var(--color-red);
-            color: var(--color-beige);
-            font-family: var(--font-title);
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--color-red);
-            align-self: flex-start;
-        }
-
-        .cta-button-secondary:hover {
-            background-color: transparent;
-            color: var(--color-beige);
-            border-color: var(--color-beige);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(126, 56, 63, 0.3);
-        }
-
-        /* Section Bienvenue */
-        .welcome-section {
-            background-color: var(--color-red);
-            padding: 6rem 2rem;
-            color: var(--color-white);
-        }
-
-        .welcome-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .welcome-title {
-            font-family: var(--font-title);
-            font-size: 4rem;
-            font-weight: 400;
-            text-align: center;
-            margin-bottom: 4rem;
-            color: var(--color-beige);
-        }
-
-        .welcome-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        .welcome-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .welcome-image-wrapper {
-            width: 350px;
-            height: 350px;
-            border-radius: 50% 50% 0 0;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .welcome-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.1s linear;
-            will-change: transform;
-        }
-
-        /* Effet Parallax sur tous les écrans */
-        .welcome-card:nth-child(1) .welcome-image-wrapper img {
-            transform: translateY(var(--parallax-offset-1, 0)) scale(1.1);
-        }
-
-        .welcome-card:nth-child(2) .welcome-image-wrapper img {
-            transform: translateY(var(--parallax-offset-2, 0)) scale(1.1);
-        }
-
-        .welcome-card:nth-child(3) .welcome-image-wrapper img {
-            transform: translateY(var(--parallax-offset-3, 0)) scale(1.1);
-        }
-
-        .welcome-card h3 {
-            font-family: var(--font-title);
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            color: var(--color-beige);
-        }
-
-        .welcome-card p {
-            font-family: var(--font-body);
-            font-size: 1.3rem;
-            line-height: 1.7;
-            color: var(--color-white);
-            max-width: 350px;
-        }
-
-        .cta-button-tertiary {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background-color: var(--color-beige);
-            color: var(--color-red);
-            font-family: var(--font-title);
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--color-beige);
-            margin: 0 auto;
-            display: block;
-            width: fit-content;
-        }
-
-        .cta-button-tertiary:hover {
-            background-color: transparent;
-            color: var(--color-beige);
-            border-color: var(--color-beige);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(220, 205, 188, 0.3);
-        }
-
-        /* Section Tarifs */
-        .pricing-section {
-            background-color: var(--color-beige);
-            padding: 6rem 2rem;
-        }
-
-        .pricing-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .pricing-title {
-            font-family: var(--font-title);
-            font-size: 4rem;
-            font-weight: 400;
-            color: var(--color-red);
-            margin-bottom: 1rem;
-        }
-
-        .pricing-subtitle {
-            font-family: var(--font-body);
-            font-size: 1.3rem;
-            color: var(--color-red);
-        }
-
-        .discovery-pack {
-            background-color: var(--color-red);
-            border-radius: 20px;
-            padding: 3rem;
-            color: var(--color-white);
-            text-align: center;
-            margin-bottom: 4rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .pack-label {
-            background-color: var(--color-beige);
-            color: var(--color-red);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            display: inline-block;
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-
-        .discovery-pack h3 {
-            font-family: var(--font-title);
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .discovery-pack .sessions-info {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .discovery-pack .price {
-            font-family: var(--font-title);
-            font-size: 4rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
-
-        .discovery-pack .price-per-session {
-            font-family: var(--font-body);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .discovery-pack .description {
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 2rem;
-        }
-
-        .discovery-pack .cta-button-pack {
-            background-color: var(--color-beige);
-            color: var(--color-red);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: var(--font-body);
-            font-weight: 600;
-            text-transform: uppercase;
-            display: inline-block;
-            transition: all 0.3s ease;
-            border: 2px solid var(--color-beige);
-        }
-
-        .discovery-pack .cta-button-pack:hover {
-            background-color: transparent;
-            color: var(--color-beige);
-            transform: translateY(-2px);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .pricing-card {
-            background-color: var(--color-white);
-            border: 2px solid #d0c4b8;
-            border-radius: 15px;
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(126, 56, 63, 0.15);
-        }
-
-        .pricing-card.popular {
-            border: 3px solid var(--color-red);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background-color: var(--color-red);
-            color: var(--color-beige);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .pricing-card .sessions {
-            font-family: var(--font-title);
-            font-size: 3.5rem;
-            color: var(--color-red);
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-card .sessions-label {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--color-red);
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-card .price-large {
-            font-family: var(--font-title);
-            font-size: 3rem;
-            color: var(--color-red);
-            font-weight: 400;
-            margin-bottom: 1rem;
-        }
-
-        .pricing-card .price-detail {
-            background-color: var(--color-beige);
-            color: var(--color-red);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .pricing-card .validity {
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            color: var(--color-red);
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-card .reserve-button {
-            background-color: var(--color-red);
-            color: var(--color-white);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: var(--font-body);
-            font-weight: 600;
-            text-transform: uppercase;
-            display: inline-block;
-            transition: all 0.3s ease;
-            border: 2px solid var(--color-red);
-        }
-
-        .pricing-card .reserve-button:hover {
-            background-color: transparent;
-            color: var(--color-red);
-            transform: translateY(-2px);
-        }
-
-        .special-offers {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            margin-bottom: 4rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .offer-box {
-            background-color: transparent;
-            border: 2px solid var(--color-red);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .offer-box h4 {
-            font-family: var(--font-title);
-            font-size: 1.5rem;
-            color: var(--color-red);
-            margin-bottom: 1rem;
-        }
-
-        .offer-box .discount {
-            font-family: var(--font-title);
-            font-size: 2rem;
-            color: var(--color-red);
-            margin-bottom: 0.5rem;
-        }
-
-        .offer-box .offer-description {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--color-red);
-            line-height: 1.6;
-        }
-
-        .info-section {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            align-items: start;
-        }
-
-        .good-to-know {
-            background-color: var(--color-white);
-            border-radius: 15px;
-            padding: 2.5rem 2rem;
-            text-align: left;
-            height: 100%;
-        }
-
-        .good-to-know h4 {
-            font-family: var(--font-title);
-            font-size: 1.8rem;
-            color: var(--color-red);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .good-to-know ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .good-to-know li {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--color-red);
-            line-height: 1.5;
-            display: flex;
-            align-items: center;
-        }
-
-        .good-to-know li::before {
-            content: '✓';
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-right: 0.8rem;
-            color: var(--color-red);
-            flex-shrink: 0;
-        }
-
-        .special-offers-column {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .offer-card {
-            background-color: var(--color-white);
-            border: 2px solid var(--color-red);
-            border-radius: 15px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .offer-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(126, 56, 63, 0.15);
-        }
-
-        .offer-card h4 {
-            font-family: var(--font-title);
-            font-size: 1.3rem;
-            color: var(--color-red);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .offer-card .discount {
-            font-family: var(--font-title);
-            font-size: 2.2rem;
-            color: var(--color-red);
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            line-height: 1;
-        }
-
-        .offer-card .offer-subtitle {
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            color: var(--color-red);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .offer-card .offer-description {
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            color: var(--color-red);
-            line-height: 1.5;
-            opacity: 0.9;
-        }
-
-        /* Section Philosophie */
-        .philosophy-section {
-            min-height: 100vh;
-            background-color: var(--color-black);
-            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section5.webp');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .philosophy-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
-        }
-
-        .philosophy-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .philosophy-logo {
-            font-family: var(--font-title);
-            font-size: 5rem;
-            font-weight: 400;
-            color: var(--color-beige);
-            line-height: 1.1;
-        }
-
-        .philosophy-content {
-            color: var(--color-white);
-        }
-
-        .philosophy-content p {
-            font-family: var(--font-body);
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            color: var(--color-white);
-        }
-
-        /* Section FAQ */
-        .faq-section {
-            background-color: var(--color-beige);
-            padding: 6rem 2rem;
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-title {
-            font-family: var(--font-title);
-            font-size: 4rem;
-            font-weight: 400;
-            text-align: center;
-            color: var(--color-red);
-            margin-bottom: 4rem;
-        }
-
-        .faq-item {
-            margin-bottom: 1.5rem;
-            border-radius: 10px;
-            overflow: hidden;
-            background-color: var(--color-white);
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 1.5rem 2rem;
-            background-color: var(--color-white);
-            border: none;
-            text-align: left;
-            font-family: var(--font-title);
-            font-size: 1.3rem;
-            color: var(--color-red);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background-color: #f5f5f5;
-        }
-
-        .faq-question::after {
-            content: '+';
-            font-size: 2rem;
-            font-weight: 300;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            background-color: var(--color-white);
-        }
-
-        .faq-answer-content {
-            padding: 0 2rem 1.5rem 2rem;
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--color-red);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-
-        /* Footer */
-        .site-footer {
-            background-color: var(--color-red);
-            padding: 4rem 2rem 2rem;
-            color: var(--color-beige);
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .footer-logo-section {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-logo {
-            font-family: var(--font-title);
-            font-size: 3.5rem;
-            font-weight: 400;
-            color: var(--color-beige);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-logo-subtitle {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--color-beige);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .footer-section h3 {
-            font-family: var(--font-title);
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: var(--color-beige);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-contact-info p {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--color-beige);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .footer-contact-info a {
-            color: var(--color-beige);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-contact-info a:hover {
-            opacity: 0.7;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .footer-social a {
-            color: var(--color-beige);
-            font-size: 2rem;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-social a:hover {
-            opacity: 0.7;
-        }
-
-        .footer-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-nav a {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            color: var(--color-beige);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .footer-nav a:hover {
-            opacity: 0.7;
+            background-color: transparent !important;
+            border-color: var(--white) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 25px rgba(126, 56, 63, 0.3) !important;
         }
 
         /* Scrolling Banner */
         .scrolling-banner {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--color-beige);
-            overflow: hidden;
-            padding: 1rem 0;
-            z-index: 2;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-            animation-delay: 0.9s;
+            position: absolute !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            background-color: var(--beige) !important;
+            overflow: hidden !important;
+            padding: 1rem 0 !important;
+            z-index: 2 !important;
         }
 
         .scrolling-banner-content {
-            display: flex;
-            white-space: nowrap;
-            animation: scroll 20s linear infinite;
+            display: flex !important;
+            width: max-content !important;
         }
 
         .scrolling-banner-content span {
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--color-red);
-            padding-right: 4rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.1rem !important;
+            font-weight: 500 !important;
+            color: var(--red) !important;
+            padding: 0 3rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            white-space: nowrap !important;
         }
 
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+        /* Lagree Section */
+        .lagree-section {
+            min-height: 100vh !important;
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            background-color: var(--black) !important;
         }
 
-        /* Animations d'affichage */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .lagree-image {
+            background: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section2.png') center/130% no-repeat !important;
+            transition: background-position 0.1s linear !important;
         }
 
-        .animate-on-scroll.animate-visible {
-            opacity: 1;
-            transform: translateY(0);
+        .lagree-content {
+            padding: 6rem 4rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: flex-start !important;
+            color: var(--beige) !important;
         }
 
-        .animate-fade-in {
-            opacity: 0;
-            transition: opacity 0.8s ease-out;
+        .lagree-content h2 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            font-weight: 400 !important;
+            line-height: 1.2 !important;
+            margin-bottom: 2rem !important;
         }
 
-        .animate-fade-in.animate-visible {
-            opacity: 1;
+        .lagree-content p {
+            font-size: 1.3rem !important;
+            line-height: 1.8 !important;
+            margin-bottom: 3rem !important;
+            text-align: justify !important;
+            color: var(--white) !important;
         }
 
-        .animate-slide-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        /* Welcome Section */
+        .welcome-section {
+            background-color: var(--red) !important;
+            padding: 6rem 2rem !important;
+            color: var(--white) !important;
         }
 
-        .animate-slide-left.animate-visible {
-            opacity: 1;
-            transform: translateX(0);
+        .welcome-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
         }
 
-        .animate-slide-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .welcome-title {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            font-weight: 400 !important;
+            text-align: center !important;
+            margin-bottom: 4rem !important;
+            color: var(--beige) !important;
         }
 
-        .animate-slide-right.animate-visible {
-            opacity: 1;
-            transform: translateX(0);
+        .welcome-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 3rem !important;
+            margin-bottom: 4rem !important;
         }
 
-        .animate-scale {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .welcome-card {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
         }
 
-        .animate-scale.animate-visible {
-            opacity: 1;
-            transform: scale(1);
+        .welcome-image-wrapper {
+            width: 350px !important;
+            height: 350px !important;
+            border-radius: 50% 50% 0 0 !important;
+            overflow: hidden !important;
+            margin-bottom: 2rem !important;
         }
 
-        .animate-delay-1 {
-            transition-delay: 0.1s;
+        .welcome-image-wrapper img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            transition: transform 0.1s linear !important;
+            transform: translateY(var(--parallax-offset, 0)) scale(1.1) !important;
         }
 
-        .animate-delay-2 {
-            transition-delay: 0.2s;
+        .welcome-card h3 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 2rem !important;
+            margin-bottom: 1.5rem !important;
+            color: var(--beige) !important;
         }
 
-        .animate-delay-3 {
-            transition-delay: 0.3s;
+        .welcome-card p {
+            font-size: 1.3rem !important;
+            line-height: 1.7 !important;
+            max-width: 350px !important;
         }
 
-        .animate-delay-4 {
-            transition-delay: 0.4s;
+        /* Pricing Section */
+        .pricing-section {
+            background-color: var(--beige) !important;
+            padding: 6rem 2rem !important;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .pricing-container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
         }
 
-        /* Mobile Menu Logo */
+        .pricing-header {
+            text-align: center !important;
+            margin-bottom: 4rem !important;
+        }
+
+        .pricing-title {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            color: var(--red) !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .pricing-subtitle {
+            font-size: 1.3rem !important;
+            color: var(--red) !important;
+        }
+
+        .discovery-pack {
+            background-color: var(--red) !important;
+            border-radius: 20px !important;
+            padding: 3rem !important;
+            color: var(--white) !important;
+            text-align: center !important;
+            margin: 0 auto 4rem !important;
+            max-width: 500px !important;
+        }
+
+        .pack-label {
+            background-color: var(--beige) !important;
+            color: var(--red) !important;
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 25px !important;
+            display: inline-block !important;
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .discovery-pack h3 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .discovery-pack .price {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .discovery-pack .cta-button-pack {
+            background-color: var(--beige) !important;
+            color: var(--red) !important;
+            padding: 1rem 2rem !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            display: inline-block !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid var(--beige) !important;
+        }
+
+        .discovery-pack .cta-button-pack:hover {
+            background-color: transparent !important;
+            color: var(--beige) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .pricing-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 2rem !important;
+            margin-bottom: 4rem !important;
+        }
+
+        .pricing-card {
+            background-color: var(--white) !important;
+            border: 2px solid #d0c4b8 !important;
+            border-radius: 15px !important;
+            padding: 2.5rem 1.5rem !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 10px 30px rgba(126, 56, 63, 0.15) !important;
+        }
+
+        .pricing-card.popular {
+            border: 3px solid var(--red) !important;
+        }
+
+        .popular-badge {
+            position: absolute !important;
+            top: -15px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            background-color: var(--red) !important;
+            color: var(--beige) !important;
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 25px !important;
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+        }
+
+        .pricing-card .sessions {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 3.5rem !important;
+            color: var(--red) !important;
+        }
+
+        .pricing-card .reserve-button {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+            padding: 1rem 2.5rem !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            display: inline-block !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid var(--red) !important;
+        }
+
+        .pricing-card .reserve-button:hover {
+            background-color: transparent !important;
+            color: var(--red) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .info-section {
+            display: grid !important;
+            grid-template-columns: 1.2fr 1fr !important;
+            gap: 2.5rem !important;
+        }
+
+        .good-to-know {
+            background-color: var(--white) !important;
+            border-radius: 15px !important;
+            padding: 2.5rem 2rem !important;
+        }
+
+        .good-to-know h4 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.8rem !important;
+            color: var(--red) !important;
+            margin-bottom: 1.5rem !important;
+            text-align: center !important;
+        }
+
+        .good-to-know ul {
+            list-style: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.8rem !important;
+        }
+
+        .good-to-know li {
+            font-size: 1rem !important;
+            color: var(--red) !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .good-to-know li::before {
+            content: '✓' !important;
+            font-weight: bold !important;
+            font-size: 1.2rem !important;
+            margin-right: 0.8rem !important;
+            color: var(--red) !important;
+        }
+
+        .special-offers-column {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+        }
+
+        .offer-card {
+            background-color: var(--white) !important;
+            border: 2px solid var(--red) !important;
+            border-radius: 15px !important;
+            padding: 2rem 1.5rem !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 20px rgba(126, 56, 63, 0.15) !important;
+        }
+
+        .offer-card h4 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.3rem !important;
+            color: var(--red) !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .offer-card .discount {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 2.2rem !important;
+            color: var(--red) !important;
+            font-weight: 600 !important;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            min-height: 100vh !important;
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .philosophy-background {
+            position: absolute !important;
+            top: -20% !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 140% !important;
+            background-color: var(--black) !important;
+            background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section5.webp') !important;
+            background-position: center center !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            z-index: 0 !important;
+        }
+
+        .philosophy-background::after {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)) !important;
+        }
+
+        .philosophy-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            position: relative !important;
+            z-index: 1 !important;
+            width: 100% !important;
+            display: grid !important;
+            grid-template-columns: 1fr 1.5fr !important;
+            gap: 4rem !important;
+            align-items: center !important;
+        }
+
+        .philosophy-logo {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 5rem !important;
+            color: var(--beige) !important;
+            line-height: 1.1 !important;
+        }
+
+        .philosophy-content p {
+            font-size: 1.3rem !important;
+            line-height: 1.8 !important;
+            margin-bottom: 2rem !important;
+            color: var(--white) !important;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--beige) !important;
+            padding: 6rem 2rem !important;
+        }
+
+        .faq-container {
+            max-width: 900px !important;
+            margin: 0 auto !important;
+        }
+
+        .faq-title {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            text-align: center !important;
+            color: var(--red) !important;
+            margin-bottom: 4rem !important;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            background-color: var(--white) !important;
+        }
+
+        .faq-question {
+            width: 100% !important;
+            padding: 1.5rem 2rem !important;
+            background-color: var(--white) !important;
+            border: none !important;
+            text-align: left !important;
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.3rem !important;
+            color: var(--red) !important;
+            cursor: pointer !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            transition: all 0.3s ease !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: var(--red) !important;
+            color: var(--beige) !important;
+        }
+
+        .faq-question::after {
+            content: '+' !important;
+            font-size: 2rem !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg) !important;
+        }
+
+        .faq-answer {
+            max-height: 0 !important;
+            overflow: hidden !important;
+            transition: max-height 0.3s ease !important;
+            background-color: var(--white) !important;
+        }
+
+        .faq-answer-content {
+            padding: 1.5rem 2rem !important;
+            font-size: 1.1rem !important;
+            line-height: 1.8 !important;
+            color: var(--red) !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px !important;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--red) !important;
+            padding: 4rem 2rem 2rem !important;
+            color: var(--beige) !important;
+        }
+
+        .footer-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            display: grid !important;
+            grid-template-columns: 1fr 1fr 1fr !important;
+            gap: 4rem !important;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 3.5rem !important;
+            color: var(--beige) !important;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.3rem !important;
+            margin-bottom: 1.5rem !important;
+            text-transform: uppercase !important;
+        }
+
+        .footer-contact-info {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+        }
+
+        .footer-contact-info a {
+            color: var(--beige) !important;
+            text-decoration: none !important;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .footer-contact-info a:hover {
+            opacity: 0.7 !important;
+        }
+
+        .footer-social {
+            display: flex !important;
+            gap: 1.5rem !important;
+            margin-top: 1.5rem !important;
+        }
+
+        .footer-social a {
+            color: var(--beige) !important;
+            font-size: 2rem !important;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .footer-social a:hover {
+            opacity: 0.7 !important;
+        }
+
+        .footer-nav {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+        }
+
+        .footer-nav a {
+            color: var(--beige) !important;
+            text-decoration: none !important;
+            transition: opacity 0.3s ease !important;
+            text-transform: uppercase !important;
+        }
+
+        .footer-nav a:hover {
+            opacity: 0.7 !important;
+        }
+
+        /* Mobile Menu */
         .mobile-menu-logo {
-            display: none;
+            display: none !important;
         }
 
-        /* Mobile Menu CTA - Caché sur desktop */
         .mobile-menu-cta {
-            display: none;
+            display: none !important;
         }
 
-        /* Responsive Mobile */
+        /* Responsive */
         @media (max-width: 992px) {
             .site-navigation {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background-color: var(--color-beige);
-                flex-direction: column;
-                justify-content: center;
-                gap: 1.2rem;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding: 2rem;
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                width: 100% !important;
+                height: 100vh !important;
+                background-color: var(--beige) !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                gap: 1.2rem !important;
+                transition: right 0.4s ease !important;
+                padding: 2rem !important;
             }
 
             .site-navigation.is-open {
-                right: 0;
+                right: 0 !important;
             }
 
             .mobile-menu-logo {
-                display: block;
-                position: absolute;
-                top: 2rem;
-                left: 2rem;
+                display: block !important;
+                position: absolute !important;
+                top: 2rem !important;
+                left: 2rem !important;
                 height: 70px !important;
-                width: auto !important;
-                opacity: 0;
-                transform: translateY(-10px);
-                transition: all 0.4s ease;
-            }
-
-            .site-navigation.is-open .mobile-menu-logo {
-                opacity: 1;
-                transform: translateY(0);
-                transition-delay: 0.05s;
             }
 
             .site-navigation a {
-                font-size: 2rem;
-                color: var(--color-red);
-                opacity: 0;
-                transform: translateX(20px);
-                transition: all 0.3s ease;
+                font-size: 2rem !important;
+                color: var(--red) !important;
             }
-
-            .site-navigation.is-open a {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-            .site-navigation.is-open a:nth-child(2) { transition-delay: 0.1s; }
-            .site-navigation.is-open a:nth-child(3) { transition-delay: 0.15s; }
-            .site-navigation.is-open a:nth-child(4) { transition-delay: 0.2s; }
-            .site-navigation.is-open a:nth-child(5) { transition-delay: 0.25s; }
-            .site-navigation.is-open a:nth-child(6) { transition-delay: 0.3s; }
 
             .mobile-menu-cta {
-                display: inline-block;
-                background-color: transparent;
-                color: var(--color-red) !important;
-                padding: 1rem 2.5rem !important;
-                border-radius: 50px;
-                margin-top: 2rem;
-                border: 2px solid var(--color-red);
+                display: inline-block !important;
+                background-color: transparent !important;
+                color: var(--red) !important;
+                padding: 1.2rem 3rem !important;
+                border-radius: 50px !important;
+                margin-top: 2rem !important;
+                border: 2px solid var(--red) !important;
             }
 
             .mobile-menu-cta:hover {
-                background-color: var(--color-red);
-                color: var(--color-beige) !important;
+                background-color: var(--red) !important;
+                color: var(--beige) !important;
             }
 
             .mobile-menu-cta::after {
-                display: none;
-            }
-
-            .site-navigation a::after {
-                background-color: var(--color-red);
+                display: none !important;
             }
 
             .burger-menu {
-                display: flex;
+                display: flex !important;
             }
 
             .header-cta {
-                display: block;
-                padding: 0.5rem 1.2rem;
-                font-size: 0.85rem;
+                padding: 0.5rem 1.2rem !important;
+                font-size: 0.85rem !important;
             }
 
             .hero-content {
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                text-align: center !important;
+                margin: 0 auto !important;
             }
 
             .hero-title {
-                font-size: 3rem;
+                font-size: 3rem !important;
             }
 
             .lagree-section {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
 
             .lagree-image {
-                min-height: 50vh;
-                order: 2;
+                min-height: 50vh !important;
+                order: 2 !important;
             }
 
             .lagree-content {
-                order: 1;
-                padding: 4rem 2rem;
+                order: 1 !important;
+                padding: 4rem 2rem !important;
             }
 
             .lagree-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .lagree-content p {
-                font-size: 1.1rem;
+                font-size: 2.5rem !important;
             }
 
             .welcome-grid {
-                grid-template-columns: 1fr;
-                gap: 4rem;
+                grid-template-columns: 1fr !important;
+                gap: 4rem !important;
             }
 
             .welcome-title {
-                font-size: 2.5rem;
+                font-size: 2.5rem !important;
             }
 
             .welcome-image-wrapper {
-                width: 280px;
-                height: 280px;
+                width: 280px !important;
+                height: 280px !important;
             }
 
             .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr) !important;
             }
 
             .info-section {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
 
             .pricing-title {
-                font-size: 2.5rem;
+                font-size: 2.5rem !important;
             }
 
             .philosophy-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
             }
 
             .philosophy-logo {
-                font-size: 3.5rem;
-                text-align: center;
+                font-size: 3.5rem !important;
+                text-align: center !important;
             }
 
             .philosophy-logo .desktop-br {
-                display: none;
-            }
-
-            .philosophy-content p {
-                font-size: 1.1rem;
+                display: none !important;
             }
 
             .footer-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+                text-align: center !important;
             }
 
             .footer-social {
-                justify-content: center;
+                justify-content: center !important;
             }
 
             .faq-title {
-                font-size: 2.5rem;
-            }
-
-            .faq-question {
-                font-size: 1.1rem;
-                padding: 1.2rem 1.5rem;
-            }
-
-            .faq-answer-content {
-                font-size: 1rem;
-                padding: 0 1.5rem 1.2rem 1.5rem;
+                font-size: 2.5rem !important;
             }
         }
 
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+            .hero-background, .philosophy-background {
+                background-attachment: scroll !important;
             }
 
-            .hero-logo-text {
-                font-size: 2rem;
+            .hero-background {
+                height: 100% !important;
+                top: 0 !important;
+                background-size: auto 90% !important;
+                background-position: center center !important;
+            }
+
+            .hero-title {
+                font-size: 2.5rem !important;
             }
 
             .lagree-content h2 {
-                font-size: 2rem;
+                font-size: 2rem !important;
             }
 
-            .header-container {
-                padding: 0 1rem;
-            }
-
-            .hero-container {
-                padding: 0 1rem;
+            .header-container, .hero-container {
+                padding: 0 1rem !important;
             }
 
             .welcome-title {
-                font-size: 2rem;
-            }
-
-            .welcome-card h3 {
-                font-size: 1.5rem;
+                font-size: 2rem !important;
             }
 
             .pricing-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
 
             .pricing-title {
-                font-size: 2rem;
-            }
-
-            .discovery-pack {
-                max-width: 100%;
+                font-size: 2rem !important;
             }
 
             .philosophy-logo {
-                font-size: 2.5rem;
-            }
-
-            .philosophy-content p {
-                font-size: 1rem;
+                font-size: 2.5rem !important;
             }
         }
 
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 2rem;
+                font-size: 2rem !important;
             }
 
-            .cta-button,
-            .cta-button-secondary,
-            .cta-button-tertiary {
-                font-size: 1rem;
-                padding: 0.8rem 2rem;
+            .cta-button {
+                font-size: 1rem !important;
+                padding: 0.8rem 2rem !important;
             }
 
             .welcome-image-wrapper {
-                width: 240px;
-                height: 240px;
+                width: 240px !important;
+                height: 240px !important;
             }
 
             .site-logo {
-                height: 70px !important;
+                height: 45px !important;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Navigation -->
     <header id="site-header">
         <div class="header-container">
             <div class="site-branding">
@@ -1528,61 +1079,49 @@
         </div>
     </header>
 
-    <!-- Section Hero -->
     <section class="hero-section">
+        <div class="hero-background"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    Mind. Body.<br>
-                    All <span class="highlight">(of)</span> Me
-                </h1>
+                <h1 class="hero-title">Mind. Body.<br>All <span class="highlight">(of)</span> Me</h1>
                 <a href="tel:+33465849247" class="cta-button">Réserver ma séance</a>
             </div>
         </div>
         <div class="scrolling-banner">
-            <div class="scrolling-banner-content">
-                <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
-                <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
-                <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
+            <div class="scrolling-banner-content" id="scrolling-text">
                 <span>Le premier studio Lagree de Villeurbanne - Quartier Totem - Ouverture prochaine</span>
             </div>
         </div>
     </section>
 
-    <!-- Section Méthode Lagree -->
     <section id="methode-lagree" class="lagree-section">
-        <div class="lagree-image animate-fade-in"></div>
+        <div class="lagree-image"></div>
         <div class="lagree-content">
-            <h2 class="animate-slide-right">La méthode<br>Lagree</h2>
-            <p class="animate-slide-right animate-delay-1">
-                Le Lagree est une méthode d'entraînement complète et intense, venant de Los Angeles.
-                Mélant renforcement musculaire, cardio, souplesse et équilibre, le Lagree sculpte,
-                renforce et transforme durablement ton corps, sans impacts.
-            </p>
-            <a href="#methode" class="cta-button-secondary animate-slide-right animate-delay-2">En savoir plus</a>
+            <h2>La méthode<br>Lagree</h2>
+            <p>Le Lagree est une méthode d'entraînement complète et intense, venant de Los Angeles. Mélant renforcement musculaire, cardio, souplesse et équilibre, le Lagree sculpte, renforce et transforme durablement ton corps, sans impacts.</p>
+            <a href="tel:+33465849247" class="cta-button">Réserver</a>
         </div>
     </section>
 
-    <!-- Section Bienvenue -->
     <section id="allme-studio" class="welcome-section">
         <div class="welcome-container">
-            <h2 class="welcome-title animate-on-scroll">Bienvenue chez Allme</h2>
+            <h2 class="welcome-title">Bienvenue chez Allme</h2>
             <div class="welcome-grid">
-                <div class="welcome-card animate-scale animate-delay-1">
+                <div class="welcome-card">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-1-1.png" alt="Un espace intimiste">
                     </div>
                     <h3>Un espace intimiste</h3>
                     <p>avec 6 machines pour des cours en petit comité permettant de se concentrer sur les mouvements de chaque participante.</p>
                 </div>
-                <div class="welcome-card animate-scale animate-delay-2">
+                <div class="welcome-card">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-2.jpg" alt="Des cours pour toutes">
                     </div>
                     <h3>Des cours pour toutes</h3>
                     <p>Que vous soyez grande sportive ou simplement curieuse d'essayer, le Lagree Allme s'adapte à votre niveau et l'intensité que vous souhaitez y mettre.</p>
                 </div>
-                <div class="welcome-card animate-scale animate-delay-3">
+                <div class="welcome-card">
                     <div class="welcome-image-wrapper">
                         <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/section3-3.webp" alt="Une équipe attentive">
                     </div>
@@ -1590,69 +1129,64 @@
                     <p>Nos coachs vous accompagnent avec bienveillante dans la réalisation de vos mouvement et l'atteinte de vos objectifs.</p>
                 </div>
             </div>
-            <a href="#studio" class="cta-button-tertiary animate-on-scroll animate-delay-1">Je découvre le studio</a>
         </div>
     </section>
 
-    <!-- Section Tarifs -->
     <section id="tarifs" class="pricing-section">
         <div class="pricing-container">
             <div class="pricing-header">
-                <h2 class="pricing-title animate-on-scroll">Nos offres et tarifs</h2>
-                <p class="pricing-subtitle animate-on-scroll animate-delay-1">Choisissez la formule qui correspond à vos objectifs et envies.</p>
+                <h2 class="pricing-title">Nos offres et tarifs</h2>
+                <p class="pricing-subtitle">Choisissez la formule qui correspond à vos objectifs et envies.</p>
             </div>
 
-            <div class="discovery-pack animate-scale">
+            <div class="discovery-pack">
                 <span class="pack-label">Pack Découverte</span>
                 <h3>3 Séances</h3>
-                <p class="sessions-info">2 lagree + 1 électrostimulation</p>
+                <p>2 lagree + 1 électrostimulation</p>
                 <div class="price">85€</div>
-                <div class="price-per-session">28€/séance</div>
-                <p class="description">Idéal pour commencer à découvrir tous les bénéfices du Lagree et booster les résultats avec l'électrostimulation</p>
-                <p class="description">Valable 2 mois</p>
+                <p>28€/séance</p>
+                <p>Idéal pour commencer à découvrir tous les bénéfices du Lagree et booster les résultats avec l'électrostimulation</p>
+                <p>Valable 2 mois</p>
                 <a href="tel:+33465849247" class="cta-button-pack">Réserver le pack</a>
             </div>
 
             <div class="pricing-grid">
-                <div class="pricing-card animate-on-scroll animate-delay-1">
+                <div class="pricing-card">
                     <div class="sessions">1</div>
-                    <div class="sessions-label">Cours</div>
-                    <div class="price-large">39€</div>
-                    <div class="validity">Sans engagement</div>
+                    <p>Cours</p>
+                    <div class="price">39€</div>
+                    <p>Sans engagement</p>
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
-
-                <div class="pricing-card animate-on-scroll animate-delay-2">
+                <div class="pricing-card">
                     <div class="sessions">5</div>
-                    <div class="sessions-label">Cours</div>
-                    <div class="price-large">185€</div>
-                    <div class="price-detail">37€ / séance</div>
-                    <div class="validity">Valable 2 mois</div>
+                    <p>Cours</p>
+                    <div class="price">185€</div>
+                    <p>37€ / séance</p>
+                    <p>Valable 2 mois</p>
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
-
-                <div class="pricing-card popular animate-on-scroll animate-delay-3">
+                <div class="pricing-card popular" style="position: relative !important;">
                     <span class="popular-badge">★ Plus populaire</span>
                     <div class="sessions">10</div>
-                    <div class="sessions-label">Cours</div>
-                    <div class="price-large">340€</div>
-                    <div class="price-detail">34€ / séance</div>
-                    <div class="validity">Valable 3 mois</div>
+                    <p>Cours</p>
+                    <div class="price">340€</div>
+                    <p>34€ / séance</p>
+                    <p>Valable 3 mois</p>
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
-
-                <div class="pricing-card animate-on-scroll animate-delay-4">
+                <div class="pricing-card">
                     <div class="sessions">20</div>
-                    <div class="sessions-label">Cours</div>
-                    <div class="price-large">650€</div>
-                    <div class="price-detail">32,5€ / séance</div>
-                    <div class="validity">Valable 6 mois</div>
+                    <p>Cours</p>
+                    <div class="price">650€</div>
+                    <p>32,5€ / séance</p>
+                    <p>Valable 6 mois</p>
                     <a href="tel:+33465849247" class="reserve-button">Réserver</a>
                 </div>
             </div>
 
             <div class="info-section">
-                <div class="good-to-know animate-slide-left">
+                <div class="good-to-know">
                     <h4>Bon à savoir</h4>
                     <ul>
                         <li>Paiement sécurisé en ligne ou sur place</li>
@@ -1662,112 +1196,89 @@
                         <li>Vestiaires et douches à disposition</li>
                     </ul>
                 </div>
-
                 <div class="special-offers-column">
-                    <div class="offer-card animate-slide-right animate-delay-1">
+                    <div class="offer-card">
                         <h4>🎓 Offre Étudiante</h4>
                         <div class="discount">-20%</div>
-                        <div class="offer-subtitle">sur toutes nos séances et packs</div>
-                        <p class="offer-description">Sur présentation de votre carte étudiante</p>
+                        <p>sur toutes nos séances et packs</p>
+                        <p>Sur présentation de votre carte étudiante</p>
                     </div>
-
-                    <div class="offer-card animate-slide-right animate-delay-2">
+                    <div class="offer-card">
                         <h4>🤝 Parrainage</h4>
                         <div class="discount">-10%</div>
-                        <div class="offer-subtitle">sur nos packs pour vous</div>
-                        <p class="offer-description">Pour toute souscription d'un de vos proches à un pack 5, 10 ou 20 cours</p>
+                        <p>sur nos packs pour vous</p>
+                        <p>Pour toute souscription d'un de vos proches à un pack 5, 10 ou 20 cours</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Philosophie -->
     <section id="connaitre" class="philosophy-section">
+        <div class="philosophy-background"></div>
         <div class="philosophy-container">
-            <div class="philosophy-logo animate-slide-left">
-                <span class="line1">Mind.</span><br class="desktop-br">
-                <span class="line2">Body.</span><br>
-                <span class="line3">All (of)</span><br class="desktop-br">
-                <span class="line4">Me</span>
+            <div class="philosophy-logo">
+                <span class="line-1">Mind.</span><br class="desktop-br">
+                <span class="line-2">Body.</span><br>
+                <span class="line-3">All (of)</span><br class="desktop-br">
+                <span class="line-4">Me</span>
             </div>
             <div class="philosophy-content">
-                <p class="animate-slide-right">Chez Allmé Studio, nous croyons qu'un entraînement doit être plus qu'un effort : c'est une expérience.</p>
-                <p class="animate-slide-right animate-delay-1">Ici, la Méthode Lagree prend vie dans un studio au design épuré, rythmé par la lumière, la musique et la précision du mouvement. Chaque séance est pensée pour sculpter ton corps, élever ton esprit et réveiller ta meilleure version.</p>
-                <p class="animate-slide-right animate-delay-2">Allmé, c'est la contraction de All of Me : tout de moi. Parce qu'un vrai entraînement ne se résume pas à des muscles : il engage ton mental, ton souffle, ton énergie.</p>
+                <p>Chez Allmé Studio, nous croyons qu'un entraînement doit être plus qu'un effort : c'est une expérience.</p>
+                <p>Ici, la Méthode Lagree prend vie dans un studio au design épuré, rythmé par la lumière, la musique et la précision du mouvement. Chaque séance est pensée pour sculpter ton corps, élever ton esprit et réveiller ta meilleure version.</p>
+                <p>Allmé, c'est la contraction de All of Me : tout de moi. Parce qu'un vrai entraînement ne se résume pas à des muscles : il engage ton mental, ton souffle, ton énergie.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section FAQ -->
     <section id="faq" class="faq-section">
         <div class="faq-container">
-            <h2 class="faq-title animate-on-scroll">FAQ</h2>
-
-            <div class="faq-item animate-on-scroll animate-delay-1">
+            <h2 class="faq-title">FAQ</h2>
+            <div class="faq-item">
                 <button class="faq-question">Qu'est-ce que la méthode Lagree ?</button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        La méthode Lagree est une technique d'entraînement complète et intense qui combine renforcement musculaire, cardio, souplesse et équilibre. Développée à Los Angeles, elle utilise la machine Megaformer pour créer des mouvements lents et contrôlés qui sculptent et renforcent le corps sans impacts.
-                    </div>
+                    <div class="faq-answer-content">La méthode Lagree est une technique d'entraînement complète et intense qui combine renforcement musculaire, cardio, souplesse et équilibre. Développée à Los Angeles, elle utilise la machine Megaformer pour créer des mouvements lents et contrôlés qui sculptent et renforcent le corps sans impacts.</div>
                 </div>
             </div>
-
-            <div class="faq-item animate-on-scroll animate-delay-2">
+            <div class="faq-item">
                 <button class="faq-question">Faut-il avoir un niveau sportif pour commencer ?</button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Non, la méthode Lagree s'adapte à tous les niveaux ! Que vous soyez débutant ou sportif confirmé, nos coachs ajustent l'intensité et les exercices selon vos capacités. C'est vous qui contrôlez la difficulté grâce à la machine.
-                    </div>
+                    <div class="faq-answer-content">Non, la méthode Lagree s'adapte à tous les niveaux ! Que vous soyez débutant ou sportif confirmé, nos coachs ajustent l'intensité et les exercices selon vos capacités. C'est vous qui contrôlez la difficulté grâce à la machine.</div>
                 </div>
             </div>
-
-            <div class="faq-item animate-on-scroll animate-delay-3">
+            <div class="faq-item">
                 <button class="faq-question">Combien de personnes par cours ?</button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Nos cours sont limités à 6 personnes maximum pour garantir un accompagnement personnalisé. Cette configuration en petit comité permet à nos coachs de corriger votre posture et de vous guider tout au long de la séance.
-                    </div>
+                    <div class="faq-answer-content">Nos cours sont limités à 6 personnes maximum pour garantir un accompagnement personnalisé. Cette configuration en petit comité permet à nos coachs de corriger votre posture et de vous guider tout au long de la séance.</div>
                 </div>
             </div>
-
-            <div class="faq-item animate-on-scroll animate-delay-4">
+            <div class="faq-item">
                 <button class="faq-question">Que dois-je apporter pour mon premier cours ?</button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Nous fournissons tous les accessoires nécessaires (tapis, serviettes). Il vous suffit d'apporter une tenue de sport confortable et une paire de chaussettes antidérapantes. Des vestiaires et douches sont à votre disposition.
-                    </div>
+                    <div class="faq-answer-content">Nous fournissons tous les accessoires nécessaires (tapis, serviettes). Il vous suffit d'apporter une tenue de sport confortable et une paire de chaussettes antidérapantes. Des vestiaires et douches sont à votre disposition.</div>
                 </div>
             </div>
-
-            <div class="faq-item animate-on-scroll">
+            <div class="faq-item">
                 <button class="faq-question">Puis-je annuler ou modifier ma réservation ?</button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Oui, l'annulation est gratuite jusqu'à 12h avant le début du cours. Passé ce délai, la séance sera décomptée de votre forfait. Vous pouvez modifier votre réservation facilement via votre espace client.
-                    </div>
+                    <div class="faq-answer-content">Oui, l'annulation est gratuite jusqu'à 12h avant le début du cours. Passé ce délai, la séance sera décomptée de votre forfait. Vous pouvez modifier votre réservation facilement via votre espace client.</div>
                 </div>
             </div>
-
-            <div class="faq-item animate-on-scroll animate-delay-1">
+            <div class="faq-item">
                 <button class="faq-question">Quelle est la durée d'une séance ?</button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Une séance dure 50 minutes. C'est le temps optimal pour travailler efficacement tout le corps tout en maintenant une intensité élevée. Prévoyez quelques minutes supplémentaires pour vous changer avant et après.
-                    </div>
+                    <div class="faq-answer-content">Une séance dure 50 minutes. C'est le temps optimal pour travailler efficacement tout le corps tout en maintenant une intensité élevée. Prévoyez quelques minutes supplémentaires pour vous changer avant et après.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-logo-section">
                 <div class="footer-logo">Allme</div>
-                <div class="footer-logo-subtitle">Lagree Studio</div>
+                <p>Lagree Studio</p>
             </div>
-
             <div class="footer-section">
                 <h3>Contact</h3>
                 <div class="footer-contact-info">
@@ -1788,7 +1299,6 @@
                     </a>
                 </div>
             </div>
-
             <div class="footer-section">
                 <nav class="footer-nav">
                     <a href="#methode-lagree">La méthode Lagree</a>
@@ -1801,98 +1311,43 @@
     </footer>
 
     <script>
-        'use strict';
-
         (function() {
-            // Sélection des éléments
+            'use strict';
+
             const header = document.getElementById('site-header');
             const burgerMenu = document.querySelector('.burger-menu');
             const navigation = document.querySelector('.site-navigation');
             const navLinks = document.querySelectorAll('.site-navigation a');
 
-            // Gestion du scroll pour le header
-            let lastScroll = 0;
-            window.addEventListener('scroll', function() {
-                const currentScroll = window.pageYOffset;
-
-                if (currentScroll > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-
-                lastScroll = currentScroll;
+            // Header scroll
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.pageYOffset > 100);
             });
 
-            // Toggle menu burger
-            burgerMenu.addEventListener('click', function() {
-                const isOpen = navigation.classList.contains('is-open');
+            // Menu toggle
+            function toggleMenu(isOpen) {
+                navigation.classList.toggle('is-open', isOpen);
+                burgerMenu.classList.toggle('is-open', isOpen);
+                burgerMenu.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            }
 
-                if (isOpen) {
-                    navigation.classList.remove('is-open');
-                    burgerMenu.classList.remove('is-open');
-                    burgerMenu.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                } else {
-                    navigation.classList.add('is-open');
-                    burgerMenu.classList.add('is-open');
-                    burgerMenu.setAttribute('aria-expanded', 'true');
-                    document.body.style.overflow = 'hidden';
-                }
+            burgerMenu.addEventListener('click', () => {
+                toggleMenu(!navigation.classList.contains('is-open'));
             });
 
-            // Fermer le menu au clic sur un lien
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    navigation.classList.remove('is-open');
-                    burgerMenu.classList.remove('is-open');
-                    burgerMenu.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                });
-            });
+            // Close menu on link click
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    toggleMenu(false);
 
-            // Fermer le menu au clic en dehors
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = navigation.contains(event.target);
-                const isClickOnBurger = burgerMenu.contains(event.target);
-
-                if (!isClickInsideNav && !isClickOnBurger && navigation.classList.contains('is-open')) {
-                    navigation.classList.remove('is-open');
-                    burgerMenu.classList.remove('is-open');
-                    burgerMenu.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Fermer le menu mobile lors du redimensionnement vers desktop
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    if (window.innerWidth > 992 && navigation.classList.contains('is-open')) {
-                        navigation.classList.remove('is-open');
-                        burgerMenu.classList.remove('is-open');
-                        burgerMenu.setAttribute('aria-expanded', 'false');
-                        document.body.style.overflow = '';
-                    }
-                }, 250);
-            });
-
-            // Smooth scroll pour les ancres
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
+                    const href = link.getAttribute('href');
                     if (href.startsWith('#')) {
                         e.preventDefault();
-                        const targetId = href.substring(1);
-                        const targetSection = document.getElementById(targetId);
-
-                        if (targetSection) {
-                            const headerHeight = header.offsetHeight;
-                            const targetPosition = targetSection.offsetTop - headerHeight;
-
+                        const target = document.getElementById(href.substring(1));
+                        if (target) {
                             window.scrollTo({
-                                top: targetPosition,
+                                top: target.offsetTop - header.offsetHeight,
                                 behavior: 'smooth'
                             });
                         }
@@ -1900,120 +1355,137 @@
                 });
             });
 
-            // Gestion de l'accordéon FAQ
-            const faqQuestions = document.querySelectorAll('.faq-question');
+            // Close menu on outside click
+            document.addEventListener('click', (e) => {
+                if (!navigation.contains(e.target) && !burgerMenu.contains(e.target) && navigation.classList.contains('is-open')) {
+                    toggleMenu(false);
+                }
+            });
 
-            faqQuestions.forEach(function(question) {
+            // Close menu on resize to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 992 && navigation.classList.contains('is-open')) {
+                    toggleMenu(false);
+                }
+            });
+
+            // FAQ accordion
+            document.querySelectorAll('.faq-question').forEach(question => {
                 question.addEventListener('click', function() {
                     const faqItem = this.parentElement;
                     const isActive = faqItem.classList.contains('active');
 
-                    // Fermer tous les autres items
-                    document.querySelectorAll('.faq-item').forEach(function(item) {
-                        item.classList.remove('active');
-                    });
+                    document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
 
-                    // Ouvrir l'item cliqué si il était fermé
                     if (!isActive) {
                         faqItem.classList.add('active');
                     }
                 });
             });
 
-            // Effet Parallax sur les images de la section Welcome
+            // Parallax effects
             function handleParallax() {
-                const welcomeSection = document.querySelector('.welcome-section');
-                if (!welcomeSection) return;
-
-                const welcomeCards = document.querySelectorAll('.welcome-card');
-                const sectionTop = welcomeSection.offsetTop;
-                const sectionHeight = welcomeSection.offsetHeight;
-                const scrollPosition = window.pageYOffset;
+                const scrollPos = window.pageYOffset;
                 const windowHeight = window.innerHeight;
 
-                // Vérifier si la section est visible
-                if (scrollPosition + windowHeight > sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    const scrollInSection = scrollPosition + windowHeight - sectionTop;
-                    const scrollPercent = scrollInSection / (sectionHeight + windowHeight);
-
-                    // Appliquer le même effet parallax pour les 3 images
-                    const offset = (scrollPercent - 0.5) * -50;
-                    document.documentElement.style.setProperty('--parallax-offset-1', offset + 'px');
-                    document.documentElement.style.setProperty('--parallax-offset-2', offset + 'px');
-                    document.documentElement.style.setProperty('--parallax-offset-3', offset + 'px');
+                // Hero section parallax (mobile only)
+                const heroBackground = document.querySelector('.hero-background');
+                if (heroBackground && window.innerWidth <= 768) {
+                    const offset = scrollPos * 0.5;
+                    heroBackground.style.setProperty('background-position-y', `${offset}px`, 'important');
                 }
-            }
 
-            // Effet Parallax sur l'image de la section Lagree
-            function handleLagreeParallax() {
-                const lagreeImage = document.querySelector('.lagree-image');
-                if (!lagreeImage) return;
-
-                const lagreeSection = document.querySelector('.lagree-section');
-                if (!lagreeSection) return;
-
-                const sectionTop = lagreeSection.offsetTop;
-                const sectionHeight = lagreeSection.offsetHeight;
-                const scrollPosition = window.pageYOffset;
-                const windowHeight = window.innerHeight;
-
-                // Vérifier si la section est visible
-                if (scrollPosition + windowHeight > sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    const scrollInSection = scrollPosition + windowHeight - sectionTop;
-                    const scrollPercent = scrollInSection / (sectionHeight + windowHeight);
-
-                    // Amplitude et offset de base selon l'écran
-                    const isMobile = window.innerWidth <= 768;
-                    const amplitude = isMobile ? 150 : 300;
-                    const baseOffset = isMobile ? 90 : 60; // L'image commence plus bas
-
-                    // Calculer l'offset du parallax inversé
-                    const offset = (0.5 - scrollPercent) * amplitude + baseOffset;
-                    lagreeImage.style.backgroundPositionY = `calc(50% + ${offset}px)`;
-                }
-            }
-
-            // Appliquer les parallax au scroll avec throttle pour les performances
-            let parallaxTicking = false;
-            window.addEventListener('scroll', function() {
-                if (!parallaxTicking) {
-                    window.requestAnimationFrame(function() {
-                        handleParallax();
-                        handleLagreeParallax();
-                        parallaxTicking = false;
-                    });
-                    parallaxTicking = true;
-                }
-            });
-
-            // Initialiser au chargement
-            handleParallax();
-            handleLagreeParallax();
-
-            // Système d'animations au scroll avec Intersection Observer
-            const animateElements = document.querySelectorAll(
-                '.animate-on-scroll, .animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-scale'
-            );
-
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-visible');
-                        // Optionnel: arrêter d'observer après l'animation
-                        // observer.unobserve(entry.target);
+                // Philosophy section parallax (mobile only)
+                const philosophyBackground = document.querySelector('.philosophy-background');
+                if (philosophyBackground && window.innerWidth <= 768) {
+                    const philosophySection = document.querySelector('.philosophy-section');
+                    if (philosophySection) {
+                        const sectionTop = philosophySection.offsetTop;
+                        if (scrollPos + windowHeight > sectionTop) {
+                            const offset = (scrollPos - sectionTop + windowHeight) * 0.3;
+                            philosophyBackground.style.setProperty('background-position-y', `${offset}px`, 'important');
+                        }
                     }
-                });
-            }, observerOptions);
+                }
 
-            // Observer tous les éléments à animer
-            animateElements.forEach(function(element) {
-                observer.observe(element);
+                // Welcome section parallax
+                const welcomeSection = document.querySelector('.welcome-section');
+                if (welcomeSection) {
+                    const sectionTop = welcomeSection.offsetTop;
+                    const sectionHeight = welcomeSection.offsetHeight;
+
+                    if (scrollPos + windowHeight > sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        const scrollInSection = scrollPos + windowHeight - sectionTop;
+                        const scrollPercent = scrollInSection / (sectionHeight + windowHeight);
+                        const offset = (scrollPercent - 0.5) * -50;
+                        document.documentElement.style.setProperty('--parallax-offset', offset + 'px');
+                    }
+                }
+
+                // Lagree section parallax
+                const lagreeSection = document.querySelector('.lagree-section');
+                const lagreeImage = document.querySelector('.lagree-image');
+                if (lagreeSection && lagreeImage) {
+                    const sectionTop = lagreeSection.offsetTop;
+                    const sectionHeight = lagreeSection.offsetHeight;
+
+                    if (scrollPos + windowHeight > sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        const scrollInSection = scrollPos + windowHeight - sectionTop;
+                        const scrollPercent = scrollInSection / (sectionHeight + windowHeight);
+                        const isMobile = window.innerWidth <= 768;
+                        const amplitude = isMobile ? 150 : 300;
+                        const baseOffset = isMobile ? 90 : 60;
+                        const offset = (0.5 - scrollPercent) * amplitude + baseOffset;
+                        lagreeImage.style.setProperty('background-position-y', `calc(50% + ${offset}px)`, 'important');
+                    }
+                }
+            }
+
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             });
+
+            // Initial call
+            handleParallax();
+
+            // Also call on load to ensure it works on WordPress
+            window.addEventListener('load', () => {
+                handleParallax();
+            });
+
+            // Scrolling banner
+            const scrollingText = document.getElementById('scrolling-text');
+            if (scrollingText) {
+                const text = scrollingText.innerHTML;
+                // Duplicate text multiple times
+                for (let i = 0; i < 10; i++) {
+                    scrollingText.innerHTML += text;
+                }
+
+                let position = 0;
+                const speed = 1; // pixels per frame
+
+                function scroll() {
+                    position -= speed;
+                    const width = scrollingText.scrollWidth / 11; // Divide by number of copies + 1
+
+                    if (Math.abs(position) >= width) {
+                        position = 0;
+                    }
+
+                    scrollingText.style.transform = `translateX(${position}px)`;
+                    requestAnimationFrame(scroll);
+                }
+
+                scroll();
+            }
         })();
     </script>
 </body>

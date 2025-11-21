@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allmē Lagree Studio - Mind. Body. All (of) Me</title>
+    <title>AllMe Lagree Studio - Mind. Body. All (of) Me</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
 
@@ -23,18 +23,12 @@
         html, body {
             overflow-x: hidden !important;
             width: 100% !important;
-            height: 100% !important;
-            position: relative !important;
-            overscroll-behavior-y: none !important;
         }
 
         body {
             font-family: 'Crimson Pro', serif !important;
             color: var(--black) !important;
             line-height: 1.6 !important;
-            min-height: 100vh !important;
-            overflow-y: auto !important;
-            overscroll-behavior: none !important;
         }
 
         /* Loader */
@@ -129,18 +123,6 @@
             transform: translateX(0) !important;
         }
 
-        /* Fade in up animation for pricing cards */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Mobile menu animations */
         .mobile-nav-item {
             opacity: 0 !important;
@@ -175,10 +157,6 @@
 
         .site-navigation.is-open .mobile-nav-item:nth-child(6) {
             transition-delay: 0.6s !important;
-        }
-
-        .site-navigation.is-open .mobile-nav-item:nth-child(7) {
-            transition-delay: 0.7s !important;
         }
 
         /* Desktop nav links animation */
@@ -344,6 +322,7 @@
             font-size: 1.3rem !important;
             font-weight: 600 !important;
             transition: all 0.3s ease !important;
+            text-transform: uppercase !important;
         }
 
         .header-cta:hover {
@@ -373,10 +352,10 @@
 
         .hero-background {
             position: absolute !important;
-            top: 0 !important;
+            top: -20% !important;
             left: 0 !important;
             width: 100% !important;
-            height: 100% !important;
+            height: 140% !important;
             background-color: var(--black) !important;
             background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section1-2.png') !important;
             background-position: center center !important;
@@ -413,16 +392,18 @@
             color: var(--beige) !important;
             line-height: 1.1 !important;
             margin-bottom: 3rem !important;
-            letter-spacing: -5px !important;
+            letter-spacing: -4px !important;
         }
 
         .hero-title .highlight {
-            font-style: italic !important;
+            font-style: normal !important;
         }
 
         .cta-button {
-            display: inline-block !important;
-            padding: 0.75rem 2rem !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 1rem !important;
+            padding: 0.7rem 1.5rem 0.7rem 2.5rem !important;
             background-color: var(--red) !important;
             color: var(--beige) !important;
             font-family: 'Playfair Display', serif !important;
@@ -433,12 +414,32 @@
             border: 2px solid var(--red) !important;
         }
 
+        .cta-button::after {
+            content: '→' !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 32px !important;
+            height: 32px !important;
+            background-color: var(--beige) !important;
+            color: var(--red) !important;
+            border-radius: 50% !important;
+            font-size: 1.2rem !important;
+            transform: rotate(-45deg) !important;
+            transition: transform 0.3s ease !important;
+        }
+
         .cta-button:hover {
             background-color: transparent !important;
             border-color: var(--white) !important;
             color: var(--white) !important;
             transform: translateY(-2px) !important;
             box-shadow: 0 10px 25px rgba(126, 56, 63, 0.3) !important;
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(5px) rotate(-45deg) !important;
+            background-color: var(--white) !important;
         }
 
         /* Scrolling Banner */
@@ -495,7 +496,7 @@
             font-weight: 400 !important;
             line-height: 1.2 !important;
             margin-bottom: 2rem !important;
-            letter-spacing: -5px !important;
+            letter-spacing: -4px !important;
         }
 
         .lagree-content p {
@@ -504,7 +505,7 @@
             margin-bottom: 3rem !important;
             text-align: justify !important;
             color: var(--white) !important;
-            max-width: 500px !important;
+            max-width: 550px !important;
         }
 
         /* Welcome Section */
@@ -526,7 +527,7 @@
             text-align: center !important;
             margin-bottom: 4rem !important;
             color: var(--beige) !important;
-            letter-spacing: -5px !important;
+            letter-spacing: -4px !important;
         }
 
         .welcome-grid {
@@ -572,6 +573,48 @@
             max-width: 350px !important;
         }
 
+        .welcome-cta {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 1rem !important;
+            padding: 0.7rem 1.5rem 0.7rem 2.5rem !important;
+            background-color: var(--beige) !important;
+            color: var(--red) !important;
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.2rem !important;
+            text-decoration: none !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid var(--beige) !important;
+            text-transform: uppercase !important;
+        }
+
+        .welcome-cta::after {
+            content: '→' !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 32px !important;
+            height: 32px !important;
+            background-color: var(--red) !important;
+            color: var(--beige) !important;
+            border-radius: 50% !important;
+            font-size: 1.2rem !important;
+            transform: rotate(-45deg) !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        .welcome-cta:hover {
+            background-color: transparent !important;
+            color: var(--beige) !important;
+            border-color: var(--beige) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .welcome-cta:hover::after {
+            transform: translateX(5px) rotate(-45deg) !important;
+        }
+
         /* Pricing Section */
         .pricing-section {
             background-color: var(--beige) !important;
@@ -579,8 +622,9 @@
         }
 
         .pricing-container {
-            max-width: 1200px !important;
+            max-width: 1400px !important;
             margin: 0 auto !important;
+            padding: 0 2rem !important;
         }
 
         .pricing-header {
@@ -593,7 +637,7 @@
             font-size: 4rem !important;
             color: var(--red) !important;
             margin-bottom: 1rem !important;
-            letter-spacing: -5px !important;
+            letter-spacing: -4px !important;
         }
 
         .pricing-subtitle {
@@ -601,159 +645,78 @@
             color: var(--red) !important;
         }
 
-        /* Pricing Switcher - Hidden on desktop */
-        .pricing-switcher {
-            display: none !important;
-            margin-bottom: 1.5rem !important;
+        .discovery-pack {
+            background-color: var(--red) !important;
+            border-radius: 20px !important;
+            padding: 3rem !important;
+            color: var(--white) !important;
             text-align: center !important;
-        }
-
-        .switcher-label {
-            font-size: 0.9rem !important;
-            color: var(--red) !important;
-            font-weight: 600 !important;
-            margin-bottom: 1rem !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
-        }
-
-        .switcher-buttons {
-            display: flex !important;
-            gap: 0.4rem !important;
-            justify-content: center !important;
-            flex-wrap: nowrap !important;
-            padding: 0.5rem 0.5rem !important;
-        }
-
-        .switcher-btn {
-            padding: 0.6rem 0.7rem !important;
-            background-color: var(--white) !important;
-            color: var(--red) !important;
-            border: 2px solid var(--red) !important;
-            border-radius: 10px !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            flex-shrink: 0 !important;
-            min-width: 52px !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            gap: 0.2rem !important;
-        }
-
-        .btn-number {
-            font-size: 1.1rem !important;
-            font-weight: 700 !important;
-            line-height: 1 !important;
-        }
-
-        .btn-label {
-            font-size: 0.6rem !important;
-            font-weight: 600 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.2px !important;
-            line-height: 1 !important;
-        }
-
-        .switcher-btn.active {
-            background-color: var(--red) !important;
-            color: var(--white) !important;
-            transform: scale(1.05) !important;
-        }
-
-        .switcher-btn:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 12px rgba(126, 56, 63, 0.2) !important;
-        }
-
-        .switcher-btn.active:hover {
-            transform: translateY(-2px) scale(1.05) !important;
-        }
-
-        .pricing-card.discovery-pack {
-            background-color: var(--red) !important;
-            border: none !important;
-            color: var(--white) !important;
-            box-shadow: 0 6px 25px rgba(126, 56, 63, 0.25) !important;
-            position: relative !important;
-        }
-
-        .pricing-card.discovery-pack:hover {
-            box-shadow: 0 12px 40px rgba(126, 56, 63, 0.35) !important;
-        }
-
-        .pricing-card.discovery-pack p {
-            color: var(--white) !important;
-        }
-
-        .pricing-card.discovery-pack h3 {
-            color: var(--white) !important;
+            margin: 0 auto 4rem !important;
+            max-width: 500px !important;
         }
 
         .pack-label {
-            position: absolute !important;
-            top: -25px !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
             background-color: var(--beige) !important;
             color: var(--red) !important;
-            padding: 0.4rem 1.2rem !important;
+            padding: 0.5rem 1.5rem !important;
             border-radius: 25px !important;
-            border: 2px solid var(--red) !important;
-            font-size: 0.7rem !important;
+            display: inline-block !important;
+            font-size: 1.1rem !important;
             font-weight: 600 !important;
             text-transform: uppercase !important;
+            margin-bottom: 1.5rem !important;
         }
 
-        .pricing-card.discovery-pack .sessions {
-            color: var(--white) !important;
-        }
-
-        .pricing-card.discovery-pack h3 {
+        .discovery-pack h3 {
             font-family: 'Playfair Display', serif !important;
-            font-size: 1.5rem !important;
+            font-size: 2rem !important;
             margin-bottom: 0.5rem !important;
-            margin-top: 0.5rem !important;
-            color: var(--white) !important;
         }
 
-        .pricing-card.discovery-pack p {
-            color: var(--white) !important;
+        .discovery-pack .price {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            margin-bottom: 0.5rem !important;
         }
 
-        .pricing-card.discovery-pack .price {
-            color: var(--white) !important;
-        }
-
-        .pricing-card.discovery-pack .cta-button-pack,
-        .pricing-card .reserve-button {
-            background-color: var(--red) !important;
-            color: var(--white) !important;
-            padding: 0.75rem 2rem !important;
+        .discovery-pack .cta-button-pack {
+            background-color: var(--beige) !important;
+            color: var(--red) !important;
+            padding: 0.7rem 1.5rem 0.7rem 2rem !important;
             border-radius: 50px !important;
             text-decoration: none !important;
             font-weight: 600 !important;
             text-transform: uppercase !important;
-            display: inline-block !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 1rem !important;
             transition: all 0.3s ease !important;
-            border: 2px solid var(--red) !important;
-            margin-top: auto !important;
+            border: 2px solid var(--beige) !important;
         }
 
-        .pricing-card.discovery-pack .cta-button-pack {
-            background-color: var(--beige) !important;
-            color: var(--red) !important;
-            border-color: var(--beige) !important;
+        .discovery-pack .cta-button-pack::after {
+            content: '→' !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 32px !important;
+            height: 32px !important;
+            background-color: var(--red) !important;
+            color: var(--beige) !important;
+            border-radius: 50% !important;
+            font-size: 1.2rem !important;
+            transform: rotate(-45deg) !important;
+            transition: transform 0.3s ease !important;
         }
 
-        .pricing-card.discovery-pack .cta-button-pack:hover {
+        .discovery-pack .cta-button-pack:hover {
             background-color: transparent !important;
             color: var(--beige) !important;
+            transform: translateY(-2px) !important;
         }
 
-        .pricing-card .reserve-button:hover {
-            background-color: transparent !important;
-            color: var(--red) !important;
+        .discovery-pack .cta-button-pack:hover::after {
+            transform: translateX(5px) rotate(-45deg) !important;
         }
 
         .pricing-grid {
@@ -765,96 +728,83 @@
 
         .pricing-card {
             background-color: var(--white) !important;
-            border: none !important;
+            border: 2px solid #d0c4b8 !important;
             border-radius: 15px !important;
             padding: 2.5rem 1.5rem !important;
             text-align: center !important;
             transition: all 0.3s ease !important;
             display: flex !important;
             flex-direction: column !important;
-            gap: 2rem !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
-        }
-
-        .pricing-card p {
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-
-        .card-block {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-        }
-
-        .sessions-block {
-            gap: 0.5rem !important;
-        }
-
-        .sessions-block .sessions {
-            font-size: 2.5rem !important;
-        }
-
-        .sessions-block .session-label {
-            font-size: 1rem !important;
-            color: var(--red) !important;
-            text-transform: uppercase !important;
-            font-weight: 600 !important;
-        }
-
-        .price-block {
-            gap: 0.3rem !important;
-        }
-
-        .price-block .price {
-            font-family: 'Playfair Display', serif !important;
-            font-size: 3.5rem !important;
-            color: var(--red) !important;
-            font-weight: 700 !important;
-        }
-
-        .price-per-session {
-            font-size: 1.3rem !important;
-            color: var(--red) !important;
-            opacity: 0.8 !important;
-        }
-
-        .validity-block p {
-            font-size: 1.3rem !important;
-            color: var(--red) !important;
-        }
-
-        .cta-block {
-            margin-top: auto !important;
+            gap: 0 !important;
         }
 
         .pricing-card:hover {
-            transform: translateY(-8px) !important;
-            box-shadow: 0 12px 35px rgba(126, 56, 63, 0.2) !important;
+            transform: translateY(-5px) !important;
+            box-shadow: 0 10px 30px rgba(126, 56, 63, 0.15) !important;
         }
 
         .pricing-card.popular {
             border: 3px solid var(--red) !important;
-            box-shadow: 0 6px 25px rgba(126, 56, 63, 0.15) !important;
-            transform: scale(1.02) !important;
         }
 
-        .pricing-card.popular:hover {
-            transform: translateY(-8px) scale(1.02) !important;
+        .pricing-card.discovery {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery .sessions {
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery p {
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery .price {
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery .reserve-button {
+            background-color: var(--white) !important;
+            color: var(--red) !important;
+            border-color: var(--white) !important;
+        }
+
+        .pricing-card.discovery .reserve-button::after {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+        }
+
+        .pricing-card.discovery .reserve-button:hover {
+            background-color: transparent !important;
+            color: var(--white) !important;
+            border-color: var(--white) !important;
+        }
+
+        .pricing-card.discovery .reserve-button:hover::after {
+            background-color: var(--white) !important;
+            color: var(--red) !important;
+        }
+
+        .pricing-card.discovery .popular-badge {
+            background-color: var(--beige) !important;
+            color: var(--red) !important;
+            border: 2px solid var(--red) !important;
         }
 
         .popular-badge {
             position: absolute !important;
-            top: -25px !important;
+            top: -15px !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
             background-color: var(--red) !important;
             color: var(--beige) !important;
-            padding: 0.4rem 1.2rem !important;
+            padding: 0.5rem 1.5rem !important;
             border-radius: 25px !important;
-            font-size: 0.7rem !important;
+            font-size: 0.8rem !important;
             font-weight: 600 !important;
             text-transform: uppercase !important;
+            white-space: nowrap !important;
         }
 
         .pricing-card .sessions {
@@ -863,17 +813,102 @@
             color: var(--red) !important;
         }
 
+        /* Bloc nombre de séances */
+        .pricing-card .sessions-block {
+            padding-bottom: 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+            border-bottom: 1px solid #e5e0d8 !important;
+        }
+
+        .pricing-card.discovery .sessions-block {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .pricing-card .sessions-block .sessions {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .pricing-card .sessions-block p {
+            font-size: 1.1rem !important;
+            margin: 0 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+        }
+
+        /* Bloc prix */
+        .pricing-card .price-block {
+            padding: 0 0 1.5rem 0 !important;
+        }
+
+        .pricing-card .price-block .price {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            color: var(--red) !important;
+            font-weight: 600 !important;
+            margin: 0 !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 1 !important;
+        }
+
+        .pricing-card.discovery .price-block .price {
+            color: var(--white) !important;
+        }
+
+        .pricing-card .price-block .per-session {
+            font-size: 1rem !important;
+            opacity: 0.7 !important;
+            margin: 0 !important;
+        }
+
+        /* Texte idéal pour commencer */
+        .pricing-card .ideal-text {
+            font-size: 0.95rem !important;
+            margin: 0 !important;
+            margin-bottom: 1rem !important;
+            font-style: italic !important;
+            opacity: 0.8 !important;
+        }
+
+        /* Bloc validité */
+        .pricing-card .validity-block {
+            padding-top: 0.5rem !important;
+            margin-top: 0 !important;
+        }
+
+        .pricing-card .validity-block p {
+            font-size: 0.8rem !important;
+            margin: 0 !important;
+            opacity: 0.65 !important;
+        }
+
         .pricing-card .reserve-button {
             background-color: var(--red) !important;
             color: var(--white) !important;
-            padding: 0.75rem 2rem !important;
+            padding: 0.7rem 1.5rem 0.7rem 2.5rem !important;
             border-radius: 50px !important;
             text-decoration: none !important;
             font-weight: 600 !important;
             text-transform: uppercase !important;
-            display: inline-block !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 1rem !important;
             transition: all 0.3s ease !important;
             border: 2px solid var(--red) !important;
+        }
+
+        .pricing-card .reserve-button::after {
+            content: '→' !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 32px !important;
+            height: 32px !important;
+            background-color: var(--white) !important;
+            color: var(--red) !important;
+            border-radius: 50% !important;
+            font-size: 1.2rem !important;
+            transform: rotate(-45deg) !important;
+            transition: transform 0.3s ease !important;
         }
 
         .pricing-card .reserve-button:hover {
@@ -882,129 +917,33 @@
             transform: translateY(-2px) !important;
         }
 
-        .info-section {
-            display: grid !important;
-            grid-template-columns: 1.2fr 1fr !important;
-            gap: 2.5rem !important;
-        }
-
-        .special-offers {
-            display: grid !important;
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 2rem !important;
-            max-width: 1200px !important;
-            margin: 4rem auto !important;
-        }
-
-        .offer-card {
-            background-color: var(--beige) !important;
-            border: 2px solid var(--red) !important;
-            border-radius: 20px !important;
-            padding: 2rem !important;
-            text-align: center !important;
-        }
-
-        .offer-card h3 {
-            font-family: 'Playfair Display', serif !important;
-            font-size: 1.8rem !important;
-            color: var(--red) !important;
-            margin-bottom: 1rem !important;
-            font-weight: 400 !important;
-        }
-
-        .offer-card .discount {
-            font-family: 'Playfair Display', serif !important;
-            font-size: 3.5rem !important;
-            color: var(--red) !important;
-            font-weight: 700 !important;
-            margin-bottom: 0.5rem !important;
-        }
-
-        .offer-card .discount-subtitle {
-            font-size: 1.3rem !important;
-            color: var(--red) !important;
-            margin-bottom: 0.8rem !important;
-        }
-
-        .offer-card .description {
-            font-size: 1.1rem !important;
-            color: var(--red) !important;
-            line-height: 1.6 !important;
-            opacity: 0.9 !important;
-        }
-
-        .good-to-know {
-            max-width: 1200px !important;
-            margin: 2rem auto 0 !important;
-            padding: 0 !important;
-        }
-
-        .good-to-know h2 {
-            font-family: 'Playfair Display', serif !important;
-            font-size: 4rem !important;
-            color: var(--red) !important;
-            margin-bottom: 3rem !important;
-            text-align: center !important;
-            letter-spacing: -5px !important;
-        }
-
-        .good-to-know ul {
-            list-style: none !important;
-            display: grid !important;
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 2rem 4rem !important;
-            max-width: 900px !important;
-            margin: 0 auto !important;
-        }
-
-        .good-to-know li {
-            font-size: 1.3rem !important;
-            color: var(--red) !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 1rem !important;
-            text-align: left !important;
-        }
-
-        .good-to-know li input[type="checkbox"] {
-            appearance: none !important;
-            width: 24px !important;
-            height: 24px !important;
-            border: 2px solid var(--red) !important;
-            border-radius: 50% !important;
-            flex-shrink: 0 !important;
-            cursor: pointer !important;
-            position: relative !important;
-        }
-
-        .good-to-know li input[type="checkbox"]:checked {
+        .pricing-card .reserve-button:hover::after {
+            transform: translateX(5px) rotate(-45deg) !important;
             background-color: var(--red) !important;
+            color: var(--white) !important;
         }
 
-        .good-to-know li input[type="checkbox"]:checked::after {
-            content: '✓' !important;
-            position: absolute !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            color: var(--beige) !important;
-            font-size: 14px !important;
-            font-weight: bold !important;
-        }
-
-        .special-offers-column {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 1.5rem !important;
+        /* Offers section - one line */
+        .offers-row {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+            margin-bottom: 4rem !important;
+            max-width: 1400px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
 
         .offer-card {
             background-color: var(--white) !important;
             border: 2px solid var(--red) !important;
             border-radius: 15px !important;
-            padding: 2rem 1.5rem !important;
+            padding: 3rem 2.5rem !important;
             text-align: center !important;
             transition: all 0.3s ease !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
         }
 
         .offer-card:hover {
@@ -1014,16 +953,89 @@
 
         .offer-card h4 {
             font-family: 'Playfair Display', serif !important;
-            font-size: 1.3rem !important;
+            font-size: 2rem !important;
             color: var(--red) !important;
-            margin-bottom: 1rem !important;
+            margin-bottom: 0 !important;
+            line-height: 1.3 !important;
         }
 
-        .offer-card .discount {
+        .offer-card .discount-inline {
+            display: inline !important;
             font-family: 'Playfair Display', serif !important;
-            font-size: 2.2rem !important;
+            font-size: 2rem !important;
             color: var(--red) !important;
             font-weight: 600 !important;
+        }
+
+        .offer-card p {
+            font-size: 1.3rem !important;
+            color: var(--black) !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+            text-align: center !important;
+        }
+
+        /* Bon à savoir section */
+        .info-section {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+        }
+
+        .good-to-know {
+            background-color: var(--beige) !important;
+            border-radius: 15px !important;
+            padding: 3rem 2.5rem !important;
+        }
+
+        .good-to-know h2 {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 4rem !important;
+            color: var(--red) !important;
+            margin-bottom: 2.5rem !important;
+            text-align: center !important;
+            letter-spacing: -4px !important;
+        }
+
+        .good-to-know ul {
+            list-style: none !important;
+            display: grid !important;
+            grid-template-columns: repeat(2, auto) !important;
+            gap: 1.5rem 5rem !important;
+            justify-content: center !important;
+            margin: 0 auto !important;
+        }
+
+        .good-to-know li {
+            font-size: 1.3rem !important;
+            color: var(--red) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 1rem !important;
+            position: relative !important;
+            padding-left: 40px !important;
+        }
+
+        .good-to-know li::before {
+            content: '✓' !important;
+            width: 28px !important;
+            height: 28px !important;
+            min-width: 28px !important;
+            background-color: var(--red) !important;
+            border-radius: 50% !important;
+            position: absolute !important;
+            left: 0 !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: var(--beige) !important;
+            font-size: 1.1rem !important;
+            font-weight: bold !important;
+        }
+
+        .good-to-know li::after {
+            content: none !important;
         }
 
         /* Philosophy Section */
@@ -1037,10 +1049,10 @@
 
         .philosophy-background {
             position: absolute !important;
-            top: 0 !important;
+            top: -20% !important;
             left: 0 !important;
             width: 100% !important;
-            height: 100% !important;
+            height: 140% !important;
             background-color: var(--black) !important;
             background-image: url('https://allme-lagree.fr/wp-content/uploads/2025/11/section5.webp') !important;
             background-position: center center !important;
@@ -1058,15 +1070,15 @@
         }
 
         .philosophy-container {
-            max-width: 1400px !important;
+            max-width: 1600px !important;
             margin: 0 auto !important;
-            padding: 0 2rem !important;
+            padding: 0 6rem !important;
             position: relative !important;
             z-index: 1 !important;
             width: 100% !important;
             display: grid !important;
-            grid-template-columns: 1fr 1.5fr !important;
-            gap: 4rem !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 8rem !important;
             align-items: center !important;
         }
 
@@ -1075,14 +1087,9 @@
             font-size: 5rem !important;
             color: var(--beige) !important;
             line-height: 1.1 !important;
-            letter-spacing: -5px !important;
-            text-align: center !important;
-        }
-
-        .philosophy-content {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
+            letter-spacing: -4px !important;
+            text-align: left !important;
+            padding-right: 2rem !important;
         }
 
         .philosophy-content p {
@@ -1090,8 +1097,6 @@
             line-height: 1.8 !important;
             margin-bottom: 2rem !important;
             color: var(--white) !important;
-            max-width: 500px !important;
-            text-align: center !important;
         }
 
         /* FAQ Section */
@@ -1111,37 +1116,36 @@
             text-align: center !important;
             color: var(--red) !important;
             margin-bottom: 4rem !important;
-            letter-spacing: -5px !important;
+            letter-spacing: -4px !important;
         }
 
         .faq-item {
-            border-bottom: 1px solid var(--red) !important;
-            padding: 2rem 0 !important;
+            border-bottom: 2px solid var(--red) !important;
+            padding: 0 !important;
         }
 
         .faq-question {
             width: 100% !important;
-            padding: 0 !important;
+            padding: 2rem 3rem 2rem 0 !important;
             background-color: transparent !important;
             border: none !important;
             text-align: left !important;
             font-family: 'Crimson Pro', serif !important;
             font-size: 1.3rem !important;
-            font-weight: 500 !important;
+            font-weight: 400 !important;
             color: var(--red) !important;
             cursor: pointer !important;
             display: flex !important;
             justify-content: space-between !important;
-            align-items: flex-start !important;
+            align-items: center !important;
             transition: all 0.3s ease !important;
             white-space: normal !important;
             word-wrap: break-word !important;
             overflow-wrap: break-word !important;
-            gap: 2rem !important;
         }
 
         .faq-question:hover {
-            opacity: 0.7 !important;
+            opacity: 0.8 !important;
         }
 
         .faq-item.active .faq-question {
@@ -1152,8 +1156,10 @@
             content: '+' !important;
             font-size: 2rem !important;
             font-weight: 300 !important;
-            transition: transform 0.3s ease !important;
+            color: var(--red) !important;
+            margin-left: 2rem !important;
             flex-shrink: 0 !important;
+            transition: transform 0.3s ease !important;
         }
 
         .faq-item.active .faq-question::after {
@@ -1164,17 +1170,17 @@
             max-height: 0 !important;
             overflow: hidden !important;
             transition: max-height 0.3s ease !important;
+            background-color: transparent !important;
         }
 
         .faq-answer-content {
-            padding: 1.5rem 0 0 0 !important;
+            padding: 0 3rem 2rem 0 !important;
             font-size: 1.1rem !important;
             line-height: 1.8 !important;
-            color: var(--red) !important;
+            color: #666666 !important;
             white-space: normal !important;
             word-wrap: break-word !important;
             overflow-wrap: break-word !important;
-            opacity: 0.8 !important;
         }
 
         .faq-item.active .faq-answer {
@@ -1184,50 +1190,44 @@
         /* Footer */
         .site-footer {
             background-color: var(--red) !important;
-            padding: 4rem 2rem 2rem !important;
+            padding: 3rem 2rem 1rem !important;
             color: var(--white) !important;
         }
 
-        .footer-container {
+        .footer-top {
             max-width: 1400px !important;
             margin: 0 auto !important;
             display: grid !important;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr !important;
-            gap: 4rem !important;
-            margin-bottom: 3rem !important;
+            grid-template-columns: 0.8fr 1fr 1fr 0.8fr !important;
+            gap: 3rem !important;
+            padding-bottom: 3rem !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
         }
 
-        .footer-logo {
-            font-family: 'Playfair Display', serif !important;
-            font-size: 3.5rem !important;
-            color: var(--white) !important;
+        .footer-logo-section {
+            display: flex !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
         }
 
         .footer-logo-img {
-            height: 60px !important;
+            height: 80px !important;
             width: auto !important;
-            filter: brightness(0) invert(1) !important;
         }
 
         .footer-section h3 {
-            font-family: 'Crimson Pro', serif !important;
-            font-size: 0.9rem !important;
-            font-weight: 600 !important;
+            font-size: 1rem !important;
             margin-bottom: 1.5rem !important;
             text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            color: var(--white) !important;
+            letter-spacing: 2px !important;
+            font-weight: 500 !important;
         }
 
         .footer-contact-info {
             display: flex !important;
             flex-direction: column !important;
             gap: 0.5rem !important;
-            font-size: 1rem !important;
-        }
-
-        .footer-contact-info p {
-            margin: 0 !important;
+            font-size: 0.95rem !important;
             line-height: 1.6 !important;
         }
 
@@ -1241,20 +1241,12 @@
             opacity: 0.7 !important;
         }
 
-        .footer-social {
+        .footer-schedule {
             display: flex !important;
-            gap: 1rem !important;
-            margin-top: 2rem !important;
-        }
-
-        .footer-social a {
-            color: var(--white) !important;
-            font-size: 1.5rem !important;
-            transition: opacity 0.3s ease !important;
-        }
-
-        .footer-social a:hover {
-            opacity: 0.7 !important;
+            flex-direction: column !important;
+            gap: 0.3rem !important;
+            font-size: 0.95rem !important;
+            line-height: 1.6 !important;
         }
 
         .footer-nav {
@@ -1267,19 +1259,41 @@
             color: var(--white) !important;
             text-decoration: none !important;
             transition: opacity 0.3s ease !important;
-            font-size: 1rem !important;
+            font-size: 0.95rem !important;
         }
 
         .footer-nav a:hover {
             opacity: 0.7 !important;
         }
 
+        .footer-social {
+            margin-top: 1.5rem !important;
+        }
+
+        .footer-social a {
+            color: var(--white) !important;
+            font-size: 2rem !important;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .footer-social a:hover {
+            opacity: 0.7 !important;
+        }
+
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-            padding-top: 2rem !important;
-            margin-top: 2rem !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding-top: 1.5rem !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
             font-size: 0.85rem !important;
-            opacity: 0.6 !important;
+            opacity: 0.8 !important;
+        }
+
+        .footer-bottom a {
+            color: var(--white) !important;
+            text-decoration: underline !important;
         }
 
         /* Mobile Menu */
@@ -1320,7 +1334,7 @@
             }
 
             .site-navigation a {
-                font-size: 2rem !important;
+                font-size: 1.5rem !important;
                 color: var(--red) !important;
             }
 
@@ -1359,6 +1373,7 @@
 
             .hero-title {
                 font-size: 3rem !important;
+                letter-spacing: -1px !important;
             }
 
             .lagree-section {
@@ -1377,6 +1392,7 @@
 
             .lagree-content h2 {
                 font-size: 2.5rem !important;
+                letter-spacing: -1px !important;
             }
 
             .welcome-grid {
@@ -1386,6 +1402,7 @@
 
             .welcome-title {
                 font-size: 2.5rem !important;
+                letter-spacing: -1px !important;
             }
 
             .welcome-image-wrapper {
@@ -1393,93 +1410,26 @@
                 height: 280px !important;
             }
 
-            /* Show pricing switcher on mobile */
-            .pricing-switcher {
-                display: none !important;
-            }
-
             .pricing-grid {
-                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .offers-row {
                 grid-template-columns: 1fr !important;
-                gap: 1.5rem !important;
-                padding: 1rem 0 !important;
             }
 
-            .pricing-card,
-            .discovery-pack {
-                display: flex !important;
-                flex-direction: column !important;
-                width: 100% !important;
-                max-width: 400px !important;
-                margin: 0 auto !important;
-            }
-
-            /* Smaller discovery pack on mobile */
-            .discovery-pack {
-                padding: 2rem 1.5rem !important;
-                margin-bottom: 2rem !important;
-                max-width: 400px !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-
-            .pack-label {
-                font-size: 0.9rem !important;
-                padding: 0.4rem 1.2rem !important;
-                margin-bottom: 1rem !important;
-            }
-
-            .discovery-pack h3 {
-                font-size: 1.6rem !important;
-                margin-bottom: 0.4rem !important;
-            }
-
-            .discovery-pack p {
-                font-size: 1rem !important;
-                margin-bottom: 0.8rem !important;
-            }
-
-            .discovery-pack .price {
-                font-size: 3.5rem !important;
-                margin-bottom: 0.4rem !important;
-            }
-
-            .discovery-pack .cta-button-pack {
-                padding: 0.8rem 1.6rem !important;
-                font-size: 0.9rem !important;
-            }
-
-            /* Mobile pricing grid - single column for active card */
-            .pricing-grid {
+            .good-to-know ul {
                 grid-template-columns: 1fr !important;
-                max-width: 400px !important;
-                margin: 0 auto 2rem !important;
             }
 
-            /* Smaller pricing cards on mobile */
-            .pricing-card {
-                padding: 2rem 1.5rem !important;
-            }
-
-            .pricing-card .sessions {
-                font-size: 2.8rem !important;
-            }
-
-            .pricing-card p {
-                font-size: 1rem !important;
-            }
-
-            .pricing-card .reserve-button {
-                padding: 0.8rem 2rem !important;
-                font-size: 0.9rem !important;
-            }
-
-            .info-section {
-                grid-template-columns: 1fr !important;
+            .good-to-know h2 {
+                font-size: 2.5rem !important;
+                letter-spacing: -1px !important;
             }
 
             .pricing-title {
                 font-size: 2.5rem !important;
+                letter-spacing: -1px !important;
             }
 
             .philosophy-container {
@@ -1491,24 +1441,36 @@
             .philosophy-logo {
                 font-size: 4rem !important;
                 text-align: center !important;
+                letter-spacing: -1px !important;
             }
 
             .philosophy-logo .desktop-br {
                 display: none !important;
             }
 
-            .footer-container {
+            .footer-top {
                 grid-template-columns: 1fr !important;
-                gap: 3rem !important;
+                gap: 2rem !important;
                 text-align: center !important;
+            }
+
+            .footer-logo-section {
+                justify-content: center !important;
             }
 
             .footer-social {
                 justify-content: center !important;
             }
 
+            .footer-bottom {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                text-align: center !important;
+            }
+
             .faq-title {
                 font-size: 2.5rem !important;
+                letter-spacing: -1px !important;
             }
         }
 
@@ -1526,10 +1488,12 @@
 
             .hero-title {
                 font-size: 2.5rem !important;
+                letter-spacing: -1px !important;
             }
 
             .lagree-content h2 {
                 font-size: 2rem !important;
+                letter-spacing: -1px !important;
             }
 
             .header-container, .hero-container {
@@ -1538,87 +1502,70 @@
 
             .welcome-title {
                 font-size: 2rem !important;
+                letter-spacing: -1px !important;
+            }
+
+            .pricing-container {
+                padding: 0 !important;
             }
 
             .pricing-grid {
                 grid-template-columns: 1fr !important;
-                max-width: 350px !important;
+                gap: 1.5rem !important;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem !important;
+            }
+
+            .sessions-block {
+                padding-bottom: 1rem !important;
+                margin-bottom: 0 !important;
+            }
+
+            .price-block {
+                padding: 0 !important;
+            }
+
+            .validity-block {
+                padding-top: 0.3rem !important;
+            }
+
+            .ideal-text {
+                margin-bottom: 0.7rem !important;
+            }
+
+            .pricing-card .reserve-button {
+                justify-content: center !important;
+                padding: 0.5rem 1rem !important;
+                align-self: center !important;
+                width: auto !important;
+                font-size: 0.9rem !important;
+            }
+
+            .good-to-know {
+                padding: 2rem 1rem !important;
+            }
+
+            .faq-item:last-child {
+                border-bottom: none !important;
             }
 
             .pricing-title {
                 font-size: 2rem !important;
+                letter-spacing: -1px !important;
             }
 
             .philosophy-logo {
                 font-size: 2.5rem !important;
-            }
-
-            /* Even smaller pricing cards on small screens */
-            .discovery-pack {
-                padding: 1.5rem 1.2rem !important;
-                max-width: 350px !important;
-            }
-
-            .discovery-pack h3 {
-                font-size: 1.4rem !important;
-            }
-
-            .discovery-pack p {
-                font-size: 0.95rem !important;
-            }
-
-            .discovery-pack .price {
-                font-size: 2.5rem !important;
-            }
-
-            .pricing-card {
-                padding: 1.5rem 1.2rem !important;
-            }
-
-            .pricing-card .sessions {
-                font-size: 2.5rem !important;
-            }
-
-            /* Smaller switcher on small screens */
-            .switcher-label {
-                font-size: 0.85rem !important;
-                margin-bottom: 0.8rem !important;
-            }
-
-            .switcher-buttons {
-                gap: 0.3rem !important;
-                padding: 0.5rem 0.3rem !important;
-            }
-
-            .switcher-btn {
-                min-width: 48px !important;
-                padding: 0.5rem 0.5rem !important;
-                gap: 0.15rem !important;
-            }
-
-            .btn-number {
-                font-size: 1rem !important;
-            }
-
-            .btn-label {
-                font-size: 0.55rem !important;
-            }
-
-            /* Special offers - 1 column on mobile */
-            .special-offers {
-                grid-template-columns: 1fr !important;
-            }
-
-            /* Good to know - 1 column on mobile */
-            .good-to-know ul {
-                grid-template-columns: 1fr !important;
-                gap: 1.5rem !important;
+                letter-spacing: -1px !important;
             }
         }
 
         @media (max-width: 480px) {
             .hero-title {
                 font-size: 2rem !important;
+                letter-spacing: -1px !important;
             }
 
             .cta-button {
@@ -1633,80 +1580,6 @@
 
             .site-logo {
                 height: 45px !important;
-            }
-
-            /* Even smaller switcher on very small screens */
-            .switcher-label {
-                font-size: 0.8rem !important;
-                margin-bottom: 0.7rem !important;
-            }
-
-            .switcher-buttons {
-                gap: 0.25rem !important;
-                padding: 0.5rem 0.2rem !important;
-            }
-
-            .switcher-btn {
-                min-width: 45px !important;
-                padding: 0.45rem 0.4rem !important;
-            }
-
-            .btn-number {
-                font-size: 0.95rem !important;
-            }
-
-            .btn-label {
-                font-size: 0.5rem !important;
-            }
-
-            /* Ultra compact pricing cards on very small screens */
-            .discovery-pack {
-                padding: 1.2rem 1rem !important;
-                max-width: 320px !important;
-            }
-
-            .pack-label {
-                font-size: 0.8rem !important;
-                padding: 0.3rem 1rem !important;
-            }
-
-            .discovery-pack h3 {
-                font-size: 1.2rem !important;
-            }
-
-            .discovery-pack p {
-                font-size: 0.9rem !important;
-                margin-bottom: 0.6rem !important;
-            }
-
-            .discovery-pack .price {
-                font-size: 2.2rem !important;
-            }
-
-            .discovery-pack .cta-button-pack {
-                padding: 0.7rem 1.4rem !important;
-                font-size: 0.85rem !important;
-            }
-
-            .pricing-grid {
-                max-width: 320px !important;
-            }
-
-            .pricing-card {
-                padding: 1.2rem 1rem !important;
-            }
-
-            .pricing-card .sessions {
-                font-size: 2.2rem !important;
-            }
-
-            .pricing-card p {
-                font-size: 0.9rem !important;
-            }
-
-            .pricing-card .reserve-button {
-                padding: 0.7rem 1.6rem !important;
-                font-size: 0.85rem !important;
             }
         }
     </style>
@@ -1728,7 +1601,7 @@
                 <a href="#methode-lagree" class="nav-link mobile-nav-item">La méthode Lagree</a>
                 <a href="#allme-studio" class="nav-link mobile-nav-item">Allmē Studio</a>
                 <a href="#tarifs" class="nav-link mobile-nav-item">Nos tarifs</a>
-                <a href="#planning" class="nav-link mobile-nav-item">Planning</a>
+                <a href="tel:+33465849247" class="nav-link mobile-nav-item">Planning</a>
                 <a href="#faq" class="nav-link mobile-nav-item">FAQ</a>
                 <a href="tel:+33465849247" class="mobile-menu-cta mobile-nav-item">Réserver</a>
             </nav>
@@ -1747,7 +1620,7 @@
         <div class="hero-background"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title hero-hidden" id="hero-title">Mind. Body.<br>All (of) Me</h1>
+                <h1 class="hero-title hero-hidden" id="hero-title">Mind. Body.<br>All <span class="highlight">(of)</span> Me</h1>
                 <a href="tel:+33465849247" class="cta-button hero-hidden" id="hero-button">Réserver ma séance</a>
             </div>
         </div>
@@ -1794,7 +1667,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="tel:+33465849247" class="cta-button animate-on-scroll" style="background-color: var(--beige) !important; color: var(--red) !important; border-color: var(--beige) !important;">Réserver ma séance</a>
+                <a href="tel:+33465849247" class="welcome-cta animate-on-scroll">Réserver ma séance</a>
             </div>
         </div>
     </section>
@@ -1806,142 +1679,104 @@
                 <p class="pricing-subtitle animate-on-scroll">Choisissez la formule qui correspond à vos objectifs et envies.</p>
             </div>
 
-            <!-- Mobile Pricing Switcher -->
-            <div class="pricing-switcher">
-                <p class="switcher-label">Choisissez votre formule</p>
-                <div class="switcher-buttons">
-                    <button class="switcher-btn" data-pack="one">
-                        <span class="btn-number">1</span>
-                        <span class="btn-label">Séance</span>
-                    </button>
-                    <button class="switcher-btn active" data-pack="discovery">
-                        <span class="btn-number">3x</span>
-                        <span class="btn-label">Découverte</span>
-                    </button>
-                    <button class="switcher-btn" data-pack="five">
-                        <span class="btn-number">5</span>
-                        <span class="btn-label">Séances</span>
-                    </button>
-                    <button class="switcher-btn" data-pack="ten">
-                        <span class="btn-number">10</span>
-                        <span class="btn-label">Séances</span>
-                    </button>
-                    <button class="switcher-btn" data-pack="twenty">
-                        <span class="btn-number">20</span>
-                        <span class="btn-label">Séances</span>
-                    </button>
-                </div>
-            </div>
-
             <div class="pricing-grid">
-                <div class="pricing-card animate-scale" data-pack="one">
-                    <div class="card-block sessions-block">
+                <div class="pricing-card animate-scale">
+                    <div class="sessions-block">
                         <div class="sessions">1</div>
-                        <p class="session-label">Séance</p>
+                        <p>Séances</p>
                     </div>
-                    <div class="card-block price-block">
+                    <div class="price-block">
                         <div class="price">39€</div>
+                        <p class="per-session">39€ / séance</p>
                     </div>
-                    <div class="card-block validity-block">
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                    <div class="validity-block">
                         <p>Sans engagement</p>
                     </div>
-                    <div class="card-block cta-block">
-                        <a href="tel:+33465849247" class="reserve-button">Réserver</a>
-                    </div>
                 </div>
-                <div class="pricing-card discovery-pack animate-scale" data-pack="discovery">
-                    <span class="pack-label">Pack Découverte</span>
-                    <div class="card-block sessions-block">
+                <div class="pricing-card discovery animate-scale" style="position: relative !important;">
+                    <span class="popular-badge">Pack Découverte</span>
+                    <div class="sessions-block">
                         <div class="sessions">3</div>
-                        <p class="session-label">Séances</p>
+                        <p>Séances</p>
                     </div>
-                    <div class="card-block price-block">
+                    <div class="price-block">
                         <div class="price">85€</div>
-                        <p class="price-per-session">28€/séance</p>
+                        <p class="per-session">28€ / séance</p>
                     </div>
-                    <div class="card-block validity-block">
+                    <p class="ideal-text">Idéal pour commencer</p>
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                    <div class="validity-block">
                         <p>Valable 2 mois</p>
                     </div>
-                    <div class="card-block cta-block">
-                        <a href="tel:+33465849247" class="cta-button-pack">Réserver</a>
-                    </div>
                 </div>
-                <div class="pricing-card animate-scale" data-pack="five">
-                    <div class="card-block sessions-block">
+                <div class="pricing-card animate-scale">
+                    <div class="sessions-block">
                         <div class="sessions">5</div>
-                        <p class="session-label">Séances</p>
+                        <p>Séances</p>
                     </div>
-                    <div class="card-block price-block">
+                    <div class="price-block">
                         <div class="price">185€</div>
-                        <p class="price-per-session">37€/séance</p>
+                        <p class="per-session">37€ / séance</p>
                     </div>
-                    <div class="card-block validity-block">
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                    <div class="validity-block">
                         <p>Valable 2 mois</p>
                     </div>
-                    <div class="card-block cta-block">
-                        <a href="tel:+33465849247" class="reserve-button">Réserver</a>
-                    </div>
                 </div>
-                <div class="pricing-card popular animate-scale" data-pack="ten" style="position: relative !important;">
+                <div class="pricing-card popular animate-scale" style="position: relative !important;">
                     <span class="popular-badge">★ Plus populaire</span>
-                    <div class="card-block sessions-block">
+                    <div class="sessions-block">
                         <div class="sessions">10</div>
-                        <p class="session-label">Séances</p>
+                        <p>Séances</p>
                     </div>
-                    <div class="card-block price-block">
+                    <div class="price-block">
                         <div class="price">340€</div>
-                        <p class="price-per-session">34€/séance</p>
+                        <p class="per-session">34€ / séance</p>
                     </div>
-                    <div class="card-block validity-block">
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                    <div class="validity-block">
                         <p>Valable 3 mois</p>
                     </div>
-                    <div class="card-block cta-block">
-                        <a href="tel:+33465849247" class="reserve-button">Réserver</a>
-                    </div>
                 </div>
-                <div class="pricing-card animate-scale" data-pack="twenty">
-                    <div class="card-block sessions-block">
+                <div class="pricing-card animate-scale">
+                    <div class="sessions-block">
                         <div class="sessions">20</div>
-                        <p class="session-label">Séances</p>
+                        <p>Séances</p>
                     </div>
-                    <div class="card-block price-block">
+                    <div class="price-block">
                         <div class="price">650€</div>
-                        <p class="price-per-session">32,5€/séance</p>
+                        <p class="per-session">32,5€ / séance</p>
                     </div>
-                    <div class="card-block validity-block">
+                    <a href="tel:+33465849247" class="reserve-button">Réserver</a>
+                    <div class="validity-block">
                         <p>Valable 6 mois</p>
                     </div>
-                    <div class="card-block cta-block">
-                        <a href="tel:+33465849247" class="reserve-button">Réserver</a>
-                    </div>
                 </div>
             </div>
 
-            <div class="special-offers">
-                <div class="offer-card">
-                    <h3>Offre Étudiante</h3>
-                    <div class="discount">-20%</div>
-                    <div class="discount-subtitle">sur toutes nos séances et packs</div>
-                    <p class="description">Sur présentation de votre carte étudiante</p>
+            <div class="offers-row">
+                <div class="offer-card animate-scale">
+                    <h4>Offre Étudiante: <span class="discount-inline">-20%</span></h4>
+                    <p>Sur toutes nos séances et packs, sur présentation de votre carte étudiante.</p>
                 </div>
-                <div class="offer-card">
-                    <h3>Parrainage</h3>
-                    <div class="discount">-10%</div>
-                    <div class="discount-subtitle">sur nos packs pour vous</div>
-                    <p class="description">Pour toute souscription d'un de vos proches à un pack 5, 10 ou 20 séances</p>
+                <div class="offer-card animate-scale">
+                    <h4>Parrainage: <span class="discount-inline">-10%</span></h4>
+                    <p>Sur nos packs pour vous, pour toute souscription d'un de vos proches à un pack 5, 10 ou 20 séances.</p>
                 </div>
             </div>
 
-            <div class="good-to-know">
-                <h2>Bon à savoir</h2>
-                <ul>
-                    <li><input type="checkbox" checked disabled><span>Paiement sécurisé en ligne ou sur place</span></li>
-                    <li><input type="checkbox" checked disabled><span>Annulation gratuite jusqu'à 12h avant la séance</span></li>
-                    <li><input type="checkbox" checked disabled><span>Toutes les séances sur machine Megaformer</span></li>
-                    <li><input type="checkbox" checked disabled><span>Accessoires fournis (hors chaussettes)</span></li>
-                    <li><input type="checkbox" checked disabled><span>Vestiaires et douches à disposition</span></li>
-                    <li><input type="checkbox" checked disabled><span>Cours en petit comité (6 personnes max)</span></li>
-                </ul>
+            <div class="info-section">
+                <div class="good-to-know animate-on-scroll">
+                    <h2>Bon à savoir</h2>
+                    <ul>
+                        <li>Paiement sécurisé en ligne ou sur place</li>
+                        <li>Annulation gratuite jusqu'à 12h avant la séance</li>
+                        <li>Toutes les séances sont réalisées sur la machine Megaformer</li>
+                        <li>Accessoires fournis hors chaussettes antidérapantes</li>
+                        <li>Vestiaires et douches à disposition</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -1981,7 +1816,7 @@
             <div class="faq-item animate-on-scroll">
                 <button class="faq-question">Combien de fois par semaine faut-il pratiquer pour avoir des résultats ?</button>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">2 à 3 séances par semaine suffisent pour se tonifier, améliorer son gainage, perdre en centimètres et renforcer le bas du dos et les abdos profonds. Le Lagree brûle entre 300 et 600 calories selon le niveau, l'intensité et le tempo. Mais surtout : tu continues à brûler après la séance grâce au travail musculaire profond.</div>
+                    <div class="faq-answer-content">2 à 3 séances par semaine suffisent pour se tonifier, améliorer son gainage, perdre en centimètres, renforcer le bas du dos et les abdos profonds. Le Lagree brûle entre 300 et 600 calories selon le niveau, l'intensité et le tempo. Mais surtout : tu continues à brûler après la séance grâce au travail musculaire profond.</div>
                 </div>
             </div>
             <div class="faq-item animate-on-scroll">
@@ -2006,55 +1841,54 @@
     </section>
 
     <footer class="site-footer">
-        <div class="footer-container">
+        <div class="footer-top">
             <div class="footer-logo-section">
-                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-beige.png" alt="Allmē Lagree Studio" class="footer-logo-img">
+                <img src="https://allme-lagree.fr/wp-content/uploads/2025/11/logo-beige.png" alt="AllMe" class="footer-logo-img">
             </div>
+
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3>CONTACTS</h3>
                 <div class="footer-contact-info">
                     <p>31 rue Edouard Aynard<br>69100 Villeurbanne</p>
-                    <p><a href="tel:+33465849247">04 65 84 92 47</a></p>
+                    <p>+ 04 65 84 92 47</p>
                     <p><a href="mailto:contact@allme.fr">contact@allme.fr</a></p>
                 </div>
-                <div class="footer-social">
-                    <a href="https://instagram.com/allme.lagree" target="_blank" aria-label="Instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    <a href="https://tiktok.com/@allme.lagree" target="_blank" aria-label="TikTok">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                        </svg>
-                    </a>
-                </div>
             </div>
+
             <div class="footer-section">
-                <h3>Allmē</h3>
-                <div class="footer-contact-info">
+                <h3>ALLME</h3>
+                <div class="footer-schedule">
                     <p>Lundi : 9h-13h30 / 17h-20h</p>
                     <p>Mardi : 7h-13h30 / 18h-21h</p>
                     <p>Mercredi : 8h-13h30 / 18h-21h</p>
-                    <p>Jeudi : 8h-13h30 / 17h-20h</p>
+                    <p>Jeudi: 8h-13h30 / 17h-20h</p>
                     <p>Vendredi : 7h-14h30</p>
                     <p>Samedi : fermé</p>
                     <p>Dimanche : 10h-14h</p>
                 </div>
             </div>
+
             <div class="footer-section">
-                <h3>Navigation</h3>
+                <h3>NAVIGATION</h3>
                 <nav class="footer-nav">
-                    <a href="#methode-lagree">La méthode Lagree</a>
-                    <a href="#allme-studio">Allmē Studio</a>
-                    <a href="#tarifs">Nos tarifs</a>
-                    <a href="#planning">Planning</a>
+                    <a href="#methode-lagree">La méthode</a>
+                    <a href="#allme-studio">Le studio</a>
+                    <a href="#tarifs">Tarifs</a>
                     <a href="#faq">FAQ</a>
                 </nav>
+                <div class="footer-social">
+                    <a href="https://instagram.com/allme.lagree" target="_blank" aria-label="Instagram">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>© 2025 Allmē Lagree Studio. Tous droits réservés.</p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p>©2025 créé par Websituation</p>
         </div>
     </footer>
 
@@ -2062,19 +1896,16 @@
         (function() {
             'use strict';
 
-            // Loader animation (sans zoom)
+            // Loader animation
             const loader = document.getElementById('page-loader');
-            const loaderLogo = document.querySelector('.loader-logo');
 
-            // Simple fade out après 1 seconde
+            // Simple fade out après 800ms
             setTimeout(() => {
-                if (loader) {
-                    loader.classList.add('fade-out');
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                    }, 300);
-                }
-            }, 1000);
+                loader.classList.add('fade-out');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 300);
+            }, 800);
 
             const header = document.getElementById('site-header');
             const burgerMenu = document.querySelector('.burger-menu');
@@ -2296,20 +2127,20 @@
             // Header animations - start after loader
             setTimeout(() => {
                 document.getElementById('header-logo').classList.add('hero-visible');
-            }, 1400); // 1000ms (loader) + 300ms (fade) + 100ms
+            }, 1000); // 800ms (loader) + 200ms
 
             setTimeout(() => {
                 document.getElementById('header-actions').classList.add('hero-visible');
-            }, 1600); // 1000ms (loader) + 300ms (fade) + 300ms
+            }, 1200); // 800ms (loader) + 400ms
 
             // Hero animations - start after loader
             setTimeout(() => {
                 document.getElementById('hero-title').classList.add('hero-visible');
-            }, 1700); // 1000ms (loader) + 300ms (fade) + 400ms
+            }, 1300); // 800ms (loader) + 500ms
 
             setTimeout(() => {
                 document.getElementById('hero-button').classList.add('hero-visible');
-            }, 2200); // 1000ms (loader) + 300ms (fade) + 900ms
+            }, 1800); // 800ms (loader) + 1000ms
 
             // Animate desktop nav links
             setTimeout(() => {
@@ -2321,70 +2152,7 @@
                         }, index * 150);
                     });
                 }
-            }, 1600);
-
-            // Pricing Switcher for Mobile
-            const switcherButtons = document.querySelectorAll('.switcher-btn');
-            const discoveryPack = document.querySelector('.discovery-pack');
-            const pricingCards = document.querySelectorAll('.pricing-card');
-
-            // Function to show selected pack
-            function showPack(packType) {
-                // Remove active class from all buttons
-                switcherButtons.forEach(btn => btn.classList.remove('active'));
-
-                // Add active class to clicked button
-                const activeButton = document.querySelector(`[data-pack="${packType}"]`);
-                if (activeButton && activeButton.classList.contains('switcher-btn')) {
-                    activeButton.classList.add('active');
-                }
-
-                // Hide all packs
-                if (discoveryPack) discoveryPack.classList.remove('active');
-                pricingCards.forEach(card => card.classList.remove('active'));
-
-                // Show selected pack
-                if (packType === 'discovery' && discoveryPack) {
-                    discoveryPack.classList.add('active');
-                } else {
-                    const selectedCard = document.querySelector(`.pricing-card[data-pack="${packType}"]`);
-                    if (selectedCard) {
-                        selectedCard.classList.add('active');
-                    }
-                }
-            }
-
-            // Initialize - show discovery pack by default on mobile
-            if (window.innerWidth <= 992) {
-                showPack('discovery');
-            }
-
-            // Add click event to all switcher buttons
-            switcherButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const packType = button.getAttribute('data-pack');
-                    showPack(packType);
-                });
-            });
-
-            // Handle window resize
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    if (window.innerWidth <= 992) {
-                        // On mobile, ensure at least one pack is shown
-                        const hasActive = document.querySelector('.discovery-pack.active, .pricing-card.active');
-                        if (!hasActive) {
-                            showPack('discovery');
-                        }
-                    } else {
-                        // On desktop, show all packs
-                        if (discoveryPack) discoveryPack.classList.remove('active');
-                        pricingCards.forEach(card => card.classList.remove('active'));
-                    }
-                }, 250);
-            });
+            }, 1200);
         })();
     </script>
 </body>
